@@ -1,4 +1,4 @@
-package CSE422.ChatApplication;
+package CSE422.TalkApplication;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

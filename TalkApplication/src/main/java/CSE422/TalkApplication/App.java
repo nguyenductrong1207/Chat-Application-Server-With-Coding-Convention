@@ -1,4 +1,4 @@
-package CSE422.ChatApplication;
+package CSE422.TalkApplication;
 
 /**
  * Hello world!
