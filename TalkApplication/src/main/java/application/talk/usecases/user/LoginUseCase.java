@@ -3,6 +3,7 @@ package application.talk.usecases.user;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
+import application.talk.usecases.user.UserRegistration.RegisterResult;
 
 public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase.OutputValues> {
 	private DataStorage _dataStorage;
@@ -29,12 +30,20 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 	}
 
 	public static class OutputValues {
-		private final LoginResult _result;
-		private final String _message;
+		private final LoginResult RESULT;
+		private final String MESSAGE;
 
 		public OutputValues(LoginResult result, String message) {
-			_message = message;
-			_result = result;
+			MESSAGE = message;
+			RESULT = result;
+		}
+		
+		public LoginResult getResult() {
+			return RESULT;
+		}
+
+		public String getMessage() {
+			return MESSAGE;
 		}
 	}
 
