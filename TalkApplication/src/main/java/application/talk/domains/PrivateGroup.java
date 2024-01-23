@@ -1,32 +1,19 @@
 package application.talk.domains;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class PrivateGroup implements Group {
-	private ArrayList<User> _admins;
-	private ArrayList<User> _members;
-	private String _groupName;
-
-	public PrivateGroup(ArrayList<User> admins, ArrayList<User> members, String groupName) {
-		super();
-		_admins = admins;
-		this._members = members;
-		this._groupName = groupName;
+public class PrivateGroup extends Group {
+	private List<User> _users;
+	private List<User> _admins;
+	private String _name;
+	
+	public PrivateGroup( List<User> users, String name) {
+		super(users, name);
+		_users = users;
+		_name = name;
 	}
-
-	@Override
-	public ArrayList<User> getUsers() {
-		return _members;
+	
+	public void addAdmin(User user) {
+		_admins.add(user);
 	}
-
-	@Override
-	public void setName(String name) {
-		_groupName = name;
-	}
-
-	@Override
-	public String getName() {
-		return _groupName;
-	}
-
 }
