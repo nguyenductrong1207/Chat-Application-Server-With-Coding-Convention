@@ -1,6 +1,6 @@
 package application.talk.usecases.user;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -32,17 +32,17 @@ public class UserLoginTests {
 
 	@Test
 	public void testLogin() {
-		LoginUseCase.InputValues input = new InputValues("kiet","0710");
+		LoginUseCase.InputValues input = new InputValues("kiet", "0710");
 		DataStorage storage = InMemoryDataStorage.getInstance();
 
 		LoginUseCase login = new LoginUseCase(storage, new Hasher() {
-			
+
 			@Override
 			public String hash(String orginal) {
 				return null;
 			}
 		});
-		
+
 		LoginUseCase.OutputValues output = login.execute(input);
 
 		assertEquals(output.getResult(), LoginResult.Successed);

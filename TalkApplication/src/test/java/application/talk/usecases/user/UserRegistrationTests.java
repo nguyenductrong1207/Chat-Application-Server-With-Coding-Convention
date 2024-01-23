@@ -1,6 +1,6 @@
 package application.talk.usecases.user;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,13 +34,13 @@ public class UserRegistrationTests {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 
 		UserRegistration registration = new UserRegistration(storage, new Hasher() {
-			
+
 			@Override
 			public String hash(String orginal) {
 				return null;
 			}
 		});
-		
+
 		UserRegistration.OutputValues output = registration.execute(input);
 
 		assertEquals(output.getResult(), RegisterResult.SUCCESSED);
