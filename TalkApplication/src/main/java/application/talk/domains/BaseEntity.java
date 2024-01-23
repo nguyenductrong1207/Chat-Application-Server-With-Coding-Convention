@@ -3,13 +3,13 @@ package application.talk.domains;
 import java.util.UUID;
 
 public abstract class BaseEntity {
-	private String id;
+	private String _id;
 
 	public String getId() {
-		return id;
+		return _id;
 	}
 
 	protected BaseEntity() {
-		id = UUID.randomUUID().toString();
+		_id = UUID.randomUUID().toString();
 	}
 }

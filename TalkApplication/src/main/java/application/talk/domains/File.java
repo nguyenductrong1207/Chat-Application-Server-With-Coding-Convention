@@ -13,6 +13,7 @@ public class File extends BaseEntity {
 	}
 
 	public File(String name, long size, Type type) {
+		super();
 		_name = name;
 		_size = size;
 		_type = type;
