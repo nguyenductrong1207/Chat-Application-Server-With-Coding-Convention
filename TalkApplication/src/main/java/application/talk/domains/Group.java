@@ -1,9 +1,9 @@
 package application.talk.domains;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Group {
-	ArrayList<User> getUsers();
+	List<User> getUsers();
 	
 	void setName(String name);
 	

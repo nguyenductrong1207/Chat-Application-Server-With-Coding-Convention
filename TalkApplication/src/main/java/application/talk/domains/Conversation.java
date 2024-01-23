@@ -1,8 +1,8 @@
 package application.talk.domains;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Conversation extends BaseEntity {
-	private ArrayList<Message> _messages;
-	private ArrayList<User> _participants;
+	private List<Message> _messages;
+	private List<User> _participants;
 }

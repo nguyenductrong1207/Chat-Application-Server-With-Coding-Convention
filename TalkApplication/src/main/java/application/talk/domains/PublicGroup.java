@@ -1,19 +1,19 @@
 package application.talk.domains;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class PublicGroup implements Group {
-	private ArrayList<User> _users;
+	private List<User> _users;
 	private String _groupName;
 
-	public PublicGroup(ArrayList<User> users, String groupName) {
+	public PublicGroup(List<User> users, String groupName) {
 		super();
 		_users = users;
 		_groupName = groupName;
 	}
 
 	@Override
-	public ArrayList<User> getUsers() {
+	public List<User> getUsers() {
 		return _users;
 	}
 
