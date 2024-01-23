@@ -15,6 +15,7 @@ public class User extends BaseEntity{
 	}
 
 	public User(String username, String hashedPassword) {
+		super();
 		_firstName = username;
 		_hashedPassword = hashedPassword;
 	}

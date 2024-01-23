@@ -7,6 +7,7 @@ public class PublicGroup implements Group {
 	private String _groupName;
 
 	public PublicGroup(ArrayList<User> users, String groupName) {
+		super();
 		_users = users;
 		_groupName = groupName;
 	}

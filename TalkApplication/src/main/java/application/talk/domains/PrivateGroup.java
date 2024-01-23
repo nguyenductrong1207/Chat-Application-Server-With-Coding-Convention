@@ -8,6 +8,7 @@ public class PrivateGroup implements Group {
 	private String _groupName;
 
 	public PrivateGroup(ArrayList<User> admins, ArrayList<User> members, String groupName) {
+		super();
 		_admins = admins;
 		this._members = members;
 		this._groupName = groupName;
