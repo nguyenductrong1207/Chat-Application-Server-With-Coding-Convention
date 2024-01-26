@@ -5,6 +5,7 @@ import java.util.List;
 public abstract class Group {
 	private List<User> _users;
 	private String _name;
+
 	
 	public Group(List<User> users, String name) {
 		_users = users;

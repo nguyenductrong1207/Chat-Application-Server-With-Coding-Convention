@@ -11,5 +11,4 @@ public class PublicGroup extends Group {
 		_users = users;
 		_name = name;
 	}
-	
 }
