@@ -29,5 +29,4 @@ public class CreatingGroup {
 	public void createAdmin(User user) {
 		_admin = user;
 	}
-
 }

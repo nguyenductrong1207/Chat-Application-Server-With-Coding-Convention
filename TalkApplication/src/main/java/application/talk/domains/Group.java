@@ -2,18 +2,28 @@ package application.talk.domains;
 
 import java.util.List;
 
-public abstract class Group {
+public abstract class Group extends BaseEntity{
 	private List<User> _users;
 	private String _name;
-
 	
 	public Group(List<User> users, String name) {
+		super();
 		_users = users;
 		_name = name;
 	}
 
 	public void addUser(User user) {
 		_users.add(user);
+	}
+	
+	public void removeUserById(String id) {
+		for(User user : _users) {
+			if(user.getId().equals(id)) {
+				_users.remove(user);
+				
+				return;
+			}
+		}
 	}
 	
 	public List<User> getUsers(){

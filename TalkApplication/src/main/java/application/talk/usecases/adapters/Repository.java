@@ -7,7 +7,7 @@ public interface Repository<T extends BaseEntity> {
     T getById(String id);
     
     T getByName(String name);
-
+    
     boolean add(T addingEntity);
 
     void deleteAll();
