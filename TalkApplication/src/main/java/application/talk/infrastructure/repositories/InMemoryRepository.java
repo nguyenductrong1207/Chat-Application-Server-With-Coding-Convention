@@ -24,6 +24,15 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 	}
 
 	@Override
+	public T getByName(String name) {
+		Optional<T> entity = enities.stream().filter((e) -> {
+			return e.getName().equalsIgnoreCase(name);
+		}).findFirst();
+
+		return entity.get();
+	}
+
+	@Override
 	public boolean add(T entity) {
 		if (entity == null) {
 			return false;

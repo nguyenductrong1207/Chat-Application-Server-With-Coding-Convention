@@ -3,7 +3,6 @@ package application.talk.usecases.user;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
-import application.talk.usecases.user.UserRegistration.RegisterResult;
 
 public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase.OutputValues> {
 	private DataStorage _dataStorage;
@@ -16,7 +15,7 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		return new OutputValues(LoginResult.Successed, "");
+		return new OutputValues(LoginResult.SUCCESSED, "");
 	}
 
 	public static class InputValues {
@@ -48,6 +47,6 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 	}
 
 	public static enum LoginResult {
-		Successed, Failed;
+		SUCCESSED, FAILED
 	}
 }

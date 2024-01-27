@@ -1,5 +1,6 @@
 package application.talk.usecases.user;
 
+import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -12,7 +13,12 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		_dataStorage.getUsers().getByName(input.getName());
+		User user = _dataStorage.getUsers().getByName(input.getName());
+		
+		if(user == null) {
+			return new OutputValues(FindingResult.FAILED, "");
+		}
+		
 		return new OutputValues(FindingResult.SUCCESSFUL, "");
 	}
 
@@ -25,9 +31,8 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 		}
 		
 		public String getName() {
-			return _username;
+			return  _username;
 		}
-
 	}
 
 	public static class OutputValues {
