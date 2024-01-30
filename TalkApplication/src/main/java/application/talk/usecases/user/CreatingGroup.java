@@ -38,10 +38,10 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 		private User _admin;
 		private String _name;
 
-		public InputValues(boolean isPublic, String joinCode, User admin, String name) {
+		public InputValues(boolean isPublic, User admin, String name) {
 			super();
 			_isPublic = isPublic;
-			_joinCode = UUID.randomUUID().toString().substring(0, 6);;
+			_joinCode = UUID.randomUUID().toString().substring(0, 6);
 			_admin = admin;
 			_name = name;
 

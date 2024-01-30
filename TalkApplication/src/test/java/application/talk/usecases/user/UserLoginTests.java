@@ -45,7 +45,7 @@ public class UserLoginTests {
 
 		LoginUseCase.OutputValues output = login.execute(input);
 
-		assertEquals(output.getResult(), LoginResult.Successed);
+		assertEquals(output.getResult(), LoginResult.SUCCESSED);
 	}
 
 }
