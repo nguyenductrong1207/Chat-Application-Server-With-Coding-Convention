@@ -7,6 +7,6 @@ public interface DataStorage {
     Repository<User> getUsers();
     
     Repository<Group> getGroups();
-
+    
     void cleanAll();
 }
