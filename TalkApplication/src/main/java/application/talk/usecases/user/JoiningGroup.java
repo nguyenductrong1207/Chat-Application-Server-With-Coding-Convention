@@ -1,7 +1,5 @@
 package application.talk.usecases.user;
 
-import java.util.UUID;
-
 import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
@@ -19,7 +17,7 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		Group group;
+		Group group = null;
 
 		if (input._isPublic) {
 			PublicGroup publicGroup = null;
@@ -31,10 +29,12 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 		} else {
 			PrivateGroup privateGroup = null;
 
-			if (equals(privateGroup.getAdmins().contains(input._inviteUser.getName()))) {
+			if (equals(privateGroup.getAdmins().contains(input._invitedUser.getName()))) {
 				privateGroup.addUser(input._receivedUser);
 			}
 		}
+		
+		_dataStorage.getGroups().add(group);
 
 		return new OutputValues(CreatingResult.SUCCESSFUL, "");
 	}
@@ -42,7 +42,7 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 	public static class InputValues {
 		private boolean _isPublic;
 		private String _joinCode;
-		private User _inviteUser;
+		private User _invitedUser;
 		private User _receivedUser;
 		private User _user;
 
@@ -55,7 +55,7 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 
 		public InputValues(User inviteUser, User receivedUser) {
 			super();
-			_inviteUser = inviteUser;
+			_invitedUser = inviteUser;
 			_receivedUser = receivedUser;
 			_isPublic = false;
 		}

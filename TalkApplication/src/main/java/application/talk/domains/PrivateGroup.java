@@ -10,7 +10,7 @@ public class PrivateGroup extends Group {
 	public PrivateGroup(String name, User admin) {
 		super(name);
 		_name = name;
-		this.addAdmin(admin);
+		this._admins.add(admin);
 	}
 
 	public void addAdmin(User user) {
