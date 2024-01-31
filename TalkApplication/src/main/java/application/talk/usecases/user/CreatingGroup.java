@@ -20,15 +20,15 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 	@Override
 	public OutputValues execute(InputValues input) {
 		Group group;
-		
+
 		if (input._isPublic) {
 			group = new PublicGroup(input._name, input._joinCode);
-		}else {
+		} else {
 			group = new PrivateGroup(input._name, input._admin);
 		}
-		
+
 		_dataStorage.getGroups().add(group);
-		
+
 		return new OutputValues(CreatingResult.SUCCESSFUL, "");
 	}
 

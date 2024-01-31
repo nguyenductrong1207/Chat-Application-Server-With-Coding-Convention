@@ -4,30 +4,45 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.talk.domains.Group;
+import application.talk.domains.PrivateGroup;
+import application.talk.domains.PublicGroup;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
 public class ListingGroup extends UseCase<ListingGroup.InputValues, ListingGroup.OutputValues> {
 	private DataStorage _dataStorage;
-	private List<Group> _groups;
+	private List<String> listingGroups;
 
 	public ListingGroup(DataStorage dataStorage) {
 		_dataStorage = dataStorage;
-		_groups = new ArrayList<>();
 	}
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		
-		
+		listingGroups = new ArrayList<String>();
+		PrivateGroup privateGroup = null;
+		PublicGroup publicGroup = null;
+
+		for (var i : privateGroup.getUsers()) {
+			if (input._name.equals(i.getName())) {
+				listingGroups.add(privateGroup.getName());
+			}
+		}
+
+		for (var i : publicGroup.getUsers()) {
+			if (input._name.equals(i.getName())) {
+				listingGroups.add(publicGroup.getName());
+			}
+		}
+
 		return new OutputValues(RegisterResult.SUCCESSED, "");
 	}
 
 	public static class InputValues {
-		private String _userID;
+		private String _name;
 
-		public InputValues(String userID) {
-			_userID = userID;
+		public InputValues(String name) {
+			_name = name;
 		}
 	}
 
