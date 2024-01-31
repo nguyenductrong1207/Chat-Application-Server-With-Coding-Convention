@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Group extends BaseEntity {
-	private List<User> _users = new ArrayList<>();
+	private List<User> _users;
 	private String _name;
 
 	public Group(String name) {
+		super();
+		_users = new ArrayList<>();
 		_name = name;
 	}
 

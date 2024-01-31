@@ -3,7 +3,7 @@ package application.talk.domains;
 import java.time.LocalDateTime;
 
 public class Message extends BaseEntity {
-
+	
 	private User _sender;
 	private LocalDateTime _timestamp;
 	private ChatEntity _receiver;
@@ -42,10 +42,7 @@ public class Message extends BaseEntity {
 		return _attachment;
 	}
 	
-	
-
-	
-	
-	
-
+	public void setAttachment(File attachment) {
+		_attachment = attachment;
+	}
 }
