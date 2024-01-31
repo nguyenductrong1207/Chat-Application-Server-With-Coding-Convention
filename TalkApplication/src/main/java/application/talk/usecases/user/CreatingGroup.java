@@ -20,15 +20,15 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 	@Override
 	public OutputValues execute(InputValues input) {
 		Group group;
-		
+
 		if (input._isPublic) {
 			group = new PublicGroup(input._name, input._joinCode);
-		}else {
+		} else {
 			group = new PrivateGroup(input._name, input._admin);
 		}
-		
+
 		_dataStorage.getGroups().add(group);
-		
+
 		return new OutputValues(CreatingResult.SUCCESSFUL, "");
 	}
 
@@ -41,7 +41,7 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 		public InputValues(boolean isPublic, String joinCode, User admin, String name) {
 			super();
 			_isPublic = isPublic;
-			_joinCode = UUID.randomUUID().toString().substring(0, 6);;
+			_joinCode = UUID.randomUUID().toString().substring(0, 6);
 			_admin = admin;
 			_name = name;
 

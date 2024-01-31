@@ -22,8 +22,8 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 		Group group;
 
 		if (input._isPublic) {
-
 			PublicGroup publicGroup = null;
+			
 			if (input._joinCode.equals(publicGroup.getJoinCode())) {
 				publicGroup.addUser(input._user);
 			}
@@ -34,7 +34,6 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 			if (equals(privateGroup.getAdmins().contains(input._inviteUser.getName()))) {
 				privateGroup.addUser(input._receivedUser);
 			}
-
 		}
 
 		return new OutputValues(CreatingResult.SUCCESSFUL, "");
