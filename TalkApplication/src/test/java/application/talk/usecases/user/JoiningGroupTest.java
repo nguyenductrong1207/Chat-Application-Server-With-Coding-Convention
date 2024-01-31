@@ -14,12 +14,11 @@ import application.talk.infastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.user.FindingUser.FindingResult;
 
-public class FindingUserTest {
+public class JoiningGroupTest {
 
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.getUsers().add(new User("kiet", "0710"));
 	}
 
 	@After
@@ -29,25 +28,28 @@ public class FindingUserTest {
 	}
 
 	@Test
-	public void testFindingNonExistUser() {
+	public void testJoiningPrivateGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		FindingUser useCase = new FindingUser(storage);
+		JoiningGroup useCase = new JoiningGroup(storage);
+		User user1 = new User("trong", "1207");
+		User user2 = new User("kiet", "0710");
 
-		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
-		FindingUser.OutputValues output = useCase.execute(input);
+		JoiningGroup.InputValues input = new JoiningGroup.InputValues(user1, user2);
 
-		assertEquals(FindingResult.FAILED, output.getResult());
+		JoiningGroup.OutputValues output = useCase.execute(input);
+		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 
 	@Test
-	public void testFindingExistUser() {
+	public void testJoiningPublicGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		FindingUser useCase = new FindingUser(storage);
+		JoiningGroup useCase = new JoiningGroup(storage);
+		User user = new User("trong", "1207");
 
-		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
-		FindingUser.OutputValues output = useCase.execute(input);
+		JoiningGroup.InputValues input = new JoiningGroup.InputValues("123456", user);
 
+		JoiningGroup.OutputValues output = useCase.execute(input);
 		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
