@@ -9,17 +9,15 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import application.talk.domains.User;
 import application.talk.infastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.user.FindingUser.FindingResult;
 
-public class FindingUserTest {
+public class ListingGroupTest {
 
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.getUsers().add(new User("kiet", "0710"));
 	}
 
 	@After
@@ -29,27 +27,27 @@ public class FindingUserTest {
 	}
 
 	@Test
-	public void testFindingNonExistUser() {
+	public void testListingGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		FindingUser useCase = new FindingUser(storage);
+		ListingGroup useCase = new ListingGroup(storage);
 
-		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
-		FindingUser.OutputValues output = useCase.execute(input);
+		ListingGroup.InputValues input = new ListingGroup.InputValues("trong");
 
-		assertEquals(FindingResult.FAILED, output.getResult());
+		ListingGroup.OutputValues output = useCase.execute(input);
+		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 
 	@Test
-	public void testFindingExistUser() {
+	public void testListingGroupWithoutName() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		FindingUser useCase = new FindingUser(storage);
+		ListingGroup useCase = new ListingGroup(storage);
 
-		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
-		FindingUser.OutputValues output = useCase.execute(input);
+		ListingGroup.InputValues input = new ListingGroup.InputValues(null);
 
-		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
-		assertNotNull(output.getMessage());
+		ListingGroup.OutputValues output = useCase.execute(input);
+		assertEquals(FindingResult.FAILED, output.getResult());
+		assertEquals("Please Enter A Name To Listing!!!", output.getMessage());
 	}
 
 }

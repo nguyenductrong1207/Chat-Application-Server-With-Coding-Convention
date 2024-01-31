@@ -1,6 +1,7 @@
 package application.talk.usecases.user;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -32,39 +33,38 @@ public class CreatingGroupTest {
 	public void testCreatingPublicGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		User user1 = new User("kiet", "0710");
-		
+
 		CreatingGroup useCase = new CreatingGroup(storage);
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(true, user1, "Public group");
-		
+
 		CreatingGroup.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
 		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
 	}
-	
+
 	@Test
 	public void testCreatingPrivateGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		User user1 = new User("kiet", "0710");
-		
+
 		CreatingGroup useCase = new CreatingGroup(storage);
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, user1, "Private group");
-		
+
 		CreatingGroup.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
 		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
 	}
-	
+
 	@Test
-    public void testCreateGroupWithNullAdmin() {
+	public void testCreateGroupWithNullAdmin() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		CreatingGroup useCase = new CreatingGroup(storage);
 
-        CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, null, "NullAdminGroup");
-        CreatingGroup.OutputValues output = useCase.execute(input);
+		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, null, "NullAdminGroup");
+		CreatingGroup.OutputValues output = useCase.execute(input);
 
-        assertEquals(CreatingGroup.CreatingResult.FAILED, output.getResult());
-        assertEquals("Admin cannot be null", output.getMessage());
-    }
-
+		assertEquals(CreatingGroup.CreatingResult.FAILED, output.getResult());
+		assertEquals("Admin cannot be null", output.getMessage());
+	}
 
 }
