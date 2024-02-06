@@ -1,5 +1,6 @@
 package application.talk.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PrivateGroup extends Group {
@@ -10,10 +11,14 @@ public class PrivateGroup extends Group {
 	public PrivateGroup(String name, User admin) {
 		super(name);
 		_name = name;
-		this._admins.add(admin);
+		_admins = new ArrayList<User>();
+		_admins.add(admin);
 	}
 
 	public void addAdmin(User user) {
+		if (_admins == null) { 
+			_admins = new ArrayList<>();
+		}
 		_admins.add(user);
 	}
 

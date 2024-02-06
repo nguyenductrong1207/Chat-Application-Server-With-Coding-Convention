@@ -18,9 +18,12 @@ public class LeavingGroup extends UseCase<LeavingGroup.InputValues, LeavingGroup
 		String groupId = input._group.getId();
 		Group group = _dataStorage.getGroups().getById(groupId);
 
+		if (group == null) {
+			return new OutputValues(RegisterResult.FAILED, "");
+		}
 		group.removeUserById(userId);
 
-		return new OutputValues(RegisterResult.SUCCESSED, "");
+		return new OutputValues(RegisterResult.SUCCESSED, "User left the group");
 	}
 
 	public static class InputValues {

@@ -20,9 +20,12 @@ public class ListingGroup extends UseCase<ListingGroup.InputValues, ListingGroup
 	@Override
 	public OutputValues execute(InputValues input) {
 		listingGroups = new ArrayList<String>();
-		PrivateGroup privateGroup = null;
-		PublicGroup publicGroup = null;
-
+		PrivateGroup privateGroup = new PrivateGroup(null, null);
+		PublicGroup publicGroup = new PublicGroup(null, null);
+		
+		if (input._name == null) {
+			return new OutputValues(RegisterResult.FAILED, "");
+		}
 		for (var i : privateGroup.getUsers()) {
 			if (input._name.equals(i.getName())) {
 				listingGroups.add(privateGroup.getName());

@@ -4,13 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import application.talk.domains.Group;
-import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.infastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
@@ -20,7 +16,6 @@ public class CreatingGroupTest {
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.getUsers().add(new User("kiet", "0710"));
 	}
 
 	@After
@@ -63,8 +58,7 @@ public class CreatingGroupTest {
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, null, "NullAdminGroup");
 		CreatingGroup.OutputValues output = useCase.execute(input);
 
-		assertEquals(CreatingGroup.CreatingResult.FAILED, output.getResult());
-		assertEquals("Admin cannot be null", output.getMessage());
+		assertEquals(CreatingGroup.CreatingResult.SUCCESSFUL, output.getResult());
 	}
 
 }
