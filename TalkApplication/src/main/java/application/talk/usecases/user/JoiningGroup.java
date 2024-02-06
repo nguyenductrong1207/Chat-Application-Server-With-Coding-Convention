@@ -20,17 +20,19 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 		Group group = null;
 
 		if (input._isPublic) {
-			PublicGroup publicGroup = null;
+			PublicGroup publicGroup = new PublicGroup(null, null);
 			
-			if (input._joinCode.equals(publicGroup.getJoinCode())) {
+			if (publicGroup != null && input._joinCode.equals(publicGroup.getJoinCode())) {
 				publicGroup.addUser(input._user);
+				group = publicGroup;
 			}
 
 		} else {
-			PrivateGroup privateGroup = null;
+			PrivateGroup privateGroup = new PrivateGroup(null, null);
 
-			if (equals(privateGroup.getAdmins().contains(input._invitedUser.getName()))) {
+			if (privateGroup != null && privateGroup.getAdmins().contains(input._invitedUser)) {
 				privateGroup.addUser(input._receivedUser);
+				group = privateGroup;
 			}
 		}
 		

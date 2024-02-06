@@ -20,16 +20,20 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 	public T getById(String id) {
 		Optional<T> entity = enities.stream().filter(e -> e.getId().equals(id)).findFirst();
 
+		if (!entity.isPresent()) {
+			return null;
+		}
 		return entity.get();
 	}
 
 	@Override
 	public T getByName(String name) {
-		Optional<T> entity = enities.stream().filter((e) -> {
-			return e.getName().equalsIgnoreCase(name);
+		Optional<T> entity = enities.stream().filter(e -> {
+			String entityName = e.getName();
+			return entityName != null && entityName.equalsIgnoreCase(name);
 		}).findFirst();
 
-		return entity.get();
+		return entity.orElse(null);
 	}
 
 	@Override
