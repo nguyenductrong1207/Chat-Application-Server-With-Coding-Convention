@@ -5,11 +5,13 @@ import java.util.List;
 
 public abstract class Group extends BaseEntity {
 	private List<User> _users;
+	private List<File> _files;
 	private String _name;
 
 	public Group(String name) {
 		super();
 		_users = new ArrayList<>();
+		_files = new ArrayList<File>();
 		_name = name;
 	}
 
@@ -29,6 +31,10 @@ public abstract class Group extends BaseEntity {
 
 	public List<User> getUsers() {
 		return _users;
+	}
+
+	public List<File> getFiles() {
+		return _files;
 	}
 
 	public void setName(String name) {
