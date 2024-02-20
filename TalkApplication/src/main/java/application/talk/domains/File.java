@@ -7,8 +7,9 @@ public class File extends BaseEntity {
 	private long _size;
 	private LocalDate _createdDate;
 	private Type _type;
-	
-	public enum Type{
+	private String _filePath;
+
+	public enum Type {
 		IMAGE, VIDEO, AUDIO;
 	}
 
@@ -18,6 +19,32 @@ public class File extends BaseEntity {
 		_size = size;
 		_type = type;
 		_createdDate = LocalDate.now();
+		_filePath = generateFilePath();
+	}
+
+	private String generateFilePath() {
+		String baseDirectory = "/Uploads/";
+		String typeFolder;
+
+		switch (_type) {
+		case IMAGE: {
+			typeFolder = "images";
+			break;
+		}
+		case VIDEO: {
+			typeFolder = "videos";
+			break;
+		}
+		case AUDIO: {
+			typeFolder = "audios";
+			break;
+		}
+		default: {
+			throw new IllegalArgumentException("Incorrect File Type!");
+		}
+		}
+
+		return baseDirectory + typeFolder + "/" + _name;
 	}
 
 	public String getName() {
@@ -39,6 +66,9 @@ public class File extends BaseEntity {
 	public Type getType() {
 		return _type;
 	}
-	
-	
+
+	public String getFilePath() {
+		return _filePath;
+	}
+
 }
