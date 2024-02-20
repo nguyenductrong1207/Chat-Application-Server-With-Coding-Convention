@@ -25,16 +25,16 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 
 		if (input._attachments.length > 0) {
 			File attachment = null;
-			
+
 			try {
 				attachment = (File) new ObjectInputStream(new ByteArrayInputStream(input._attachments)).readObject();
 			} catch (ClassNotFoundException | IOException e) {
 				e.printStackTrace();
 			}
-			
+
 			message.setAttachment(attachment);
 		}
-		
+
 		_dataStorage.getMessages().add(message);
 
 		return new OutputValues(RegisterResult.SUCCESSED, "");
