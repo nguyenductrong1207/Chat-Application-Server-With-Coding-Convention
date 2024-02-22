@@ -10,7 +10,7 @@ import org.junit.Test;
 import application.talk.domains.User;
 import application.talk.infastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.CreatingGroup.CreatingResult;
+import application.talk.usecases.user.EditMessage.EditResult;
 
 public class EditMessageTest {
 
@@ -35,7 +35,7 @@ public class EditMessageTest {
 
 		EditMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
-		assertEquals(CreatingResult.FAILED, output.getResult());
+		assertEquals(EditResult.FAILED, output.getResult());
 	}
 
 }
