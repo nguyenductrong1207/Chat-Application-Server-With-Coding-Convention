@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import application.talk.infastructure.data.InMemoryDataStorage;
+import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.user.SeeingFile.CreatingResult;
 

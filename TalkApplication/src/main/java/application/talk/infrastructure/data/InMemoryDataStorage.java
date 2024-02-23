@@ -1,4 +1,4 @@
-package application.talk.infastructure.data;
+package application.talk.infrastructure.data;
 
 import application.talk.domains.Group;
 import application.talk.domains.Message;

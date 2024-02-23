@@ -3,18 +3,15 @@ package application.talk.usecases.user;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import application.talk.domains.User;
-import application.talk.infastructure.data.InMemoryDataStorage;
+import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
 import application.talk.usecases.user.LoginUseCase.InputValues;
 import application.talk.usecases.user.LoginUseCase.LoginResult;
-import application.talk.usecases.user.UserRegistration.RegisterResult;
 
 public class UserLoginTests {
 

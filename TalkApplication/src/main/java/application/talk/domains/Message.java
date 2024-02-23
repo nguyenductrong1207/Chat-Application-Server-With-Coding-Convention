@@ -7,67 +7,75 @@ import java.util.List;
 import application.talk.usecases.adapters.DataStorage;
 
 public class Message extends BaseEntity {
+    private int _messageID;
+    private User _sender;
+    private LocalDateTime _timestamp;
+    private ChatEntity _receiver;
+    private String _content;
+    private File _attachment;
+    private List<String> _messageHistory;
 
-	private User _sender;
-	private LocalDateTime _timestamp;
-	private ChatEntity _receiver;
-	private String _content;
-	private File _attachment;
-	private List<String> _messageHistory;
+    public Message(User sender, LocalDateTime timestamp, ChatEntity receiver, String content) {
+        super();
+        _sender = sender;
+        _timestamp = timestamp;
+        _receiver = receiver;
+        _content = content;
+        _messageHistory = new ArrayList<>();
+        _messageHistory.add(content);
+    }
 
-	public Message(User sender, LocalDateTime timestamp, ChatEntity receiver, String content) {
-		super();
-		_sender = sender;
-		_timestamp = timestamp;
-		_receiver = receiver;
-		_content = content;
-		_messageHistory = new ArrayList<>();
-		_messageHistory.add(content);
-	}
+    public void removeMessageById(String id) {
+        DataStorage dataStorage = null;
+        Message message = dataStorage.getMessages().getById(id);
 
-	public void removeMessageById(String id) {
-		DataStorage dataStorage = null;
-		Message message = dataStorage.getMessages().getById(id);
+        for (String i : _messageHistory) {
+            if (i.equals(message)) {
+                _messageHistory.remove(i);
 
-		for (String i : _messageHistory) {
-			if (i.equals(message)) {
-				_messageHistory.remove(i);
-				
-				return;
-			}
-		}
-	}
+                return;
+            }
+        }
+    }
 
-	public List<String> getMessageHistory() {
-		return _messageHistory;
-	}
+//	public void addAttachment(File attachment){
+//		_attachments.add(attachment);
+//	}
 
-	public String getContent() {
-		return _content;
-	}
+    public int get_messageID() {
+        return _messageID;
+    }
 
-	public void setContent(String newContent) {
-		_messageHistory.add(_content);
-		_content = newContent;
-	}
+    public List<String> getMessageHistory() {
+        return _messageHistory;
+    }
 
-	public User getSender() {
-		return _sender;
-	}
+    public String getContent() {
+        return _content;
+    }
 
-	public LocalDateTime getTimestamp() {
-		return _timestamp;
-	}
+    public void setContent(String newContent) {
+        _messageHistory.add(_content);
+        _content = newContent;
+    }
 
-	public ChatEntity getReceiver() {
-		return _receiver;
-	}
+    public User getSender() {
+        return _sender;
+    }
 
-	public File getAttachment() {
-		return _attachment;
-	}
+    public LocalDateTime getTimestamp() {
+        return _timestamp;
+    }
 
-	public void setAttachment(File attachment) {
-		_attachment = attachment;
-	}
+    public ChatEntity getReceiver() {
+        return _receiver;
+    }
+
+    public File getAttachment() {
+        return _attachment;
+    }
+
+    public void setAttachment(File attachment) {
+        _attachment = attachment;
+    }
 }
