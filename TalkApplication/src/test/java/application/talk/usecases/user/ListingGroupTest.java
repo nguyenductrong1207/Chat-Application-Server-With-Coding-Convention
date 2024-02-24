@@ -4,14 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import application.talk.infastructure.data.InMemoryDataStorage;
+import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.FindingUser.FindingResult;
 import application.talk.usecases.user.ListingGroup.RegisterResult;
 
 public class ListingGroupTest {

@@ -1,8 +1,5 @@
 package application.talk.usecases.user;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.time.LocalDateTime;
 
 import application.talk.domains.ChatEntity;
@@ -14,7 +11,6 @@ import application.talk.usecases.adapters.DataStorage;
 
 public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingMessage.OutputValues> {
 	private DataStorage _dataStorage;
-
 	public SendingMessage(DataStorage dataStorage) {
 		_dataStorage = dataStorage;
 	}
@@ -23,15 +19,8 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 	public OutputValues execute(InputValues input) {
 		Message message = new Message(input._sender, LocalDateTime.now(), input._receiver, input._content);
 
-		if (input._attachments.length > 0) {
-			File attachment = null;
-
-			try {
-				attachment = (File) new ObjectInputStream(new ByteArrayInputStream(input._attachments)).readObject();
-			} catch (ClassNotFoundException | IOException e) {
-				e.printStackTrace();
-			}
-
+		if (input._attachment != null) {
+			File attachment = new File(input._attachment.length);
 			message.setAttachment(attachment);
 		}
 
@@ -44,13 +33,13 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 		private ChatEntity _receiver;
 		private User _sender;
 		private String _content;
-		private byte[] _attachments;
+		private byte[] _attachment;
 
-		public InputValues(ChatEntity desChat, User srcChat, String content, byte[] bytes) {
-			_receiver = desChat;
-			_sender = srcChat;
+		public InputValues(ChatEntity receiver, User sender, String content, byte[] attachment) {
+			_receiver = receiver;
+			_sender = sender;
 			_content = content;
-			_attachments = bytes;
+			_attachment = attachment;
 		}
 	}
 

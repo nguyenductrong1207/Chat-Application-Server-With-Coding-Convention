@@ -6,6 +6,7 @@ import java.util.List;
 import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
+import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -26,13 +27,13 @@ public class ListingGroup extends UseCase<ListingGroup.InputValues, ListingGroup
 		if (input._name == null) {
 			return new OutputValues(RegisterResult.FAILED, "");
 		}
-		for (var i : privateGroup.getUsers()) {
+		for (User i : privateGroup.getUsers()) {
 			if (input._name.equals(i.getName())) {
 				listingGroups.add(privateGroup.getName());
 			}
 		}
 
-		for (var i : publicGroup.getUsers()) {
+		for (User i : publicGroup.getUsers()) {
 			if (input._name.equals(i.getName())) {
 				listingGroups.add(publicGroup.getName());
 			}

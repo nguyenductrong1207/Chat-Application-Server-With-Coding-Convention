@@ -5,11 +5,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.chat.infrastructure.services.MD5Hasher;
-
 import application.talk.domains.User;
-import application.talk.infastructure.data.InMemoryDataStorage;
+import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
 import application.talk.usecases.user.UserRegistration.RegisterResult;
