@@ -31,7 +31,7 @@ public class GetLastestMessagesInTime extends UseCase<GetLastestMessagesInTime.I
 			foundMessages.add(message);
 		}
 
-		OutputValues output =  new OutputValues(GetLastestMessagesInTime.SUCCESSFUL, "");
+		OutputValues output =  new OutputValues(GetLastestMessagesResult.SUCCESSFUL, "");
 		output.setFoundMessages(foundMessages);
 
 		return output;
@@ -46,16 +46,16 @@ public class GetLastestMessagesInTime extends UseCase<GetLastestMessagesInTime.I
 	}
 
 	public static class OutputValues {
-		private final GetLastestMessagesInTime RESULT;
+		private final GetLastestMessagesResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(GetLastestMessagesInTime result, String message) {
+		public OutputValues(GetLastestMessagesResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetLastestMessagesInTime getResult() {
+		public GetLastestMessagesResult getResult() {
 			return RESULT;
 		}
 
@@ -72,7 +72,7 @@ public class GetLastestMessagesInTime extends UseCase<GetLastestMessagesInTime.I
 		}
 	}
 
-	public static enum GetLastestMessagesInTime {
+	public static enum GetLastestMessagesResult {
 		SUCCESSFUL, FAILED
 	}
 }
