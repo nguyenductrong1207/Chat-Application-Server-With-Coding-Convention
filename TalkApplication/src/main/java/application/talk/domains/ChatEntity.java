@@ -19,9 +19,12 @@ public abstract class ChatEntity extends BaseEntity {
 		_group = group;
 		_messages = new ArrayList<>();
 	}
-	
-	
-	public User getUser() {
+
+	public ChatEntity(){
+		super();
+	}
+
+    public User getUser() {
 		return _user;
 	}
 
