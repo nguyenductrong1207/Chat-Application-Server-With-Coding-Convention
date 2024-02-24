@@ -1,5 +1,6 @@
 package application.talk.infrastructure.data;
 
+import application.talk.domains.ChatEntity;
 import application.talk.domains.Group;
 import application.talk.domains.Message;
 import application.talk.domains.User;
@@ -53,6 +54,12 @@ public class InMemoryDataStorage implements DataStorage {
 	public boolean remove(Message message) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Repository<ChatEntity> getChatEntities() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
