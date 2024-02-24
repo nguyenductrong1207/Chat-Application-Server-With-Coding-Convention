@@ -8,10 +8,10 @@ import application.talk.usecases.adapters.DataStorage;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetRelatedMessageContent extends UseCase<GetRelatedMessageContent.InputValues, GetRelatedMessageContent.OutputValues> {
+public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValues, GetMessagesByContent.OutputValues> {
 	private DataStorage _dataStorage;
 
-	public GetRelatedMessageContent(DataStorage dataStorage) {
+	public GetMessagesByContent(DataStorage dataStorage) {
 		super();
 		_dataStorage = dataStorage;
 	}

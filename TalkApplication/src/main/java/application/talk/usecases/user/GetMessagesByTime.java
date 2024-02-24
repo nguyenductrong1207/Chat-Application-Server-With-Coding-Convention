@@ -3,17 +3,15 @@ package application.talk.usecases.user;
 import application.talk.domains.Message;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.adapters.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public class GetLastestMessagesInTime extends UseCase<GetLastestMessagesInTime.InputValues, GetLastestMessagesInTime.OutputValues> {
+public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, GetMessagesByTime.OutputValues> {
 	private DataStorage _dataStorage;
 
-	public GetLastestMessagesInTime(DataStorage dataStorage) {
+	public GetMessagesByTime(DataStorage dataStorage) {
 		super();
 		_dataStorage = dataStorage;
 	}
@@ -40,7 +38,7 @@ public class GetLastestMessagesInTime extends UseCase<GetLastestMessagesInTime.I
 	public static class InputValues {
 		private LocalDateTime _time;
 
-		public InputValues(List<Message> messages, LocalDateTime time) {
+		public InputValues(LocalDateTime time) {
 			_time = time;
 		}
 	}

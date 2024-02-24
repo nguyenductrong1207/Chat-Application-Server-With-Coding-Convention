@@ -22,7 +22,7 @@ public class File extends BaseEntity {
     }
 
     private String generateFilePath() {
-        String baseDirectory = "/Uploads/";
+        String baseDirectory = "src/test/java/files/";
         String typeFolder;
 
         switch (_type) {
@@ -46,7 +46,7 @@ public class File extends BaseEntity {
         return baseDirectory + typeFolder + "/" + _name;
     }
 
-    public void writeFileFromByte(byte[] bytes){
+    public void writeFileFromByte(byte[] bytes) {
         try (FileOutputStream fos = new FileOutputStream(_filePath)) {
             fos.write(bytes);
         } catch (Exception e) {

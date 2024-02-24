@@ -7,7 +7,6 @@ import java.util.List;
 import application.talk.usecases.adapters.DataStorage;
 
 public class Message extends BaseEntity {
-    private int _messageID;
     private User _sender;
     private LocalDateTime _timestamp;
     private ChatEntity _receiver;
@@ -41,10 +40,6 @@ public class Message extends BaseEntity {
 //	public void addAttachment(File attachment){
 //		_attachments.add(attachment);
 //	}
-
-    public int get_messageID() {
-        return _messageID;
-    }
 
     public List<String> getMessageHistory() {
         return _messageHistory;
