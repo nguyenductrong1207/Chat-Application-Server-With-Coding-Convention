@@ -1,5 +1,6 @@
 package application.talk.usecases.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import application.talk.domains.File;
@@ -17,27 +18,25 @@ public class SeeingFile extends UseCase<SeeingFile.InputValues, SeeingFile.Outpu
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		String groupId = input.getGroupId();
-		Group group = _dataStorage.getGroups().getById(groupId);
+		Group group = _dataStorage.getGroups().getById(input._groupId);
 
 		if (group == null) {
 			return new OutputValues(CreatingResult.FAILED, "Group does not exist.", null);
 		}
 
-		List<File> files = group.getFiles();
+		List<File> files = new ArrayList<File>();
+		files.add((File) input._files);
 
 		return new OutputValues(CreatingResult.SUCCESSFUL, "", files);
 	}
 
 	public static class InputValues {
-		private final String groupId;
+		private final String _groupId;
+		private List<File> _files;
 
-		public InputValues(String groupId) {
-			this.groupId = groupId;
-		}
-
-		public String getGroupId() {
-			return groupId;
+		public InputValues(String groupId, List<File> files) {
+			_groupId = groupId;
+			_files = new ArrayList<File>();
 		}
 	}
 

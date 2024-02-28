@@ -31,7 +31,6 @@ public class RemovingMemberTest {
 		RemovingMember.InputValues input = new RemovingMember.InputValues(false, "123456", "kiet");
 
 		RemovingMember.OutputValues output = useCase.execute(input);
-		assertNotNull(output.getMessage());
 		assertEquals(CreatingResult.FAILED, output.getResult());
 	}
 

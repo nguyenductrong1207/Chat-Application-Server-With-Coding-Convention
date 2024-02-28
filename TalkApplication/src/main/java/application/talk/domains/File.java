@@ -14,10 +14,11 @@ public class File extends BaseEntity {
         IMAGE, VIDEO, AUDIO;
     }
 
-    public File(long size) {
+    public File(long size, Type type) {
         super();
         _size = size;
         _createdDate = LocalDate.now();
+        _type = type;
         _filePath = generateFilePath();
     }
 
