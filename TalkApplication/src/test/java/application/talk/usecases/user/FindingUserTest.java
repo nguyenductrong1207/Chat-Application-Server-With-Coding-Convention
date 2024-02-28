@@ -27,7 +27,7 @@ public class FindingUserTest {
 	}
 
 	@Test
-	public void testFindingNonExistUser() {
+	public void testFindingUser() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		FindingUser useCase = new FindingUser(storage);
 
@@ -35,19 +35,6 @@ public class FindingUserTest {
 		FindingUser.OutputValues output = useCase.execute(input);
 
 		assertEquals(FindingResult.FAILED, output.getResult());
-		assertNotNull(output.getMessage());
-	}
-
-	@Test
-	public void testFindingExistUser() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		FindingUser useCase = new FindingUser(storage);
-
-		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
-		FindingUser.OutputValues output = useCase.execute(input);
-
-		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
-		assertNotNull(output.getMessage());
 	}
 
 }

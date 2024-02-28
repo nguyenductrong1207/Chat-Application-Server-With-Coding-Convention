@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.File;
+import application.talk.domains.File.Type;
 import application.talk.domains.Message;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
@@ -20,7 +21,7 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 		Message message = new Message(input._sender, LocalDateTime.now(), input._receiver, input._content);
 
 		if (input._attachment != null) {
-			File attachment = new File(input._attachment.length);
+			File attachment = new File(input._attachment.length, input._type);
 			message.setAttachment(attachment);
 		}
 
@@ -34,12 +35,14 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 		private User _sender;
 		private String _content;
 		private byte[] _attachment;
+		private Type _type;
 
-		public InputValues(ChatEntity receiver, User sender, String content, byte[] attachment) {
+		public InputValues(ChatEntity receiver, User sender, String content, byte[] attachment, Type type) {
 			_receiver = receiver;
 			_sender = sender;
 			_content = content;
 			_attachment = attachment;
+			_type = type;
 		}
 	}
 
