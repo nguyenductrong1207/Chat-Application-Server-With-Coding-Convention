@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.ListingGroup.RegisterResult;
+import application.talk.usecases.user.GetGroupsOfUser.RegisterResult;
 
-public class ListingGroupTest {
+public class GetGroupsOfUserTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -25,25 +25,25 @@ public class ListingGroupTest {
 	}
 
 	@Test
-	public void testListingGroup() {
+	public void testGetGroupsOfUser() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		ListingGroup useCase = new ListingGroup(storage);
+		GetGroupsOfUser useCase = new GetGroupsOfUser(storage);
 
-		ListingGroup.InputValues input = new ListingGroup.InputValues("trong");
+		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues("trong");
 
-		ListingGroup.OutputValues output = useCase.execute(input);
+		GetGroupsOfUser.OutputValues output = useCase.execute(input);
 		assertEquals(RegisterResult.SUCCESSED, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 
 	@Test
-	public void testListingGroupWithoutName() {
+	public void testGetGroupsOfUserWithoutName() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
-		ListingGroup useCase = new ListingGroup(storage);
+		GetGroupsOfUser useCase = new GetGroupsOfUser(storage);
 
-		ListingGroup.InputValues input = new ListingGroup.InputValues(null);
+		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues(null);
 
-		ListingGroup.OutputValues output = useCase.execute(input);
+		GetGroupsOfUser.OutputValues output = useCase.execute(input);
 		assertEquals(RegisterResult.FAILED, output.getResult());
 		assertEquals("Please Enter A Name To Listing!!!", output.getMessage());
 	}
