@@ -10,7 +10,7 @@ import org.junit.Test;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.JoiningGroup.CreatingResult;
+import application.talk.usecases.user.JoiningGroup.JoiningGroupResult;
 
 public class JoiningGroupTest {
 
@@ -35,7 +35,7 @@ public class JoiningGroupTest {
 		JoiningGroup.InputValues input = new JoiningGroup.InputValues(user1, user2);
 
 		JoiningGroup.OutputValues output = useCase.execute(input);
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(JoiningGroupResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 
@@ -48,7 +48,7 @@ public class JoiningGroupTest {
 		JoiningGroup.InputValues input = new JoiningGroup.InputValues("123456", user);
 
 		JoiningGroup.OutputValues output = useCase.execute(input);
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(JoiningGroupResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 

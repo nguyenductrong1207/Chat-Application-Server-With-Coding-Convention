@@ -42,9 +42,9 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
 
             message.removeMessageById(input._messageId);
 
-            return new OutputValues(DeleteResult.SUCCESSED, "");
+            return new OutputValues(DeleteMessageResult.SUCCESSED, "");
         } else {
-            return new OutputValues(DeleteResult.FAILED, "Unable to delete the message.");
+            return new OutputValues(DeleteMessageResult.FAILED, "Unable to delete the message.");
         }
     }
 
@@ -59,15 +59,15 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
     }
 
     public static class OutputValues {
-        private final DeleteResult RESULT;
+        private final DeleteMessageResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(DeleteResult result, String message) {
+        public OutputValues(DeleteMessageResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public DeleteResult getResult() {
+        public DeleteMessageResult getResult() {
             return RESULT;
         }
 
@@ -76,7 +76,7 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
         }
     }
 
-    public enum DeleteResult {
+    public enum DeleteMessageResult {
         SUCCESSED, FAILED
     }
 }

@@ -1,8 +1,5 @@
 package application.talk.usecases.user;
 
-import java.time.LocalDateTime;
-
-import application.talk.domains.File;
 import application.talk.domains.Message;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
@@ -23,9 +20,9 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
 
 			message.setContent(input._newContent);
 
-			return new OutputValues(EditResult.SUCCESSED, "");
+			return new OutputValues(EditMessageResult.SUCCESSED, "");
 		} else {
-			return new OutputValues(EditResult.FAILED, "Unable to edit the message.");
+			return new OutputValues(EditMessageResult.FAILED, "Unable to edit the message.");
 		}
 	}
 
@@ -42,15 +39,15 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
 	}
 
 	public static class OutputValues {
-		private final EditResult RESULT;
+		private final EditMessageResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(EditResult result, String message) {
+		public OutputValues(EditMessageResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public EditResult getResult() {
+		public EditMessageResult getResult() {
 			return RESULT;
 		}
 
@@ -59,7 +56,7 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
 		}
 	}
 
-	public enum EditResult {
+	public enum EditMessageResult {
 		SUCCESSED, FAILED
 	}
 }

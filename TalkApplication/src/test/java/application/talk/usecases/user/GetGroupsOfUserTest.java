@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.GetGroupsOfUser.RegisterResult;
+import application.talk.usecases.user.GetGroupsOfUser.GetGroupOfUserResult;
 
 public class GetGroupsOfUserTest {
 
@@ -32,7 +32,7 @@ public class GetGroupsOfUserTest {
 		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues("trong");
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
-		assertEquals(RegisterResult.SUCCESSED, output.getResult());
+		assertEquals(GetGroupOfUserResult.SUCCESSED, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 
@@ -44,7 +44,7 @@ public class GetGroupsOfUserTest {
 		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues(null);
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
-		assertEquals(RegisterResult.FAILED, output.getResult());
+		assertEquals(GetGroupOfUserResult.FAILED, output.getResult());
 		assertEquals("Please Enter A Name To Listing!!!", output.getMessage());
 	}
 

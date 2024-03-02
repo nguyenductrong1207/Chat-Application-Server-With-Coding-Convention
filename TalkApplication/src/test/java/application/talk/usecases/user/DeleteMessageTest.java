@@ -10,8 +10,7 @@ import org.junit.Test;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.CreatingGroup.CreatingResult;
-import application.talk.usecases.user.DeleteMessage.DeleteResult;
+import application.talk.usecases.user.DeleteMessage.DeleteMessageResult;
 
 public class DeleteMessageTest {
 
@@ -36,7 +35,7 @@ public class DeleteMessageTest {
 
 		DeleteMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
-		assertEquals(DeleteResult.FAILED, output.getResult());
+		assertEquals(DeleteMessageResult.FAILED, output.getResult());
 	}
 
 }
