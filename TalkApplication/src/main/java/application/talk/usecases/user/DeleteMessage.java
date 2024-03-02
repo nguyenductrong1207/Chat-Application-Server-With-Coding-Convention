@@ -12,71 +12,71 @@ import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
 public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMessage.OutputValues> {
-	private DataStorage _dataStorage;
+    private DataStorage _dataStorage;
 
-	public DeleteMessage(DataStorage dataStorage) {
-		_dataStorage = dataStorage;
-	}
+    public DeleteMessage(DataStorage dataStorage) {
+        _dataStorage = dataStorage;
+    }
 
-	@Override
-	public OutputValues execute(InputValues input) {
-		Message message = _dataStorage.getMessages().getById(input._messageId);
+    @Override
+    public OutputValues execute(InputValues input) {
+        Message message = _dataStorage.getMessages().getById(input._messageId);
 
-		if (message != null && message.getSender().equals(input._sender)) {
+        if (message != null && message.getSender().equals(input._sender)) {
 
-			File file = message.getAttachment();
-			if (file != null) {
-				String filePath = file.getFilePath();
+            File file = message.getAttachment();
+            if (file != null) {
+                String filePath = file.getFilePath();
 
-				try {
-					Path fileDelete = Paths.get(filePath);
+                try {
+                    Path fileDelete = Paths.get(filePath);
 
-					if (Files.exists(fileDelete)) {
-						Files.delete(fileDelete);
-					}
+                    if (Files.exists(fileDelete)) {
+                        Files.delete(fileDelete);
+                    }
 
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
-			message.removeMessageById(input._messageId);
+            message.removeMessageById(input._messageId);
 
-			return new OutputValues(DeleteResult.SUCCESSED, "");
-		} else {
-			return new OutputValues(DeleteResult.FAILED, "Unable to delete the message.");
-		}
-	}
+            return new OutputValues(DeleteResult.SUCCESSED, "");
+        } else {
+            return new OutputValues(DeleteResult.FAILED, "Unable to delete the message.");
+        }
+    }
 
-	public static class InputValues {
-		private String _messageId;
-		private User _sender;
+    public static class InputValues {
+        private String _messageId;
+        private User _sender;
 
-		public InputValues(String messageId, User sender) {
-			_messageId = messageId;
-			_sender = sender;
-		}
-	}
+        public InputValues(String messageId, User sender) {
+            _messageId = messageId;
+            _sender = sender;
+        }
+    }
 
-	public static class OutputValues {
-		private final DeleteResult RESULT;
-		private final String MESSAGE;
+    public static class OutputValues {
+        private final DeleteResult RESULT;
+        private final String MESSAGE;
 
-		public OutputValues(DeleteResult result, String message) {
-			MESSAGE = message;
-			RESULT = result;
-		}
+        public OutputValues(DeleteResult result, String message) {
+            MESSAGE = message;
+            RESULT = result;
+        }
 
-		public DeleteResult getResult() {
-			return RESULT;
-		}
+        public DeleteResult getResult() {
+            return RESULT;
+        }
 
-		public String getMessage() {
-			return MESSAGE;
-		}
-	}
+        public String getMessage() {
+            return MESSAGE;
+        }
+    }
 
-	public enum DeleteResult {
-		SUCCESSED, FAILED
-	}
+    public enum DeleteResult {
+        SUCCESSED, FAILED
+    }
 }

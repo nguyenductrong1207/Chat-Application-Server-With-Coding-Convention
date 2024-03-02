@@ -3,18 +3,17 @@ package application.talk.usecases.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
-public class ListingGroup extends UseCase<ListingGroup.InputValues, ListingGroup.OutputValues> {
+public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGroupsOfUser.OutputValues> {
 	private DataStorage _dataStorage;
 	private List<String> listingGroups;
 
-	public ListingGroup(DataStorage dataStorage) {
+	public GetGroupsOfUser(DataStorage dataStorage) {
 		_dataStorage = dataStorage;
 	}
 
