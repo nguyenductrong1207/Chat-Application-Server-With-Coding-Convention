@@ -3,7 +3,7 @@ package application.talk.domains;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Group extends BaseEntity {
+public abstract class Group extends ChatEntity {
 	private List<User> _users;
 	private List<File> _files;
 	private String _name;

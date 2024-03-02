@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import application.talk.domains.File.Type;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
@@ -25,12 +26,12 @@ public class SendingMessageTest {
 	}
 
 	@Test
-	public void testCreatingPublicGroup() {
+	public void testSendingMessage() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		User user = new User("kiet", "0710");
 
 		SendingMessage useCase = new SendingMessage(storage);
-		SendingMessage.InputValues input = new SendingMessage.InputValues(null, user, null, null);
+		SendingMessage.InputValues input = new SendingMessage.InputValues(null, user, null, null,Type.AUDIO);
 
 		SendingMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());

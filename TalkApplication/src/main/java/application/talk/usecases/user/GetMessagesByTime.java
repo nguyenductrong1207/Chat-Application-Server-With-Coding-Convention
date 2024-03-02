@@ -18,15 +18,19 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		List<Message> messages = (List<Message>) _dataStorage.getMessages();
+		List<Message> messages =  _dataStorage.getMessages().getAll();
 		List<Message> foundMessages = new ArrayList<>();
 
 		for(Message message :messages){
-			if(message.getTimestamp().compareTo(input._time)>0){
+			if(input._time.isAfter(message.getTimestamp())){
 				break;
 			}
 
 			foundMessages.add(message);
+		}
+
+		if(foundMessages.isEmpty()){
+			return new OutputValues(GetLastestMessagesResult.FAILED, "");
 		}
 
 		OutputValues output =  new OutputValues(GetLastestMessagesResult.SUCCESSFUL, "");
@@ -57,7 +61,7 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 			return RESULT;
 		}
 
-		public List<Message> getfoundMessages() {
+		public List<Message> getFoundMessages() {
 			return _foundMessages;
 		}
 

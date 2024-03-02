@@ -1,6 +1,7 @@
 package application.talk.domains;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,8 @@ public class Message extends BaseEntity {
         _content = content;
         _messageHistory = new ArrayList<>();
         _messageHistory.add(content);
+
+        this.formatDateTime();
     }
 
     public void removeMessageById(String id) {
@@ -37,9 +40,10 @@ public class Message extends BaseEntity {
         }
     }
 
-//	public void addAttachment(File attachment){
-//		_attachments.add(attachment);
-//	}
+	public void formatDateTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
+        _timestamp.format(formatter);
+	}
 
     public List<String> getMessageHistory() {
         return _messageHistory;

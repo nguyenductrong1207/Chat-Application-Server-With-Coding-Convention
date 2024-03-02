@@ -10,6 +10,7 @@ public interface DataStorage {
     
     Repository<Group> getGroups();
 
+//    delete 2 classes
     Repository<ChatEntity> getChatEntities();
     
     Repository<Message> getMessages();
