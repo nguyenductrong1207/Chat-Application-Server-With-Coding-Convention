@@ -20,6 +20,10 @@ public abstract class ChatEntity extends BaseEntity {
         _messages = new ArrayList<>();
     }
 
+    public ChatEntity() {
+
+    }
+
     public User getUser() {
         return _user;
     }

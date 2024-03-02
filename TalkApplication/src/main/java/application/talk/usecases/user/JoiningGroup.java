@@ -38,7 +38,7 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 		
 		_dataStorage.getGroups().add(group);
 
-		return new OutputValues(CreatingResult.SUCCESSFUL, "");
+		return new OutputValues(JoiningGroupResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -64,15 +64,15 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 	}
 
 	public static class OutputValues {
-		private final CreatingResult RESULT;
+		private final JoiningGroupResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(CreatingResult result, String message) {
+		public OutputValues(JoiningGroupResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public CreatingResult getResult() {
+		public JoiningGroupResult getResult() {
 			return RESULT;
 		}
 
@@ -81,7 +81,7 @@ public class JoiningGroup extends UseCase<JoiningGroup.InputValues, JoiningGroup
 		}
 	}
 
-	public static enum CreatingResult {
+	public static enum JoiningGroupResult {
 		SUCCESSFUL, FAILED
 	}
 }

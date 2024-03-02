@@ -24,7 +24,7 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 		PublicGroup publicGroup = new PublicGroup(null, null);
 		
 		if (input._name == null) {
-			return new OutputValues(RegisterResult.FAILED, "");
+			return new OutputValues(GetGroupOfUserResult.FAILED, "");
 		}
 		for (User i : privateGroup.getUsers()) {
 			if (input._name.equals(i.getName())) {
@@ -38,7 +38,7 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 			}
 		}
 
-		return new OutputValues(RegisterResult.SUCCESSED, "");
+		return new OutputValues(GetGroupOfUserResult.SUCCESSED, "");
 	}
 
 	public static class InputValues {
@@ -50,15 +50,15 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 	}
 
 	public static class OutputValues {
-		private final RegisterResult RESULT;
+		private final GetGroupOfUserResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(RegisterResult result, String message) {
+		public OutputValues(GetGroupOfUserResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public RegisterResult getResult() {
+		public GetGroupOfUserResult getResult() {
 			return RESULT;
 		}
 
@@ -67,7 +67,7 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 		}
 	}
 
-	public enum RegisterResult {
+	public enum GetGroupOfUserResult {
 		SUCCESSED, FAILED
 	}
 }
