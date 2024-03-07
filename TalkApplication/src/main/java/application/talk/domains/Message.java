@@ -27,19 +27,6 @@ public class Message extends BaseEntity {
         this.formatDateTime();
     }
 
-    public void removeMessageById(String id) {
-        DataStorage dataStorage = null;
-        Message message = dataStorage.getMessages().getById(id);
-
-        for (String i : _messageHistory) {
-            if (i.equals(message)) {
-                _messageHistory.remove(i);
-
-                return;
-            }
-        }
-    }
-
 	public void formatDateTime(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
         _timestamp.format(formatter);
