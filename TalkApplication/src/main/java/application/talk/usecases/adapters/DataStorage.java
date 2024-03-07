@@ -1,9 +1,6 @@
 package application.talk.usecases.adapters;
 
-import application.talk.domains.ChatEntity;
-import application.talk.domains.Group;
-import application.talk.domains.Message;
-import application.talk.domains.User;
+import application.talk.domains.*;
 
 public interface DataStorage {
     Repository<User> getUsers();
@@ -14,8 +11,14 @@ public interface DataStorage {
     Repository<ChatEntity> getChatEntities();
     
     Repository<Message> getMessages();
+
+    Repository<Conversation> getConversations();
+
+    Repository<Request> getRequests();
     
     void cleanAll();
 
 	boolean remove(Message message);
+
+
 }

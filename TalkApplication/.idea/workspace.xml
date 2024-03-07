@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1435a42c-da4e-407d-a084-0dda317842ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RequestJoiningPrivateGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/DeleteMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/DeleteMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/DeleteMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/DeleteMessageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +121,7 @@
       <workItem from="1708936881025" duration="4555000" />
       <workItem from="1709100295475" duration="702000" />
       <workItem from="1709341887705" duration="7933000" />
-      <workItem from="1709797058760" duration="11040000" />
+      <workItem from="1709797058760" duration="12742000" />
     </task>
     <servers />
   </component>
