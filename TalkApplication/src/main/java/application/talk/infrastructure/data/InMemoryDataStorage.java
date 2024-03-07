@@ -1,9 +1,6 @@
 package application.talk.infrastructure.data;
 
-import application.talk.domains.ChatEntity;
-import application.talk.domains.Group;
-import application.talk.domains.Message;
-import application.talk.domains.User;
+import application.talk.domains.*;
 import application.talk.infrastructure.repositories.InMemoryRepository;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Repository;
@@ -42,7 +39,17 @@ public class InMemoryDataStorage implements DataStorage {
 	public Repository<Message> getMessages() {
 		return _messages;
 	}
-	
+
+	@Override
+	public Repository<Conversation> getConversations() {
+		return null;
+	}
+
+	@Override
+	public Repository<Request> getRequests() {
+		return null;
+	}
+
 	@Override
 	public void cleanAll() {
 		_users.deleteAll();
