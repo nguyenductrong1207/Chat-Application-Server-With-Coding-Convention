@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1435a42c-da4e-407d-a084-0dda317842ab" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RequestJoiningPrivateGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/ChatEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/ChatEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/DeleteMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/DeleteMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/EditMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/EditMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/GetGroupsOfUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/GetGroupsOfUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/JoiningGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/JoiningGroup.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/DeleteMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/DeleteMessageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/EditMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/EditMessageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/JoiningGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/JoiningGroupTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +49,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "JUnit.DeleteMessageTest.executor": "Run",
+    "JUnit.DeleteMessageTest.testDeleteMessage.executor": "Run",
     "JUnit.EditMessageTest.executor": "Run",
     "JUnit.GetGroupsOfUserTest.executor": "Run",
     "JUnit.JoiningGroupTest.executor": "Run",
@@ -73,6 +73,34 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="application.talk.usecases.user" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="DeleteMessageTest.testDeleteMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TalkApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.talk.usecases.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="application.talk.usecases.user" />
+      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.DeleteMessageTest" />
+      <option name="METHOD_NAME" value="testDeleteMessage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DeleteMessageTest.testDeleteMessage" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -97,7 +125,8 @@
       <workItem from="1708936428347" duration="37000" />
       <workItem from="1708936881025" duration="4555000" />
       <workItem from="1709100295475" duration="702000" />
-      <workItem from="1709341887705" duration="5069000" />
+      <workItem from="1709341887705" duration="7933000" />
+      <workItem from="1709797058760" duration="11040000" />
     </task>
     <servers />
   </component>

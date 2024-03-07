@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
+import application.talk.domains.Conversation;
 import application.talk.domains.File;
 import application.talk.domains.Message;
 import application.talk.domains.User;
@@ -20,41 +22,55 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
 
     @Override
     public OutputValues execute(InputValues input) {
-        Message message = _dataStorage.getMessages().getById(input._messageId);
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
 
-        if (message != null && message.getSender().equals(input._sender)) {
-
-            File file = message.getAttachment();
-            if (file != null) {
-                String filePath = file.getFilePath();
-
-                try {
-                    Path fileDelete = Paths.get(filePath);
-
-                    if (Files.exists(fileDelete)) {
-                        Files.delete(fileDelete);
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            message.removeMessageById(input._messageId);
+        if (conversation.getSender().getId().equals(input._senderId)) {
+            removeMessageById(conversation, input._messageId);
 
             return new OutputValues(DeleteMessageResult.SUCCESSED, "");
         } else {
-            return new OutputValues(DeleteMessageResult.FAILED, "Unable to delete the message.");
+            return new OutputValues(DeleteMessageResult.FAILED, "");
+        }
+    }
+
+    public void removeMessageById(Conversation conversation, String messageID) {
+        List<Message> messages = conversation.getMessages();
+
+        for (Message i : messages) {
+            if (i.getId().equals(messageID)) {
+                messages.remove(i);
+
+                File file = i.getAttachment();
+                if (file != null) {
+                    String filePath = file.getFilePath();
+
+                    try {
+                        Path fileDelete = Paths.get(filePath);
+
+                        if (Files.exists(fileDelete)) {
+                            Files.delete(fileDelete);
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                return;
+            }
         }
     }
 
     public static class InputValues {
-        private String _messageId;
-        private User _sender;
 
-        public InputValues(String messageId, User sender) {
-            _messageId = messageId;
-            _sender = sender;
+        private String _conversationId;
+        private String _messageId;
+        private String _senderId;
+
+        public InputValues(String conversationId, String messageId, String senderId) {
+            this._conversationId = conversationId;
+            this._messageId = messageId;
+            this._senderId = senderId;
         }
     }
 
