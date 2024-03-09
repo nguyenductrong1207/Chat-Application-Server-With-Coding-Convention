@@ -69,7 +69,7 @@ public class GetTopLastestMessages extends UseCase<GetTopLastestMessages.InputVa
         }
     }
 
-    public static enum GetTopLastestMessagesResult {
+    public enum GetTopLastestMessagesResult {
         SUCCESSFUL, FAILED
     }
 }

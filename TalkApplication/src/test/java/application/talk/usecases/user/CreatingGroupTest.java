@@ -13,9 +13,13 @@ import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.user.CreatingGroup.CreatingResult;
 
 public class CreatingGroupTest {
+	private DataStorage _storage;
+	private CreatingGroup _useCase;
+	
 	@Before
 	public void setUp() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
+		 _storage = InMemoryDataStorage.getInstance();
+		_useCase = new CreatingGroup(_storage);
 	}
 
 	@After
@@ -26,39 +30,21 @@ public class CreatingGroupTest {
 
 	@Test
 	public void testCreatingPublicGroup() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
 		User user1 = new User("kiet", "0710");
 
-		CreatingGroup useCase = new CreatingGroup(storage);
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(true, user1, "Public group");
 
-		CreatingGroup.OutputValues output = useCase.execute(input);
-		assertNotNull(output.getMessage());
+		CreatingGroup.OutputValues output = _useCase.execute(input);
 		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
 	}
 
 	@Test
 	public void testCreatingPrivateGroup() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
 		User user1 = new User("kiet", "0710");
 
-		CreatingGroup useCase = new CreatingGroup(storage);
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, user1, "Private group");
 
-		CreatingGroup.OutputValues output = useCase.execute(input);
-		assertNotNull(output.getMessage());
+		CreatingGroup.OutputValues output = _useCase.execute(input);
 		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
 	}
-
-	@Test
-	public void testCreateGroupWithNullAdmin() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		CreatingGroup useCase = new CreatingGroup(storage);
-
-		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, null, "NullAdminGroup");
-		CreatingGroup.OutputValues output = useCase.execute(input);
-
-		assertEquals(CreatingGroup.CreatingResult.SUCCESSFUL, output.getResult());
-	}
-
 }

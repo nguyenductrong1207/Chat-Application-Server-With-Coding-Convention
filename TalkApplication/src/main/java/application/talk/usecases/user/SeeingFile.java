@@ -1,70 +1,70 @@
 package application.talk.usecases.user;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import application.talk.domains.Conversation;
 import application.talk.domains.File;
 import application.talk.domains.Group;
+import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
 public class SeeingFile extends UseCase<SeeingFile.InputValues, SeeingFile.OutputValues> {
-	private DataStorage _dataStorage;
+    private DataStorage _dataStorage;
 
-	public SeeingFile(DataStorage dataStorage) {
-		super();
-		_dataStorage = dataStorage;
-	}
+    public SeeingFile(DataStorage dataStorage) {
+        super();
+        _dataStorage = dataStorage;
+    }
 
-	@Override
-	public OutputValues execute(InputValues input) {
-		Group group = _dataStorage.getGroups().getById(input._groupId);
+    @Override
+    public OutputValues execute(InputValues input) {
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
+        Group group = (Group) conversation.getReceiver();
+        User foundUser = group.findUserByID(input._userId);
+        
+        if (foundUser == null || group == null) {
+            return new OutputValues(CreatingResult.FAILED, "", null);
+        }
 
-		if (group == null) {
-			return new OutputValues(CreatingResult.FAILED, "Group does not exist.", null);
-		}
+        return new OutputValues(CreatingResult.SUCCESSFUL, "", conversation.getAttachments());
+    }
 
-		List<File> files = new ArrayList<File>();
-		files.add((File) input._files);
+    public static class InputValues {
+        private String _userId;
+        private String _conversationId;
 
-		return new OutputValues(CreatingResult.SUCCESSFUL, "", files);
-	}
+        public InputValues(String userId, String conversationID) {
+            _userId = userId;
+            _conversationId = conversationID;
+        }
+    }
 
-	public static class InputValues {
-		private final String _groupId;
-		private List<File> _files;
+    public static class OutputValues {
+        private final CreatingResult RESULT;
+        private final String MESSAGE;
+        private  List<File> _files;
 
-		public InputValues(String groupId, List<File> files) {
-			_groupId = groupId;
-			_files = new ArrayList<File>();
-		}
-	}
+        public OutputValues(CreatingResult result, String message, List<File> files) {
+            MESSAGE = message;
+            RESULT = result;
+            _files = files;
+        }
 
-	public static class OutputValues {
-		private final CreatingResult RESULT;
-		private final String MESSAGE;
-		private final List<File> FILES;
+        public CreatingResult getResult() {
+            return RESULT;
+        }
 
-		public OutputValues(CreatingResult result, String message, List<File> files) {
-			MESSAGE = message;
-			RESULT = result;
-			FILES = files;
-		}
+        public String getMessage() {
+            return MESSAGE;
+        }
 
-		public CreatingResult getResult() {
-			return RESULT;
-		}
+        public List<File> getFiles() {
+            return _files;
+        }
+    }
 
-		public String getMessage() {
-			return MESSAGE;
-		}
-
-		public List<File> getFILES() {
-			return FILES;
-		}
-	}
-
-	public static enum CreatingResult {
-		SUCCESSFUL, FAILED
-	}
+    public enum CreatingResult {
+        SUCCESSFUL, FAILED
+    }
 }

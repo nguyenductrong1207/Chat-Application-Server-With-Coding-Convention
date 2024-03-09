@@ -9,20 +9,20 @@ import application.talk.domains.BaseEntity;
 import application.talk.usecases.adapters.Repository;
 
 public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
-	private List<T> enities;
+	private List<T> entities;
 	public static int idCounter = 1;
 
 	public InMemoryRepository() {
-		enities = new ArrayList<>();
+		entities = new ArrayList<>();
 	}
 
 	public List<T> getEnities() {
-		return enities;
+		return entities;
 	}
 
 	@Override
 	public T getById(String id) {
-		Optional<T> entity = enities.stream().filter(e -> e.getId().equals(id)).findFirst();
+		Optional<T> entity = entities.stream().filter(e -> e.getId().equals(id)).findFirst();
 
 		if (!entity.isPresent()) {
 			return null;
@@ -32,7 +32,7 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 
 	@Override
 	public T getByName(String name) {
-		Optional<T> entity = enities.stream().filter(e -> {
+		Optional<T> entity = entities.stream().filter(e -> {
 			String entityName = e.getName();
 			return entityName != null && entityName.equalsIgnoreCase(name);
 		}).findFirst();
@@ -46,26 +46,26 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 			return false;
 		}
 
-		enities.add(entity);
+		entities.add(entity);
 
 		return true;
 	}
 
 	@Override
 	public void deleteAll() {
-		enities.clear();
+		entities.clear();
 	}
 
 	@Override
 	public T getFirst(Predicate<T> predicate) {
-		Optional<T> entity = enities.stream().filter(predicate).findFirst();
+		Optional<T> entity = entities.stream().filter(predicate).findFirst();
 
 		return entity.isPresent() ? entity.get() : null;
 	}
 
 	@Override
 	public List<T> getAll() {
-		return enities;
+		return entities;
 	}
 
 }

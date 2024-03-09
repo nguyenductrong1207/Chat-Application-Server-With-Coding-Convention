@@ -1,17 +1,30 @@
 package application.talk.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Conversation extends BaseEntity {
     private List<Message> _messages;
+    private List<File> _attachments;
     private User _sender;
     private ChatEntity _receiver;
 
     public Conversation(User sender, ChatEntity receiver) {
         _sender = sender;
         _receiver = receiver;
+        _messages = new ArrayList<>();
     }
-
+    
+    public void addMessage(Message message) {
+    	File file = message.getAttachment();
+    	
+    	if(file !=null) {
+    		_attachments.add(file);
+    	}
+    	
+    	_messages.add(message);
+    }
+    
     public List<Message> getMessages() {
         return _messages;
     }
@@ -35,4 +48,14 @@ public class Conversation extends BaseEntity {
     public void setReceiver(ChatEntity receiver) {
         _receiver = receiver;
     }
+
+	public List<File> getAttachments() {
+		return _attachments;
+	}
+
+	public void setAttachments(List<File> attachments) {
+		_attachments = attachments;
+	}
+    
+    
 }
