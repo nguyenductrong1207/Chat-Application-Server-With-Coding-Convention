@@ -1,59 +1,50 @@
 package application.talk.usecases.user;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import application.talk.domains.Message;
+import application.talk.domains.Conversation;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
-public class RemovingMessages extends UseCase<RemovingMessages.InputValues, RemovingMessages.OutputValues> {
+public class AdminDeleteMessage extends UseCase<AdminDeleteMessage.InputValues, AdminDeleteMessage.OutputValues> {
 	private DataStorage _dataStorage;
+	private DeleteMessage _deleteMessage;
 
-	public RemovingMessages(DataStorage dataStorage) {
+	public AdminDeleteMessage(DataStorage dataStorage, DeleteMessage deleteMessage) {
 		super();
 		_dataStorage = dataStorage;
+		_deleteMessage = deleteMessage;
 	}
 
 	@Override
 	public OutputValues execute(InputValues input) {
 		PrivateGroup group = (PrivateGroup) _dataStorage.getGroups().getById(input._groupId);
-
-		Message message = _dataStorage.getMessages().getById(input._messageId);
-
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
 		List<User> admins = group.getAdmins();
-		if (admins == null) {
-			admins = new ArrayList<User>();
-		}
-		admins.add(new User("", ""));
-		
-		System.out.println("Group: " + _dataStorage.getGroups());
-		for (User user : admins) {
-			if (user.getId().equals(input._userId)) {
-				message.removeMessageById(input._messageId);
+
+		for (User admin : admins) {
+			if (admin.getId().equals(input._userId)) {
+	            _deleteMessage.removeMessageById(conversation, input._messageId);
 				return new OutputValues(CreatingResult.SUCCESSFUL, "");
 			}
 		}
-		if (message != null && message.getSender().getId().equals(input._userId)) {
-			message.removeMessageById(input._messageId);
-			return new OutputValues(CreatingResult.SUCCESSFUL, "");
-		}
-
+	
 		return new OutputValues(CreatingResult.FAILED, "");
 	}
 
 	public static class InputValues {
 		private String _userId;
-		private String _messageId;
+		private String _conversationId;
 		private String _groupId;
+		private String _messageId;
 
-		public InputValues(String userId, String messageId, String groupId) {
+		public InputValues(String userId, String conversationId, String groupId, String messageId) {
 			super();
 			_userId = userId;
-			_messageId = messageId;
+			_conversationId = conversationId;
 			_groupId = groupId;
+			_messageId = messageId;
 		}
 	}
 
