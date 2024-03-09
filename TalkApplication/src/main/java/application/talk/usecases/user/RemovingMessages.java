@@ -1,17 +1,18 @@
 package application.talk.usecases.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import application.talk.domains.Group;
+import application.talk.domains.Message;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
-public class RemovingMember extends UseCase<RemovingMember.InputValues, RemovingMember.OutputValues> {
+public class RemovingMessages extends UseCase<RemovingMessages.InputValues, RemovingMessages.OutputValues> {
 	private DataStorage _dataStorage;
 
-	public RemovingMember(DataStorage dataStorage) {
+	public RemovingMessages(DataStorage dataStorage) {
 		super();
 		_dataStorage = dataStorage;
 	}
@@ -19,27 +20,40 @@ public class RemovingMember extends UseCase<RemovingMember.InputValues, Removing
 	@Override
 	public OutputValues execute(InputValues input) {
 		PrivateGroup group = (PrivateGroup) _dataStorage.getGroups().getById(input._groupId);
-		List<User> admins = group.getAdmins();
 
-		for (User admin : admins) {
-			if (admin.getId().equals(input._userId)) {
-				group.removeUserById(input._memberId);
+		Message message = _dataStorage.getMessages().getById(input._messageId);
+
+		List<User> admins = group.getAdmins();
+		if (admins == null) {
+			admins = new ArrayList<User>();
+		}
+		admins.add(new User("", ""));
+		
+		System.out.println("Group: " + _dataStorage.getGroups());
+		for (User user : admins) {
+			if (user.getId().equals(input._userId)) {
+				message.removeMessageById(input._messageId);
 				return new OutputValues(CreatingResult.SUCCESSFUL, "");
 			}
 		}
+		if (message != null && message.getSender().getId().equals(input._userId)) {
+			message.removeMessageById(input._messageId);
+			return new OutputValues(CreatingResult.SUCCESSFUL, "");
+		}
+
 		return new OutputValues(CreatingResult.FAILED, "");
 	}
 
 	public static class InputValues {
 		private String _userId;
+		private String _messageId;
 		private String _groupId;
-		private String _memberId;
 
-		public InputValues(String userId, String groupId, String memberId) {
+		public InputValues(String userId, String messageId, String groupId) {
 			super();
 			_userId = userId;
+			_messageId = messageId;
 			_groupId = groupId;
-			_memberId = memberId;
 		}
 	}
 
@@ -61,7 +75,8 @@ public class RemovingMember extends UseCase<RemovingMember.InputValues, Removing
 		}
 	}
 
-	public enum CreatingResult {
+	public static enum CreatingResult {
 		SUCCESSFUL, FAILED
 	}
+
 }

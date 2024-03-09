@@ -1,6 +1,13 @@
 package application.talk.infrastructure.data;
 
-import application.talk.domains.*;
+
+import application.talk.domains.ChatEntity;
+import application.talk.domains.Conversation;
+import application.talk.domains.File;
+import application.talk.domains.Group;
+import application.talk.domains.Message;
+import application.talk.domains.Request;
+import application.talk.domains.User;
 import application.talk.infrastructure.repositories.InMemoryRepository;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Repository;

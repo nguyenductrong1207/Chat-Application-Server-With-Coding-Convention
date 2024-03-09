@@ -29,6 +29,15 @@ public abstract class Group extends ChatEntity {
 		}
 	}
 
+	public User findUserByID(String id) {
+		for (User user : _users) {
+			if (user.getId().equals(id)) {
+				return user;
+			}
+		}
+		return null;
+	}
+
 	public List<User> getUsers() {
 		return _users;
 	}

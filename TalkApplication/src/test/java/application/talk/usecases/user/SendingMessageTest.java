@@ -31,7 +31,7 @@ public class SendingMessageTest {
 		User user = new User("kiet", "0710");
 
 		SendingMessage useCase = new SendingMessage(storage);
-		SendingMessage.InputValues input = new SendingMessage.InputValues(null, user, null, null,Type.AUDIO);
+		SendingMessage.InputValues input = new SendingMessage.InputValues(null, user, null, null, null);
 
 		SendingMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
