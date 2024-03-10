@@ -59,8 +59,9 @@ public class File extends BaseEntity {
         return _name;
     }
 
-    public void setName(String name) {
+    public String setName(String name) {
         _name = name;
+        return name;
     }
 
     public long getSize() {

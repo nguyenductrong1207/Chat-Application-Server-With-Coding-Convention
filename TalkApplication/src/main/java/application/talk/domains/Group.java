@@ -46,8 +46,9 @@ public abstract class Group extends ChatEntity {
 		return _files;
 	}
 
-	public void setName(String name) {
+	public String setName(String name) {
 		_name = name;
+		return name;
 	}
 
 	public String getName() {
