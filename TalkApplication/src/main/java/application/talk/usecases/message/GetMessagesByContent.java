@@ -1,7 +1,8 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.Message;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -28,8 +29,14 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 //			}
 //		}
 
-		OutputValues output =  new OutputValues(GetMessagesByContentResult.SUCCESSFUL, "");
-//		output.setFoundMessages(foundMessages);
+		for(Message message:messages){
+			if(message.getContent().contains(input._keyword)){
+				foundMessages.add(message);
+			}
+		}
+
+		OutputValues output =  new OutputValues(FinalResult.SUCCESSFUL, "");
+		output.setFoundMessages(foundMessages);
 
 		return output;
 	}
@@ -45,16 +52,16 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 	}
 
 	public static class OutputValues {
-		private final GetMessagesByContentResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(GetMessagesByContentResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetMessagesByContentResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -69,9 +76,5 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public static enum GetMessagesByContentResult {
-		SUCCESSFUL, FAILED
 	}
 }

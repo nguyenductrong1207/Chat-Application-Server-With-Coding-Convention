@@ -1,11 +1,11 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
 import java.util.UUID;
-
 import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -29,7 +29,7 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 
 		_dataStorage.getGroups().add(group);
 
-		return new OutputValues(CreatingResult.SUCCESSFUL, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -49,24 +49,20 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 	}
 
 	public static class OutputValues {
-		private final CreatingResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(CreatingResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public CreatingResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public static enum CreatingResult {
-		SUCCESSFUL, FAILED
 	}
 }

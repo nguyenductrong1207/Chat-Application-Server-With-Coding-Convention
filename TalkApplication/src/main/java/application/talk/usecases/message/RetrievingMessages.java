@@ -1,9 +1,9 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.*;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
-
 import java.util.List;
 
 public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, RetrievingMessages.OutputValues> {
@@ -22,7 +22,7 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
         		new GetTopLastestMessages.InputValues(input._nRetrievedMessages, 0)
         		).getfoundMessages();
 
-        OutputValues output = new OutputValues(RetrievingMessagesResult.SUCCESSFUL, "");
+        OutputValues output = new OutputValues(FinalResult.SUCCESSFUL, "");
         output.setFoundMessages(foundMessage);
         
         return output;
@@ -37,16 +37,16 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
 	}
 
 	public static class OutputValues {
-		private final RetrievingMessagesResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(RetrievingMessagesResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public RetrievingMessagesResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -61,9 +61,5 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum RetrievingMessagesResult {
-		SUCCESSFUL, FAILED
 	}
 }

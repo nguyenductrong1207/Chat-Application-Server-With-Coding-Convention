@@ -2,6 +2,7 @@ package application.talk.usecases.user;
 
 import java.util.List;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -16,13 +17,13 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 	public OutputValues execute(InputValues input) {
 		List<User> users = _dataStorage.getUsers().getAll();
 
-		for (User user:users){
-			if(user.getFullName().contains(input._givenString)){
-				return new OutputValues(FindingResult.SUCCESSFUL, "",user);
+		for (User user : users) {
+			if (user.getFullName().contains(input._givenString)) {
+				return new OutputValues(FinalResult.SUCCESSFUL, "", user);
 			}
 		}
-		
-		return new OutputValues(FindingResult.FAILED, "", null);
+
+		return new OutputValues(FinalResult.FAILED, "", null);
 	}
 
 	public static class InputValues {
@@ -36,17 +37,17 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 	}
 
 	public static class OutputValues {
-		private  FindingResult RESULT;
-		private  String MESSAGE;
-		private User _foundUsers;
-		
-		public OutputValues(FindingResult result, String message, User users) {
+		private final FinalResult RESULT;
+		private final String MESSAGE;
+		private final User _foundUsers;
+
+		public OutputValues(FinalResult result, String message, User users) {
 			MESSAGE = message;
 			RESULT = result;
 			_foundUsers = users;
 		}
 
-		public FindingResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -57,11 +58,6 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 		public User getFoundUsers() {
 			return _foundUsers;
 		}
-		
-	}
 
-	public enum FindingResult {
-		SUCCESSFUL, FAILED;
 	}
-
 }

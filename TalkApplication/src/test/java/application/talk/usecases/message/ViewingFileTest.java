@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import static org.junit.Assert.*;
 
@@ -19,17 +19,17 @@ import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.SeeingFile.CreatingResult;
+import application.talk.usecases.user.ViewingFile.CreatingResult;
 
-public class SeeingFileTest {
+public class ViewingFileTest {
 
 	private DataStorage _storage;
-	private SeeingFile _seeingFile;
+	private ViewingFile _seeingFile;
 
 	@Before
 	public void setUp() throws Exception {
 		_storage = InMemoryDataStorage.getInstance();
-		_seeingFile = new SeeingFile(_storage);
+		_seeingFile = new ViewingFile(_storage);
 
 	}
 
@@ -59,10 +59,10 @@ public class SeeingFileTest {
 		
 		_storage.getConversations().add(conversation);
 		
-		SeeingFile.InputValues input = new SeeingFile.InputValues(user2.getId(), conversation.getId());
-		SeeingFile.OutputValues output = _seeingFile.execute(input);
+		ViewingFile.InputValues input = new ViewingFile.InputValues(user2.getId(), conversation.getId());
+		ViewingFile.OutputValues output = _seeingFile.execute(input);
 
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }

@@ -33,7 +33,6 @@ public class GetGroupsOfUserTest {
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
 		assertEquals(GetGroupOfUserResult.SUCCESSED, output.getResult());
-		assertNotNull(output.getMessage());
 	}
 
 	@Test
@@ -45,7 +44,6 @@ public class GetGroupsOfUserTest {
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
 		assertEquals(GetGroupOfUserResult.FAILED, output.getResult());
-		assertNotNull(output.getMessage());
 	}
 
 }

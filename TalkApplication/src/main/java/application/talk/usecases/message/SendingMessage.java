@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import java.time.LocalDateTime;
 
@@ -7,6 +7,7 @@ import application.talk.domains.File;
 import application.talk.domains.File.Type;
 import application.talk.domains.Message;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -27,7 +28,7 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 
 		_dataStorage.getMessages().add(message);
 
-		return new OutputValues(SendingResult.SUCCESSED, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -47,24 +48,20 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 	}
 
 	public static class OutputValues {
-		private final SendingResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(SendingResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public SendingResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public static enum SendingResult {
-		SUCCESSED, FAILED
 	}
 }
