@@ -18,18 +18,18 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		ChatEntity chatEntity = _dataStorage.getChatEntities().getById(input._chatEntityId);
-		List<Message> messages = chatEntity.getMessages();
-		List<Message> foundMessages = new ArrayList<>();
+//		ChatEntity chatEntity = _dataStorage.getChatEntities().getById(input._chatEntityId);
+//		List<Message> messages = chatEntity.getMessages();
+//		List<Message> foundMessages = new ArrayList<>();
+//
+//		for(Message message:messages){
+//			if(message.getContent().contains(input._keyword)){
+//				foundMessages.add(message);
+//			}
+//		}
 
-		for(Message message:messages){
-			if(message.getContent().contains(input._keyword)){
-				foundMessages.add(message);
-			}
-		}
-
-		OutputValues output =  new OutputValues(GetTopLastestMessagesResult.SUCCESSFUL, "");
-		output.setFoundMessages(foundMessages);
+		OutputValues output =  new OutputValues(GetMessagesByContentResult.SUCCESSFUL, "");
+//		output.setFoundMessages(foundMessages);
 
 		return output;
 	}
@@ -45,16 +45,16 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 	}
 
 	public static class OutputValues {
-		private final GetTopLastestMessagesResult RESULT;
+		private final GetMessagesByContentResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(GetTopLastestMessagesResult result, String message) {
+		public OutputValues(GetMessagesByContentResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetTopLastestMessagesResult getResult() {
+		public GetMessagesByContentResult getResult() {
 			return RESULT;
 		}
 
@@ -71,7 +71,7 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 		}
 	}
 
-	public static enum GetTopLastestMessagesResult {
+	public static enum GetMessagesByContentResult {
 		SUCCESSFUL, FAILED
 	}
 }

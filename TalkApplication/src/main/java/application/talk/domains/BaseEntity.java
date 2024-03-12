@@ -6,6 +6,10 @@ public abstract class BaseEntity {
     private String _id;
     private String _name;
 
+    public void setId(String id){
+        _id = id;
+    }
+
     public String getId() {
         return _id;
     }
@@ -14,8 +18,8 @@ public abstract class BaseEntity {
         return _name;
     }
 
-    public String setName(String name) {
-        return _name;
+    public void setName(String name) {
+         _name = name;
     }
 
     protected BaseEntity() {

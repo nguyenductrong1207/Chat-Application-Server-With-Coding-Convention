@@ -3,9 +3,7 @@ package application.talk.usecases.user;
 import application.talk.domains.*;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.GetMessagesByContent.GetTopLastestMessagesResult;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, RetrievingMessages.OutputValues> {

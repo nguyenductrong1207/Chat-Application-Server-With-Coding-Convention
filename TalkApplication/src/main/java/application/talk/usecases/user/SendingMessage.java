@@ -27,7 +27,7 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 
 		_dataStorage.getMessages().add(message);
 
-		return new OutputValues(RegisterResult.SUCCESSED, "");
+		return new OutputValues(SendingResult.SUCCESSED, "");
 	}
 
 	public static class InputValues {
@@ -47,15 +47,15 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 	}
 
 	public static class OutputValues {
-		private final RegisterResult RESULT;
+		private final SendingResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(RegisterResult result, String message) {
+		public OutputValues(SendingResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public RegisterResult getResult() {
+		public SendingResult getResult() {
 			return RESULT;
 		}
 
@@ -64,7 +64,7 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 		}
 	}
 
-	public enum RegisterResult {
+	public static enum SendingResult {
 		SUCCESSED, FAILED
 	}
 }
