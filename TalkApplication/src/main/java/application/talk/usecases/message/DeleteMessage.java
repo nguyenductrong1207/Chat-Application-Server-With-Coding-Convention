@@ -9,6 +9,7 @@ import java.util.List;
 import application.talk.domains.Conversation;
 import application.talk.domains.File;
 import application.talk.domains.Message;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -26,9 +27,9 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
         if (conversation.getSender().getId().equals(input._senderId)) {
             removeMessageById(conversation, input._messageId);
 
-            return new OutputValues(DeleteMessageResult.SUCCESSED, "");
+            return new OutputValues(FinalResult.SUCCESSFUL, "");
         } else {
-            return new OutputValues(DeleteMessageResult.FAILED, "");
+            return new OutputValues(FinalResult.FAILED, "");
         }
     }
 
@@ -74,24 +75,20 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
     }
 
     public static class OutputValues {
-        private final DeleteMessageResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(DeleteMessageResult result, String message) {
+        public OutputValues(FinalResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public DeleteMessageResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
         public String getMessage() {
             return MESSAGE;
         }
-    }
-
-    public enum DeleteMessageResult {
-        SUCCESSED, FAILED
     }
 }

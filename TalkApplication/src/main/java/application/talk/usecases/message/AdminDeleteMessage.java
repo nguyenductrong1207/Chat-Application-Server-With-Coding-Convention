@@ -4,6 +4,7 @@ import java.util.List;
 import application.talk.domains.Conversation;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -26,11 +27,11 @@ public class AdminDeleteMessage extends UseCase<AdminDeleteMessage.InputValues, 
 		for (User admin : admins) {
 			if (admin.getId().equals(input._userId)) {
 	            _deleteMessage.removeMessageById(conversation, input._messageId);
-				return new OutputValues(CreatingResult.SUCCESSFUL, "");
+				return new OutputValues(FinalResult.SUCCESSFUL, "");
 			}
 		}
 	
-		return new OutputValues(CreatingResult.FAILED, "");
+		return new OutputValues(FinalResult.FAILED, "");
 	}
 
 	public static class InputValues {
@@ -49,15 +50,15 @@ public class AdminDeleteMessage extends UseCase<AdminDeleteMessage.InputValues, 
 	}
 
 	public static class OutputValues {
-		private final CreatingResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(CreatingResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public CreatingResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -65,9 +66,4 @@ public class AdminDeleteMessage extends UseCase<AdminDeleteMessage.InputValues, 
 			return MESSAGE;
 		}
 	}
-
-	public enum CreatingResult {
-		SUCCESSFUL, FAILED
-	}
-
 }

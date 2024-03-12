@@ -2,6 +2,7 @@ package application.talk.usecases.group;
 
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -23,7 +24,7 @@ public class JoiningPublicGroup extends UseCase<JoiningPublicGroup.InputValues, 
 
         _dataStorage.getGroups().add(publicGroup);
 
-        return new OutputValues(JoiningPublicGroupResult.SUCCESSFUL, "");
+        return new OutputValues(FinalResult.SUCCESSFUL, "");
     }
 
     public static class InputValues {
@@ -47,24 +48,20 @@ public class JoiningPublicGroup extends UseCase<JoiningPublicGroup.InputValues, 
     }
 
     public static class OutputValues {
-        private final JoiningPublicGroupResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(JoiningPublicGroupResult result, String message) {
+        public OutputValues(FinalResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public JoiningPublicGroupResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
         public String getMessage() {
             return MESSAGE;
         }
-    }
-
-    public enum JoiningPublicGroupResult {
-        SUCCESSFUL, FAILED
     }
 }

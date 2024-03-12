@@ -2,6 +2,7 @@ package application.talk.usecases.message;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.Message;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -28,7 +29,7 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 			}
 		}
 
-		OutputValues output =  new OutputValues(GetTopLastestMessagesResult.SUCCESSFUL, "");
+		OutputValues output =  new OutputValues(FinalResult.SUCCESSFUL, "");
 		output.setFoundMessages(foundMessages);
 
 		return output;
@@ -45,16 +46,16 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 	}
 
 	public static class OutputValues {
-		private final GetTopLastestMessagesResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(GetTopLastestMessagesResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetTopLastestMessagesResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -69,9 +70,5 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum GetTopLastestMessagesResult {
-		SUCCESSFUL, FAILED
 	}
 }

@@ -1,5 +1,6 @@
 package application.talk.usecases.user;
 
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
@@ -15,7 +16,7 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		return new OutputValues(LoginResult.SUCCESSED, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -29,24 +30,20 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 	}
 
 	public static class OutputValues {
-		private final LoginResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(LoginResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 		
-		public LoginResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum LoginResult {
-		SUCCESSED, FAILED
 	}
 }

@@ -2,6 +2,7 @@ package application.talk.usecases.message;
 
 import application.talk.domains.Message;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -20,9 +21,9 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
 
             message.setContent(input._newContent);
 
-            return new OutputValues(EditMessageResult.SUCCESSED, "");
+            return new OutputValues(FinalResult.SUCCESSFUL, "");
         } else {
-            return new OutputValues(EditMessageResult.FAILED, "");
+            return new OutputValues(FinalResult.FAILED, "");
         }
     }
 
@@ -39,24 +40,20 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
     }
 
     public static class OutputValues {
-        private final EditMessageResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(EditMessageResult result, String message) {
+        public OutputValues(FinalResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public EditMessageResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
         public String getMessage() {
             return MESSAGE;
         }
-    }
-
-    public enum EditMessageResult {
-        SUCCESSED, FAILED
     }
 }

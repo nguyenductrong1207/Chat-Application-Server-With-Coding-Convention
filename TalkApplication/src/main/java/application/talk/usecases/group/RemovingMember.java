@@ -4,6 +4,7 @@ import java.util.List;
 
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -23,10 +24,10 @@ public class RemovingMember extends UseCase<RemovingMember.InputValues, Removing
 		for (User admin : admins) {
 			if (admin.getId().equals(input._userId)) {
 				group.removeUserById(input._memberId);
-				return new OutputValues(CreatingResult.SUCCESSFUL, "");
+				return new OutputValues(FinalResult.SUCCESSFUL, "");
 			}
 		}
-		return new OutputValues(CreatingResult.FAILED, "");
+		return new OutputValues(FinalResult.FAILED, "");
 	}
 
 	public static class InputValues {
@@ -43,24 +44,20 @@ public class RemovingMember extends UseCase<RemovingMember.InputValues, Removing
 	}
 
 	public static class OutputValues {
-		private final CreatingResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(CreatingResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public CreatingResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum CreatingResult {
-		SUCCESSFUL, FAILED
 	}
 }

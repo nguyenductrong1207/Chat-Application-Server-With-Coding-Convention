@@ -6,6 +6,7 @@ import application.talk.domains.Conversation;
 import application.talk.domains.File;
 import application.talk.domains.Group;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -24,10 +25,10 @@ public class ViewingFile extends UseCase<ViewingFile.InputValues, ViewingFile.Ou
         User foundUser = group.findUserByID(input._userId);
         
         if (foundUser == null || group == null) {
-            return new OutputValues(CreatingResult.FAILED, "", null);
+            return new OutputValues(FinalResult.FAILED, "", null);
         }
 
-        return new OutputValues(CreatingResult.SUCCESSFUL, "", conversation.getAttachments());
+        return new OutputValues(FinalResult.SUCCESSFUL, "", conversation.getAttachments());
     }
 
     public static class InputValues {
@@ -41,17 +42,17 @@ public class ViewingFile extends UseCase<ViewingFile.InputValues, ViewingFile.Ou
     }
 
     public static class OutputValues {
-        private final CreatingResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
         private  List<File> _files;
 
-        public OutputValues(CreatingResult result, String message, List<File> files) {
+        public OutputValues(FinalResult result, String message, List<File> files) {
             MESSAGE = message;
             RESULT = result;
             _files = files;
         }
 
-        public CreatingResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
@@ -62,9 +63,5 @@ public class ViewingFile extends UseCase<ViewingFile.InputValues, ViewingFile.Ou
         public List<File> getFiles() {
             return _files;
         }
-    }
-
-    public enum CreatingResult {
-        SUCCESSFUL, FAILED
     }
 }
