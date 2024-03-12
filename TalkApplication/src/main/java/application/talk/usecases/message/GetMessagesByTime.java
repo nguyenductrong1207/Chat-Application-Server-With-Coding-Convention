@@ -1,6 +1,7 @@
 package application.talk.usecases.message;
 
 import application.talk.domains.Message;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -30,10 +31,10 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 		}
 
 		if(foundMessages.isEmpty()){
-			return new OutputValues(GetLastestMessagesResult.FAILED, "");
+			return new OutputValues(FinalResult.FAILED, "");
 		}
 
-		OutputValues output =  new OutputValues(GetLastestMessagesResult.SUCCESSFUL, "");
+		OutputValues output =  new OutputValues(FinalResult.SUCCESSFUL, "");
 		output.setFoundMessages(foundMessages);
 
 		return output;
@@ -48,16 +49,16 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 	}
 
 	public static class OutputValues {
-		private final GetLastestMessagesResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(GetLastestMessagesResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetLastestMessagesResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
@@ -72,9 +73,5 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum GetLastestMessagesResult {
-		SUCCESSFUL, FAILED
 	}
 }

@@ -35,6 +35,6 @@ public class SendingMessageTest {
 
 		SendingMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 }

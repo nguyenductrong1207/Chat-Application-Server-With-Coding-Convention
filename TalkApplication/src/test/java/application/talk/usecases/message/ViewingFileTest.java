@@ -62,7 +62,7 @@ public class ViewingFileTest {
 		ViewingFile.InputValues input = new ViewingFile.InputValues(user2.getId(), conversation.getId());
 		ViewingFile.OutputValues output = _seeingFile.execute(input);
 
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }

@@ -35,7 +35,7 @@ public class CreatingGroupTest {
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(true, user1, "Public group");
 
 		CreatingGroup.OutputValues output = _useCase.execute(input);
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 	@Test
@@ -45,6 +45,6 @@ public class CreatingGroupTest {
 		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, user1, "Private group");
 
 		CreatingGroup.OutputValues output = _useCase.execute(input);
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 }

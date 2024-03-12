@@ -1,6 +1,7 @@
 package application.talk.usecases.user;
 
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
@@ -18,7 +19,7 @@ public class UserRegistration extends UseCase<UserRegistration.InputValues, User
 	public OutputValues execute(InputValues input) {
 		User user = new User.UserBuilder(input._username, _hasher.hash(input._password)).build();
 		_dataStorage.getUsers().add(user);
-		return new OutputValues(RegisterResult.SUCCESSED, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -32,24 +33,20 @@ public class UserRegistration extends UseCase<UserRegistration.InputValues, User
 	}
 
 	public static class OutputValues {
-		private final RegisterResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(RegisterResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public RegisterResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum RegisterResult {
-		SUCCESSED, FAILED
 	}
 }

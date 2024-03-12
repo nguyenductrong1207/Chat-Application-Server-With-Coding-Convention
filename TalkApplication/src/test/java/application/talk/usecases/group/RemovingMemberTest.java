@@ -44,7 +44,7 @@ public class RemovingMemberTest {
 		
 		RemovingMember.InputValues input = new RemovingMember.InputValues(user1.getId(),privateGroup.getId(), user2.getId());
 		RemovingMember.OutputValues output = _useCase.execute(input);
-		assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 

@@ -60,7 +60,7 @@ public class AdminDeleteMessageTest {
         		conversation.getId(), privateGroup.getId(), message.getId());
         AdminDeleteMessage.OutputValues output = _useCase.execute(input);
         
-        assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }

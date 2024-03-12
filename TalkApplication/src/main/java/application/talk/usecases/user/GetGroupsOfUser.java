@@ -6,6 +6,7 @@ import java.util.List;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -24,7 +25,7 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 		PublicGroup publicGroup = new PublicGroup(null, null);
 		
 		if (input._name == null) {
-			return new OutputValues(GetGroupOfUserResult.FAILED, "");
+			return new OutputValues(FinalResult.FAILED, "");
 		}
 		for (User i : privateGroup.getUsers()) {
 			if (input._name.equals(i.getName())) {
@@ -38,7 +39,7 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 			}
 		}
 
-		return new OutputValues(GetGroupOfUserResult.SUCCESSED, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -50,24 +51,20 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 	}
 
 	public static class OutputValues {
-		private final GetGroupOfUserResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(GetGroupOfUserResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public GetGroupOfUserResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum GetGroupOfUserResult {
-		SUCCESSED, FAILED
 	}
 }

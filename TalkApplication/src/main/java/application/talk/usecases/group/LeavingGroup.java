@@ -2,6 +2,7 @@ package application.talk.usecases.group;
 
 import application.talk.domains.Group;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -19,11 +20,11 @@ public class LeavingGroup extends UseCase<LeavingGroup.InputValues, LeavingGroup
 		Group group = _dataStorage.getGroups().getById(groupId);
 
 		if (group == null) {
-			return new OutputValues(RegisterResult.FAILED, "");
+			return new OutputValues(FinalResult.FAILED, "");
 		}
 		group.removeUserById(userId);
 
-		return new OutputValues(RegisterResult.SUCCESSED, "User left the group");
+		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
@@ -37,24 +38,20 @@ public class LeavingGroup extends UseCase<LeavingGroup.InputValues, LeavingGroup
 	}
 
 	public static class OutputValues {
-		private final RegisterResult RESULT;
+		private final FinalResult RESULT;
 		private final String MESSAGE;
 
-		public OutputValues(RegisterResult result, String message) {
+		public OutputValues(FinalResult result, String message) {
 			MESSAGE = message;
 			RESULT = result;
 		}
 
-		public RegisterResult getResult() {
+		public FinalResult getResult() {
 			return RESULT;
 		}
 
 		public String getMessage() {
 			return MESSAGE;
 		}
-	}
-
-	public enum RegisterResult {
-		SUCCESSED, FAILED
 	}
 }
