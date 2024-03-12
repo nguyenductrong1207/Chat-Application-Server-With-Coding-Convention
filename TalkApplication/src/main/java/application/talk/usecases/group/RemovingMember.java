@@ -1,8 +1,7 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
 import java.util.List;
 
-import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;

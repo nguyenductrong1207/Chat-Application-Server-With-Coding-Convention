@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
-public class SeeingFile extends UseCase<SeeingFile.InputValues, SeeingFile.OutputValues> {
+public class ViewingFile extends UseCase<ViewingFile.InputValues, ViewingFile.OutputValues> {
     private DataStorage _dataStorage;
 
-    public SeeingFile(DataStorage dataStorage) {
+    public ViewingFile(DataStorage dataStorage) {
         super();
         _dataStorage = dataStorage;
     }

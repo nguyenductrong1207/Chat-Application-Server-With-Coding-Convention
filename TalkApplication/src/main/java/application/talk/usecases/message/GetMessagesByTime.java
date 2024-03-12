@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.Message;
 import application.talk.usecases.UseCase;
@@ -74,7 +74,7 @@ public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, Ge
 		}
 	}
 
-	public static enum GetLastestMessagesResult {
+	public enum GetLastestMessagesResult {
 		SUCCESSFUL, FAILED
 	}
 }

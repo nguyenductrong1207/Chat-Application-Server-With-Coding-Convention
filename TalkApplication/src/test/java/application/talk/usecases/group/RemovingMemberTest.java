@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
 import static org.junit.Assert.*;
 

@@ -46,7 +46,7 @@ public class LoginUseCase extends UseCase<LoginUseCase.InputValues, LoginUseCase
 		}
 	}
 
-	public static enum LoginResult {
+	public enum LoginResult {
 		SUCCESSED, FAILED
 	}
 }

@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.Message;
 import application.talk.domains.User;

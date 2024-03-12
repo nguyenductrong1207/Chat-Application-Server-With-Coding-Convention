@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,7 +9,6 @@ import java.util.List;
 import application.talk.domains.Conversation;
 import application.talk.domains.File;
 import application.talk.domains.Message;
-import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 

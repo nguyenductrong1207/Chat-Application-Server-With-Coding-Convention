@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import java.util.List;
 import application.talk.domains.Conversation;
@@ -66,7 +66,7 @@ public class AdminDeleteMessage extends UseCase<AdminDeleteMessage.InputValues, 
 		}
 	}
 
-	public static enum CreatingResult {
+	public enum CreatingResult {
 		SUCCESSFUL, FAILED
 	}
 
