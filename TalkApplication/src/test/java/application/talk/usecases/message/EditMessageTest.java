@@ -3,6 +3,7 @@ package application.talk.usecases.message;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +11,6 @@ import org.junit.Test;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.EditMessage.EditMessageResult;
 
 public class EditMessageTest {
 
@@ -35,7 +35,7 @@ public class EditMessageTest {
 
 		EditMessage.OutputValues output = useCase.execute(input);
 		assertNotNull(output.getMessage());
-		assertEquals(EditMessageResult.FAILED, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }

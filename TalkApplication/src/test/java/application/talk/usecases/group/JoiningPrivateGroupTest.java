@@ -1,6 +1,7 @@
 package application.talk.usecases.group;
 
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import org.junit.After;
@@ -33,7 +34,7 @@ public class JoiningPrivateGroupTest {
         JoiningPrivateGroup.InputValues input = new JoiningPrivateGroup.InputValues(inviter, receiver);
         JoiningPrivateGroup.OutputValues output = _useCase.execute(input);
 
-        assertEquals(JoiningPrivateGroup.JoiningPrivateGroupResult.SUCCESSFUL, output.getResult());
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
 
 

@@ -1,6 +1,7 @@
 package application.talk.usecases.user;
 
 import application.talk.domains.*;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -46,7 +47,7 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
             }
 
         }
-        return new OutputValues(GettingViewerResult.SUCCESSFUL, "", viewers);
+        return new OutputValues(FinalResult.SUCCESSFUL, "", viewers);
     }
 
     public static class InputValues {
@@ -60,17 +61,17 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
     }
 
     public static class OutputValues {
-        private final GettingViewerResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
         private List<User> _viewers;
 
-        public OutputValues(GettingViewerResult result, String message, List<User> users) {
+        public OutputValues(FinalResult result, String message, List<User> users) {
             MESSAGE = message;
             RESULT = result;
             _viewers = users;
         }
 
-        public GettingViewerResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
@@ -83,7 +84,4 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
         }
     }
 
-    public enum GettingViewerResult {
-        SUCCESSFUL, FAILED
-    }
 }

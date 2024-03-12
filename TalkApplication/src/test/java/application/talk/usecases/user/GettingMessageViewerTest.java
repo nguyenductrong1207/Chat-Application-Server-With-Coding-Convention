@@ -1,6 +1,7 @@
 package application.talk.usecases.user;
 
 import application.talk.domains.*;
+import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import org.junit.After;
@@ -10,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
 
 public class GettingMessageViewerTest {
     private DataStorage _storage;
@@ -57,7 +57,7 @@ public class GettingMessageViewerTest {
         GettingMessageViewers gettingMessageViewers = new GettingMessageViewers(_storage, recordTest);
         GettingMessageViewers.OutputValues output = gettingMessageViewers.execute(input);
 
-        Assertions.assertEquals(GettingMessageViewers.GettingViewerResult.SUCCESSFUL, output.getResult());
+        Assertions.assertEquals(FinalResult.SUCCESSFUL, output.getResult());
         Assertions.assertNotNull(output.getViewers());
     }
 

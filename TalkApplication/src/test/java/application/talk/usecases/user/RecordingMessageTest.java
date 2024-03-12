@@ -1,18 +1,15 @@
 package application.talk.usecases.user;
 
 import application.talk.domains.*;
+import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.EditMessage.EditMessageResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.time.LocalDateTime;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 public class RecordingMessageTest {
     private DataStorage _storage;
@@ -47,7 +44,7 @@ public class RecordingMessageTest {
 		RecordLastMessage recordTest = new RecordLastMessage(_storage);
 		RecordLastMessage.OutputValues outputValues = recordTest.execute(input);
 
-		Assertions.assertEquals(RecordLastMessage.RecordResult.SUCCESSFUL, outputValues.getResult());
+		Assertions.assertEquals(FinalResult.SUCCESSFUL, outputValues.getResult());
 		Assertions.assertNotNull(outputValues.getFoundMessage());
         System.out.println(outputValues.getFoundMessage().get(0).getContent());
     }

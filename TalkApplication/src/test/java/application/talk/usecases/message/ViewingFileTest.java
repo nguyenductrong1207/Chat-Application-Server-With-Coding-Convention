@@ -2,24 +2,21 @@ package application.talk.usecases.message;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import application.talk.domains.Conversation;
 import application.talk.domains.File;
-import application.talk.domains.Group;
 import application.talk.domains.File.Type;
 import application.talk.domains.PrivateGroup;
-import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.ViewingFile.CreatingResult;
 
 public class ViewingFileTest {
 
@@ -41,7 +38,6 @@ public class ViewingFileTest {
 
 	@Test
 	public void testSeeingFile() {
-//		setup
 		User user = new User("duyen", "001");
 		User user2 = new User("kiet", "002");
 		_storage.getUsers().add(user);

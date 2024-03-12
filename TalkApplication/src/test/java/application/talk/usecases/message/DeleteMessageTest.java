@@ -1,11 +1,11 @@
 package application.talk.usecases.message;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.Conversation;
 import application.talk.domains.Message;
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import org.junit.Test;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.DeleteMessage.DeleteMessageResult;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -53,7 +52,7 @@ public class DeleteMessageTest {
         DeleteMessage.InputValues input = new DeleteMessage.InputValues(conversation.getId(), message.getId(), sender.getId());
         DeleteMessage.OutputValues output = _useCase.execute(input);
 
-        assertEquals(DeleteMessageResult.SUCCESSED, output.getResult());
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
 
 }

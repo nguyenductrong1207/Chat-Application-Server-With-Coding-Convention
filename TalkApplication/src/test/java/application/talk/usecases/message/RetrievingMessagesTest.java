@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +16,6 @@ import application.talk.domains.Message;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.RetrievingMessages.RetrievingMessagesResult;
 
 public class RetrievingMessagesTest {
 
@@ -51,7 +51,7 @@ public class RetrievingMessagesTest {
 	    RetrievingMessages.InputValues input = new RetrievingMessages.InputValues(5); 
 	    RetrievingMessages.OutputValues output = _useCase.execute(input);
 	    
-	    assertEquals(RetrievingMessagesResult.SUCCESSFUL, output.getResult());
+	    assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }
