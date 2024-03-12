@@ -19,6 +19,9 @@ public abstract class Group extends ChatEntity {
 		_users.add(user);
 	}
 
+	public void addAllUser(List<User> users){
+		_users.addAll(users);
+	}
 	public void removeUserById(String id) {
 		for (User user : _users) {
 			if (user.getId().equals(id)) {

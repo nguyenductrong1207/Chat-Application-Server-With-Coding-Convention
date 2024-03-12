@@ -16,10 +16,6 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 		entities = new ArrayList<>();
 	}
 
-	public List<T> getEnities() {
-		return entities;
-	}
-
 	@Override
 	public T getById(String id) {
 		Optional<T> entity = entities.stream().filter(e -> e.getId().equals(id)).findFirst();
@@ -28,16 +24,6 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 			return null;
 		}
 		return entity.get();
-	}
-
-	@Override
-	public T getByName(String name) {
-		Optional<T> entity = entities.stream().filter(e -> {
-			String entityName = e.getName();
-			return entityName != null && entityName.equalsIgnoreCase(name);
-		}).findFirst();
-
-		return entity.orElse(null);
 	}
 
 	@Override
@@ -66,6 +52,11 @@ public class InMemoryRepository<T extends BaseEntity> implements Repository<T> {
 	@Override
 	public List<T> getAll() {
 		return entities;
+	}
+
+	@Override
+	public void removeByID(String id) {
+		entities.remove(this.getById(id));
 	}
 
 }

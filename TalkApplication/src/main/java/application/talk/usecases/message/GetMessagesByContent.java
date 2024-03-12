@@ -19,9 +19,15 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		ChatEntity chatEntity = _dataStorage.getChatEntities().getById(input._chatEntityId);
-		List<Message> messages = chatEntity.getMessages();
-		List<Message> foundMessages = new ArrayList<>();
+//		ChatEntity chatEntity = _dataStorage.getChatEntities().getById(input._chatEntityId);
+//		List<Message> messages = chatEntity.getMessages();
+//		List<Message> foundMessages = new ArrayList<>();
+//
+//		for(Message message:messages){
+//			if(message.getContent().contains(input._keyword)){
+//				foundMessages.add(message);
+//			}
+//		}
 
 		for(Message message:messages){
 			if(message.getContent().contains(input._keyword)){

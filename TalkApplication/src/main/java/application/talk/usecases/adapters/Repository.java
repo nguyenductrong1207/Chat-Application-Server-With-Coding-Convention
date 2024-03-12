@@ -6,9 +6,7 @@ import application.talk.domains.BaseEntity;
 
 public interface Repository<T extends BaseEntity> {
     T getById(String id);
-    
-    T getByName(String name);
-    
+
     boolean add(T addingEntity);
 
     void deleteAll();
@@ -16,4 +14,6 @@ public interface Repository<T extends BaseEntity> {
     T getFirst(Predicate<T> predicate);
 
     List<T> getAll();
+
+    void removeByID(String id);
 }

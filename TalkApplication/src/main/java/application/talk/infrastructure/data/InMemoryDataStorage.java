@@ -1,13 +1,7 @@
 package application.talk.infrastructure.data;
 
 
-import application.talk.domains.ChatEntity;
-import application.talk.domains.Conversation;
-import application.talk.domains.File;
-import application.talk.domains.Group;
-import application.talk.domains.Message;
-import application.talk.domains.Request;
-import application.talk.domains.User;
+import application.talk.domains.*;
 import application.talk.infrastructure.repositories.InMemoryRepository;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Repository;
@@ -18,6 +12,7 @@ public class InMemoryDataStorage implements DataStorage {
     private Repository<Message> _messages;
     private Repository<Conversation> _conversation;
     private Repository<Request> _request;
+    private Repository<RecordedMessage> _recordMessages;
     private static InMemoryDataStorage storage;
 
     private InMemoryDataStorage() {
@@ -26,6 +21,7 @@ public class InMemoryDataStorage implements DataStorage {
         _messages = new InMemoryRepository<Message>();
         _conversation = new InMemoryRepository<Conversation>();
         _request = new InMemoryRepository<Request>();
+        _recordMessages = new InMemoryRepository<RecordedMessage>();
     }
 
     public static synchronized InMemoryDataStorage getInstance() {
@@ -47,11 +43,6 @@ public class InMemoryDataStorage implements DataStorage {
     }
 
     @Override
-    public Repository<Message> getMessages() {
-        return _messages;
-    }
-
-    @Override
     public Repository<Conversation> getConversations() {
         return _conversation;
     }
@@ -59,6 +50,16 @@ public class InMemoryDataStorage implements DataStorage {
     @Override
     public Repository<Request> getRequests() {
         return _request;
+    }
+
+    @Override
+    public Repository<Message> getMessages() {
+        return _messages;
+    }
+
+    @Override
+    public Repository<RecordedMessage> getRecordMessages() {
+        return _recordMessages;
     }
 
     @Override
@@ -75,11 +76,4 @@ public class InMemoryDataStorage implements DataStorage {
         // TODO Auto-generated method stub
         return false;
     }
-
-    @Override
-    public Repository<ChatEntity> getChatEntities() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
 }

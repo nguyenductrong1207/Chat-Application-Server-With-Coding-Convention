@@ -5,15 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import application.talk.usecases.adapters.DataStorage;
-
 public class Message extends BaseEntity {
     private User _sender;
     private LocalDateTime _timestamp;
     private ChatEntity _receiver;
     private String _content;
     private File _attachment;
-    private List<String> _messageHistory;
 
     public Message(User sender, LocalDateTime timestamp, ChatEntity receiver, String content) {
         super();
@@ -21,8 +18,6 @@ public class Message extends BaseEntity {
         _timestamp = timestamp;
         _receiver = receiver;
         _content = content;
-        _messageHistory = new ArrayList<>();
-        _messageHistory.add(content);
 
         this.formatDateTime();
     }
@@ -32,16 +27,11 @@ public class Message extends BaseEntity {
         _timestamp.format(formatter);
 	}
 
-    public List<String> getMessageHistory() {
-        return _messageHistory;
-    }
-
     public String getContent() {
         return _content;
     }
 
     public void setContent(String newContent) {
-        _messageHistory.add(_content);
         _content = newContent;
     }
 
