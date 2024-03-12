@@ -1,10 +1,9 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.Message;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +62,7 @@ public class GetConversations extends UseCase<GetConversations.InputValues, GetC
         }
     }
 
-    public static enum GetConversationsResult {
+    public enum GetConversationsResult {
         SUCCESSFUL, FAILED
     }
 }

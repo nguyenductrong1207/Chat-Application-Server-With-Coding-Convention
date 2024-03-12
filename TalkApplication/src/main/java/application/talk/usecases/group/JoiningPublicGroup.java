@@ -1,6 +1,5 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
-import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.usecases.UseCase;

@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.Message;
@@ -71,7 +71,7 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 		}
 	}
 
-	public static enum GetTopLastestMessagesResult {
+	public enum GetTopLastestMessagesResult {
 		SUCCESSFUL, FAILED
 	}
 }

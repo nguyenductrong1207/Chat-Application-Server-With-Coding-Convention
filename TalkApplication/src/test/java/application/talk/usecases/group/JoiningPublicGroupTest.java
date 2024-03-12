@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;

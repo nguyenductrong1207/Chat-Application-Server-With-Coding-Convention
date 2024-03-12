@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import static org.junit.Assert.assertEquals;
 
@@ -39,6 +39,7 @@ public class AdminDeleteMessageTest {
 
 	@Test
 	public void testRemovingMessgage() {
+		//set up
 		User sender = new User("kiet", "0710");
         ChatEntity receiver = new User("trong", "1207");
         Conversation conversation = new Conversation(sender, receiver);

@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.message;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

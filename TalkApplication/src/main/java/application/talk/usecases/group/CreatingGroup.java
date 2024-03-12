@@ -1,4 +1,4 @@
-package application.talk.usecases.user;
+package application.talk.usecases.group;
 
 import java.util.UUID;
 
@@ -66,7 +66,7 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
 		}
 	}
 
-	public static enum CreatingResult {
+	public enum CreatingResult {
 		SUCCESSFUL, FAILED
 	}
 }
