@@ -46,6 +46,7 @@ public abstract class Group extends ChatEntity {
 		return _files;
 	}
 
+
 	public String getName() {
 		return _name;
 	}

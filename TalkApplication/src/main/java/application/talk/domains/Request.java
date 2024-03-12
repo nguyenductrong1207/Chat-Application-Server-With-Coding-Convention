@@ -4,17 +4,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Request extends BaseEntity {
-    //- create usecase (check isAdmin => Approach/Reject request => add user into group)
     private User _requester;
     private PrivateGroup _privateGroup;
     private LocalDateTime _requestTimestamp;
     private RequestStatus _requestStatus;
 
-    enum RequestStatus {
-        APPROACH, REJECT, WAITING
+    public enum RequestStatus {
+        APPROVE, REJECT, WAITING
     }
 
-    public Request(User _requester, PrivateGroup _privateGroup, Boolean _waiting, LocalDateTime requestTimestamp, RequestStatus requestStatus) {
+    public Request(User _requester, PrivateGroup _privateGroup, LocalDateTime requestTimestamp, RequestStatus requestStatus) {
         this._requester = _requester;
         this._privateGroup = _privateGroup;
         this._requestTimestamp = requestTimestamp;
