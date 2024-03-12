@@ -2,6 +2,7 @@ package application.talk.usecases.user;
 
 import static org.junit.Assert.assertEquals;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
 import application.talk.usecases.user.LoginUseCase.InputValues;
-import application.talk.usecases.user.LoginUseCase.LoginResult;
 
 public class UserLoginTests {
 
@@ -42,7 +42,7 @@ public class UserLoginTests {
 
 		LoginUseCase.OutputValues output = login.execute(input);
 
-		assertEquals(output.getResult(), LoginResult.SUCCESSED);
+		assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
 	}
 
 }

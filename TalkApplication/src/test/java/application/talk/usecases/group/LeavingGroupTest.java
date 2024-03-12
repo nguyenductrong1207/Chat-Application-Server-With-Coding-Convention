@@ -2,6 +2,7 @@ package application.talk.usecases.group;
 
 import static org.junit.Assert.*;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +11,6 @@ import application.talk.domains.Group;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.LeavingGroup.RegisterResult;
 
 public class LeavingGroupTest {
 	
@@ -35,7 +35,7 @@ public class LeavingGroupTest {
 		LeavingGroup.InputValues input = new LeavingGroup.InputValues(null, user);
 
 		LeavingGroup.OutputValues output = useCase.execute(input);
-		assertEquals(RegisterResult.SUCCESSED, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 	@Test
@@ -48,7 +48,7 @@ public class LeavingGroupTest {
 		LeavingGroup.InputValues input = new LeavingGroup.InputValues(group, user);
 
 		LeavingGroup.OutputValues output = useCase.execute(input);
-		assertEquals(RegisterResult.FAILED, output.getResult());
+		assertEquals(FinalResult.FAILED, output.getResult());
 		assertNotNull(output.getMessage());
 	}
 

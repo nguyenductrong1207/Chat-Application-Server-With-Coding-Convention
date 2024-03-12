@@ -1,15 +1,14 @@
 package application.talk.usecases.user;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.GetGroupsOfUser.GetGroupOfUserResult;
 
 public class GetGroupsOfUserTest {
 
@@ -32,7 +31,7 @@ public class GetGroupsOfUserTest {
 		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues("trong");
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
-		assertEquals(GetGroupOfUserResult.SUCCESSED, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 	@Test
@@ -43,7 +42,7 @@ public class GetGroupsOfUserTest {
 		GetGroupsOfUser.InputValues input = new GetGroupsOfUser.InputValues(null);
 
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
-		assertEquals(GetGroupOfUserResult.FAILED, output.getResult());
+		assertEquals(FinalResult.FAILED, output.getResult());
 	}
 
 }

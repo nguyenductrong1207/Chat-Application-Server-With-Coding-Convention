@@ -3,6 +3,7 @@ package application.talk.usecases.user;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import org.junit.After;
@@ -39,7 +40,7 @@ public class AdminExecuteRequestTest {
         AdminExecuteRequest.InputValues input = new AdminExecuteRequest.InputValues(privateGroup, admin, request, Request.RequestStatus.APPROVE);
         AdminExecuteRequest.OutputValues output = _useCase.execute(input);
 
-        assertEquals(AdminExecuteRequest.AdminExecuteRequestResult.SUCCESSFUL, output.getResult());
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
 
 }

@@ -1,15 +1,11 @@
 package application.talk.usecases.user;
 
 import application.talk.domains.*;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.adapters.Repository;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.zip.CheckedInputStream;
 
 public class RecordLastMessage extends UseCase<RecordLastMessage.InputValues, RecordLastMessage.OutputValues> {
     private DataStorage _dataStorage;
@@ -41,10 +37,10 @@ public class RecordLastMessage extends UseCase<RecordLastMessage.InputValues, Re
 
                 List<Message> foundMessages = conversation.getARangeOfMessage(recordedMessage.getId());
 
-                return new OutputValues(RecordResult.SUCCESSFUL, "", foundMessages);
+                return new OutputValues(FinalResult.SUCCESSFUL, "", foundMessages);
             }
         }
-        return new OutputValues(RecordResult.FAILED, "", null);
+        return new OutputValues(FinalResult.FAILED, "", null);
     }
 
     public static class InputValues {
@@ -58,17 +54,17 @@ public class RecordLastMessage extends UseCase<RecordLastMessage.InputValues, Re
     }
 
     public static class OutputValues {
-        private final RecordResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
         private List<Message> _foundMessage;
 
-        public OutputValues(RecordResult result, String message, List<Message> messages) {
+        public OutputValues(FinalResult result, String message, List<Message> messages) {
             MESSAGE = message;
             RESULT = result;
             _foundMessage = messages;
         }
 
-        public RecordResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
@@ -81,7 +77,4 @@ public class RecordLastMessage extends UseCase<RecordLastMessage.InputValues, Re
         }
     }
 
-    public enum RecordResult {
-        SUCCESSFUL, FAILED
-    }
 }

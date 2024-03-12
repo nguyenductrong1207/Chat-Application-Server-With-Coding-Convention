@@ -3,6 +3,7 @@ package application.talk.usecases.user;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -42,24 +43,20 @@ public class AdminExecuteRequest extends UseCase<AdminExecuteRequest.InputValues
     }
 
     public static class OutputValues {
-        private final AdminExecuteRequestResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(AdminExecuteRequestResult result, String message) {
+        public OutputValues(FinalResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public AdminExecuteRequestResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
         public String getMessage() {
             return MESSAGE;
         }
-    }
-
-    public static enum AdminExecuteRequestResult {
-        SUCCESSFUL, FAILED
     }
 }

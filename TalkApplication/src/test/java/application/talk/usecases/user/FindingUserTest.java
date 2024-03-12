@@ -2,20 +2,14 @@ package application.talk.usecases.user;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import application.talk.domains.ChatEntity;
-import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.FindingUser.FindingResult;
 
 public class FindingUserTest {
 
@@ -36,7 +30,6 @@ public class FindingUserTest {
 
 	@Test
 	public void testFindingUser() {
-		//setup
 		User user1 = new User("kiet", "123");
 		user1.setName("anh kiet");
 
@@ -50,7 +43,7 @@ public class FindingUserTest {
 		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
 		FindingUser.OutputValues output = _useCase.execute(input);
 
-		assertEquals(FindingResult.SUCCESSFUL, output.getResult());
+		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
 
 }

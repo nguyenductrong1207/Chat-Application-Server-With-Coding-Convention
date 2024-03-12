@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,8 +18,6 @@ import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.AdminDeleteMessage.CreatingResult;
-import application.talk.usecases.user.AdminDeleteMessage.InputValues;
 
 public class AdminDeleteMessageTest {
 	private DataStorage _storage;

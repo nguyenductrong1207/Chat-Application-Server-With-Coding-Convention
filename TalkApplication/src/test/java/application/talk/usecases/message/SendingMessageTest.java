@@ -2,6 +2,7 @@ package application.talk.usecases.message;
 
 import static org.junit.Assert.*;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +11,6 @@ import application.talk.domains.File.Type;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.CreatingGroup.CreatingResult;
 
 public class SendingMessageTest {
 

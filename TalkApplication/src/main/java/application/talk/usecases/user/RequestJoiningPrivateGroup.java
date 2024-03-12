@@ -3,6 +3,7 @@ package application.talk.usecases.user;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -22,7 +23,7 @@ public class RequestJoiningPrivateGroup extends UseCase<RequestJoiningPrivateGro
 
         _dataStorage.getRequests().add(request);
 
-        return new OutputValues(RequestJoiningPrivateGroupResult.SUCCESSFUL, "");
+        return new OutputValues(FinalResult.SUCCESSFUL, "");
     }
 
     public static class InputValues {
@@ -36,15 +37,15 @@ public class RequestJoiningPrivateGroup extends UseCase<RequestJoiningPrivateGro
     }
 
     public static class OutputValues {
-        private final RequestJoiningPrivateGroupResult RESULT;
+        private final FinalResult RESULT;
         private final String MESSAGE;
 
-        public OutputValues(RequestJoiningPrivateGroupResult result, String message) {
+        public OutputValues(FinalResult result, String message) {
             MESSAGE = message;
             RESULT = result;
         }
 
-        public RequestJoiningPrivateGroupResult getResult() {
+        public FinalResult getResult() {
             return RESULT;
         }
 
@@ -53,7 +54,4 @@ public class RequestJoiningPrivateGroup extends UseCase<RequestJoiningPrivateGro
         }
     }
 
-    public static enum RequestJoiningPrivateGroupResult {
-        SUCCESSFUL, FAILED
-    }
 }

@@ -1,13 +1,13 @@
 package application.talk.usecases.message;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
 
 import application.talk.domains.ChatEntity;
 import application.talk.domains.Message;
 import application.talk.domains.User;
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +37,7 @@ public class GetMessagesByTimeTest {
         GetMessagesByTime.InputValues input = new GetMessagesByTime.InputValues(currentTime);
         GetMessagesByTime.OutputValues output = _useCase.execute(input);
 
-        assertEquals(GetMessagesByTime.GetLastestMessagesResult.FAILED, output.getResult());
+        assertEquals(FinalResult.FAILED, output.getResult());
     }
 
     @Test

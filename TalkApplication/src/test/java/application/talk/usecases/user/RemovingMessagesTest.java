@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
 
+import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,8 +15,6 @@ import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
-import application.talk.usecases.user.RemovingMessages.CreatingResult;
-import org.junit.jupiter.api.AfterAll;
 
 public class RemovingMessagesTest {
     private DataStorage _storage;
@@ -54,8 +53,7 @@ public class RemovingMessagesTest {
         RemovingMessages.InputValues input = new RemovingMessages.InputValues("001", "123", "111");
         RemovingMessages.OutputValues output = _useCase.execute(input);
 
-        assertEquals(CreatingResult.SUCCESSFUL, output.getResult());
-
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
 
 }
