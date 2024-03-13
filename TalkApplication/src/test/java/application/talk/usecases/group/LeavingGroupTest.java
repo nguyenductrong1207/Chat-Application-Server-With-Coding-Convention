@@ -16,41 +16,45 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class LeavingGroupTest {
-	@Before
-	public void setUp() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-	}
+    @Before
+    public void setUp() throws Exception {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+    }
 
-	@After
-	public void tearDown() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.cleanAll();
-	}
+    @After
+    public void tearDown() throws Exception {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        storage.cleanAll();
+    }
 
-	@Test
-	public void testLeavingGroup() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		LeavingGroup useCase = new LeavingGroup(storage);
-		
-		User user = new User("trong", "1207");
+    @Test
+    public void testLeavingGroup() {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        LeavingGroup useCase = new LeavingGroup(storage);
 
-		LeavingGroup.InputValues input = new LeavingGroup.InputValues(null, user);
+        ChatEntity group = new PublicGroup("Mygroup", "123456");
+        User user = new User("trong", "1207");
+        storage.getGroups().add((Group) group);
 
-		LeavingGroup.OutputValues output = useCase.execute(input);
-		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
-		assertNotNull(output.getMessage());
-	}
-	@Test
-	public void testLeavingGroupWithNullGroup() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		LeavingGroup useCase = new LeavingGroup(storage);
-		ChatEntity group = new PublicGroup("group123","ndkadas");
-		User user = new User("kiet", "0710");
+        LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
 
-		LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
+        LeavingGroup.OutputValues output = useCase.execute(input);
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
+        assertNotNull(output.getMessage());
+    }
 
-		LeavingGroup.OutputValues output = useCase.execute(input);
-		assertEquals(FinalResult.FAILED, output.getResult());
-		assertNotNull(output.getMessage());
-	}
+    @Test
+    public void testLeavingGroupWithNullGroup() {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        LeavingGroup useCase = new LeavingGroup(storage);
+
+        ChatEntity group = new PublicGroup("group123", "123456");
+        User user = new User("kiet", "0710");
+
+        LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
+
+        LeavingGroup.OutputValues output = useCase.execute(input);
+        assertEquals(FinalResult.FAILED, output.getResult());
+        assertNotNull(output.getMessage());
+    }
 }

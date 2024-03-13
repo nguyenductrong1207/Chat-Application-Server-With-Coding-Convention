@@ -30,7 +30,7 @@ public class GettingMessageViewerTest {
         _receiver = new PublicGroup("group hoc tap", "abc");
 
         ((Group)_receiver).addAllUser(Arrays.asList(userA, userB, userC));
-        _storage.getGroups().add(_receiver.getGroup());
+        _storage.getGroups().add((Group) _receiver);
 
         _message = new Message(_sender, LocalDateTime.now(), _receiver, "helo");
 
