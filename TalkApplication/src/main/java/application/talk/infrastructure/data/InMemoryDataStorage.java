@@ -1,6 +1,5 @@
 package application.talk.infrastructure.data;
 
-
 import application.talk.domains.*;
 import application.talk.infrastructure.repositories.InMemoryRepository;
 import application.talk.usecases.adapters.DataStorage;

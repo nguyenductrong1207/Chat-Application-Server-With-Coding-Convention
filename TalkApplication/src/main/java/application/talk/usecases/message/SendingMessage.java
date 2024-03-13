@@ -25,7 +25,6 @@ public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingM
 			File attachment = new File(input._attachment.length, input._type);
 			message.setAttachment(attachment);
 		}
-
 		_dataStorage.getMessages().add(message);
 
 		return new OutputValues(FinalResult.SUCCESSFUL, "");

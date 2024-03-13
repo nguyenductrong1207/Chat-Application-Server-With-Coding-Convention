@@ -71,5 +71,4 @@ public class SeeAllConversationOfUser extends UseCase<SeeAllConversationOfUser.I
             return _userConversations;
         }
     }
-
 }

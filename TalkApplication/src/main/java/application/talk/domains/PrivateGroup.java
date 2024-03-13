@@ -25,5 +25,4 @@ public class PrivateGroup extends Group {
     public List<User> getAdmins() {
         return _admins;
     }
-
 }

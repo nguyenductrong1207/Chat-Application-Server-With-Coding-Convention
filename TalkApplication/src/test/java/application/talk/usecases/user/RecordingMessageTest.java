@@ -48,5 +48,4 @@ public class RecordingMessageTest {
 		Assertions.assertNotNull(outputValues.getFoundMessage());
         System.out.println(outputValues.getFoundMessage().get(0).getContent());
     }
-
 }

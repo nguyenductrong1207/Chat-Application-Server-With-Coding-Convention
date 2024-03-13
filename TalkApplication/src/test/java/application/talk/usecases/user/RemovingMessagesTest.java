@@ -55,5 +55,4 @@ public class RemovingMessagesTest {
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
-
 }

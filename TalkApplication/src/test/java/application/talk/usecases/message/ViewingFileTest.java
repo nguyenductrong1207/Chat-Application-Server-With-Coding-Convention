@@ -1,6 +1,6 @@
 package application.talk.usecases.message;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,7 +19,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class ViewingFileTest {
-
 	private DataStorage _storage;
 	private ViewingFile _seeingFile;
 
@@ -50,9 +49,7 @@ public class ViewingFileTest {
 		List<File> files = Arrays.asList(new File(10, Type.AUDIO), new File(5, Type.IMAGE));
 		
 		Conversation conversation = new Conversation(user2, group);
-		
 		conversation.setAttachments(files);
-		
 		_storage.getConversations().add(conversation);
 		
 		ViewingFile.InputValues input = new ViewingFile.InputValues(user2.getId(), conversation.getId());
@@ -60,5 +57,4 @@ public class ViewingFileTest {
 
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
-
 }

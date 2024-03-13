@@ -1,6 +1,6 @@
 package application.talk.usecases.group;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import application.talk.enums.FinalResult;
 import org.junit.After;
@@ -13,7 +13,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class RemovingMemberTest {
-
 	private DataStorage _storage;
 	private RemovingMember _useCase;
 
@@ -28,7 +27,6 @@ public class RemovingMemberTest {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		storage.cleanAll();
 	}
-
 
 	@Test
 	public void testRemovingMember() {
@@ -46,6 +44,4 @@ public class RemovingMemberTest {
 		RemovingMember.OutputValues output = _useCase.execute(input);
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
-
-
 }

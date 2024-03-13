@@ -11,7 +11,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class JoiningPrivateGroupTest {
-
     DataStorage _storage;
     JoiningPrivateGroup _useCase;
 
@@ -36,6 +35,4 @@ public class JoiningPrivateGroupTest {
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
-
-
 }

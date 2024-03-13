@@ -1,6 +1,6 @@
 package application.talk.usecases.message;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -18,7 +18,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class RetrievingMessagesTest {
-
 	private DataStorage _storage;
 	private RetrievingMessages _useCase;
 
@@ -34,7 +33,6 @@ public class RetrievingMessagesTest {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		storage.cleanAll();
 	}
-
 
 	@Test
 	public void testRetrievingMessages() {
@@ -53,5 +51,4 @@ public class RetrievingMessagesTest {
 	    
 	    assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
-
 }

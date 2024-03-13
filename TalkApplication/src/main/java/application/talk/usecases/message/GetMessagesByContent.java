@@ -1,12 +1,10 @@
 package application.talk.usecases.message;
 
-import application.talk.domains.ChatEntity;
 import application.talk.domains.Message;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValues, GetMessagesByContent.OutputValues> {
@@ -29,14 +27,14 @@ public class GetMessagesByContent extends UseCase<GetMessagesByContent.InputValu
 //			}
 //		}
 
-		for(Message message:messages){
-			if(message.getContent().contains(input._keyword)){
-				foundMessages.add(message);
-			}
-		}
+//		for(Message message:messages){
+//			if(message.getContent().contains(input._keyword)){
+//				foundMessages.add(message);
+//			}
+//		}
 
 		OutputValues output =  new OutputValues(FinalResult.SUCCESSFUL, "");
-		output.setFoundMessages(foundMessages);
+//		output.setFoundMessages(foundMessages);
 
 		return output;
 	}

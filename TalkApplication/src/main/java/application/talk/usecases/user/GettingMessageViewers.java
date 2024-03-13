@@ -45,7 +45,6 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
                     viewers.add(user);
                 }
             }
-
         }
         return new OutputValues(FinalResult.SUCCESSFUL, "", viewers);
     }
@@ -83,5 +82,4 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
             return _viewers;
         }
     }
-
 }

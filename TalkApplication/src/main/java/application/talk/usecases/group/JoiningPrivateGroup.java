@@ -21,7 +21,6 @@ public class JoiningPrivateGroup extends UseCase<JoiningPrivateGroup.InputValues
         if (privateGroup != null && privateGroup.getAdmins().contains(input._inviter)) {
             privateGroup.addUser(input._receiver);
         }
-
         _dataStorage.getGroups().add(privateGroup);
 
         return new OutputValues(FinalResult.SUCCESSFUL, "");

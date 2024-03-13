@@ -58,6 +58,5 @@ public class FindingUser extends UseCase<FindingUser.InputValues, FindingUser.Ou
 		public User getFoundUsers() {
 			return _foundUsers;
 		}
-
 	}
 }

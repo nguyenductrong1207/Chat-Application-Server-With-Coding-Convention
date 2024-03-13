@@ -3,6 +3,7 @@ package application.talk.usecases.group;
 import static org.junit.Assert.assertEquals;
 
 import application.talk.enums.FinalResult;
+import application.talk.enums.GroupType;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class CreatingGroupTest {
 	public void testCreatingPublicGroup() {
 		User user1 = new User("kiet", "0710");
 
-		CreatingGroup.InputValues input = new CreatingGroup.InputValues(true, user1, "Public group");
+		CreatingGroup.InputValues input = new CreatingGroup.InputValues(GroupType.PUBLICGROUP, user1, "Public group");
 
 		CreatingGroup.OutputValues output = _useCase.execute(input);
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
@@ -41,7 +42,7 @@ public class CreatingGroupTest {
 	public void testCreatingPrivateGroup() {
 		User user1 = new User("kiet", "0710");
 
-		CreatingGroup.InputValues input = new CreatingGroup.InputValues(false, user1, "Private group");
+		CreatingGroup.InputValues input = new CreatingGroup.InputValues(GroupType.PRIVATEGROUP, user1, "Private group");
 
 		CreatingGroup.OutputValues output = _useCase.execute(input);
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());

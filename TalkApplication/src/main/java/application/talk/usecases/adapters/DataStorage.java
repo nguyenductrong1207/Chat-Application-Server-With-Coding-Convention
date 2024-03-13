@@ -18,5 +18,4 @@ public interface DataStorage {
     void cleanAll();
 
 	boolean remove(Message message);
-
 }

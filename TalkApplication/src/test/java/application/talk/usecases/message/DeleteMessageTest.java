@@ -54,5 +54,4 @@ public class DeleteMessageTest {
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
-
 }

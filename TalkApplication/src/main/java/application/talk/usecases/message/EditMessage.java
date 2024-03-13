@@ -18,9 +18,7 @@ public class EditMessage extends UseCase<EditMessage.InputValues, EditMessage.Ou
         Message message = _dataStorage.getMessages().getById(input._messageId);
 
         if (message != null && message.getSender().equals(input._sender)) {
-
             message.setContent(input._newContent);
-
             return new OutputValues(FinalResult.SUCCESSFUL, "");
         } else {
             return new OutputValues(FinalResult.FAILED, "");

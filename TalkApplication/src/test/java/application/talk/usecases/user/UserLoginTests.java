@@ -14,7 +14,6 @@ import application.talk.usecases.adapters.Hasher;
 import application.talk.usecases.user.LoginUseCase.InputValues;
 
 public class UserLoginTests {
-
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
@@ -44,5 +43,4 @@ public class UserLoginTests {
 
 		assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
 	}
-
 }

@@ -1,6 +1,7 @@
 package application.talk.usecases.group;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import application.talk.enums.FinalResult;
 import org.junit.After;
@@ -13,7 +14,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class LeavingGroupTest {
-	
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
@@ -51,5 +51,4 @@ public class LeavingGroupTest {
 		assertEquals(FinalResult.FAILED, output.getResult());
 		assertNotNull(output.getMessage());
 	}
-
 }

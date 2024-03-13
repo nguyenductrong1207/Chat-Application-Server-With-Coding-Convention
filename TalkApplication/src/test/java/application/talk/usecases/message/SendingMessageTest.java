@@ -1,19 +1,18 @@
 package application.talk.usecases.message;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import application.talk.domains.File.Type;
 import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class SendingMessageTest {
-
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();

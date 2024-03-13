@@ -76,5 +76,4 @@ public class RecordLastMessage extends UseCase<RecordLastMessage.InputValues, Re
             return _foundMessage;
         }
     }
-
 }
