@@ -37,7 +37,6 @@ public class UserRegistrationTests {
 		});
 
 		UserRegistration.OutputValues output = registration.execute(input);
-
 		assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
 	}
 }

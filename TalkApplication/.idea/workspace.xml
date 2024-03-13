@@ -5,53 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1435a42c-da4e-407d-a084-0dda317842ab" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/application/talk/enums/GroupType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/BaseEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/ChatEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/ChatEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/Conversation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Conversation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/PrivateGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/PrivateGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/RecordedMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/RecordedMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/data/InMemoryDataStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/repositories/InMemoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/infrastructure/repositories/InMemoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/adapters/DataStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/CreatingGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/CreatingGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/JoiningPrivateGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/JoiningPrivateGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/JoiningPublicGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/group/JoiningPublicGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/DeleteMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/DeleteMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/EditMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/EditMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/GetMessagesByContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/GetMessagesByContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/SendingMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/message/SendingMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/AdminExecuteRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/AdminExecuteRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/FindingUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/FindingUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/GettingMessageViewers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/GettingMessageViewers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RecordLastMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RecordLastMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RequestJoiningPrivateGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/RequestJoiningPrivateGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/SeeAllConversationOfUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/usecases/user/SeeAllConversationOfUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/CreatingGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/CreatingGroupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/JoiningPrivateGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/JoiningPrivateGroupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/JoiningPublicGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/JoiningPublicGroupTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/talk/domains/Group.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/talk/domains/Group.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/LeavingGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/LeavingGroupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/RemovingMemberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/group/RemovingMemberTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/AdminDeleteMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/AdminDeleteMessageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/DeleteMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/DeleteMessageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/EditMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/EditMessageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/RetrievingMessagesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/RetrievingMessagesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/SendingMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/SendingMessageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/ViewingFileTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/message/ViewingFileTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/AdminExecuteRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/AdminExecuteRequestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/FindingUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/FindingUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetGroupsOfUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetMessagesByContentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GetMessagesByContentTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GettingMessageViewerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/GettingMessageViewerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RecordingMessageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RecordingMessageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RemovingMessagesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RemovingMessagesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RequestJoiningPrivateGroupTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RequestJoiningPrivateGroupTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/SeeAllConversationOfUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/SeeAllConversationOfUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/UserLoginTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/UserLoginTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/UserRegistrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/UserRegistrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/application/talk/usecases/user/RemovingMessagesTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,22 +49,33 @@
     "JUnit.AdminDeleteMessageTest.testRemovingMessgage.executor": "Run",
     "JUnit.AdminExecuteRequestTest.testAdminExecuteRequest.executor": "Run",
     "JUnit.AdminExecuteRequestTest.testNoAdminExecuteRequest.executor": "Run",
+    "JUnit.CreatingGroupTest.testCreatingPrivateGroup.executor": "Run",
     "JUnit.CreatingGroupTest.testCreatingPublicGroup.executor": "Run",
     "JUnit.DeleteMessageTest.executor": "Run",
     "JUnit.DeleteMessageTest.testDeleteMessage.executor": "Run",
     "JUnit.EditMessageTest.executor": "Run",
     "JUnit.EditMessageTest.testEditMessage.executor": "Run",
+    "JUnit.EditMessageTest.testEditMessageWithMessage.executor": "Run",
     "JUnit.GetGroupsOfUserTest.executor": "Run",
+    "JUnit.GetMessagesByTimeTest.testGetMessageValid.executor": "Run",
+    "JUnit.GetMessagesByTimeTest.testGetMessagesEmptyResult.executor": "Run",
+    "JUnit.GettingMessageViewerTest.testRecordingMessage.executor": "Run",
     "JUnit.JoiningGroupTest.executor": "Run",
     "JUnit.JoiningGroupTest.testJoiningPrivateGroup.executor": "Run",
     "JUnit.JoiningGroupTest.testJoiningPublicGroup.executor": "Run",
     "JUnit.JoiningPrivateGroupTest.testJoiningPrivateGroup.executor": "Run",
     "JUnit.JoiningPublicGroupTest.testJoiningPrivateGroup.executor": "Run",
     "JUnit.JoiningPublicGroupTest.testJoiningPublicGroup.executor": "Run",
+    "JUnit.LeavingGroupTest.testLeavingGroup.executor": "Run",
+    "JUnit.LeavingGroupTest.testLeavingGroupWithNullGroup.executor": "Run",
+    "JUnit.RemovingMemberTest.testRemovingMember.executor": "Run",
     "JUnit.RequestJoiningPrivateGroupTest.testJoiningPrivateGroup.executor": "Run",
     "JUnit.RequestJoiningPrivateGroupTest.testRequestJoiningPrivateGroup.executor": "Run",
+    "JUnit.RetrievingMessagesTest.testRetrievingMessages.executor": "Run",
     "JUnit.SeeAllConversationOfUserTest.testSeeAllConversationOfUser.executor": "Run",
+    "JUnit.SendingMessageTest.testSendingMessage.executor": "Run",
     "JUnit.UserRegistrationTests.executor": "Run",
+    "JUnit.ViewingFileTest.testSeeingFile.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -130,8 +101,8 @@
       <recent name="application.talk.usecases.user" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AdminExecuteRequestTest.testAdminExecuteRequest">
-    <configuration name="AdminExecuteRequestTest.testAdminExecuteRequest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserRegistrationTests.testRegistration">
+    <configuration name="RecordingMessageTest.testRecordingMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TalkApplication" />
       <extension name="coverage">
         <pattern>
@@ -140,56 +111,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="application.talk.usecases.user" />
-      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.AdminExecuteRequestTest" />
-      <option name="METHOD_NAME" value="testAdminExecuteRequest" />
+      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.RecordingMessageTest" />
+      <option name="METHOD_NAME" value="testRecordingMessage" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CreatingGroupTest.testCreatingPrivateGroup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RequestJoiningPrivateGroupTest.testRequestJoiningPrivateGroup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TalkApplication" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="application.talk.usecases.group.*" />
+          <option name="PATTERN" value="application.talk.usecases.user.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="application.talk.usecases.group" />
-      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.group.CreatingGroupTest" />
-      <option name="METHOD_NAME" value="testCreatingPrivateGroup" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CreatingGroupTest.testCreatingPublicGroup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TalkApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="application.talk.usecases.group.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="application.talk.usecases.group" />
-      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.group.CreatingGroupTest" />
-      <option name="METHOD_NAME" value="testCreatingPublicGroup" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JoiningPrivateGroupTest.testJoiningPrivateGroup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TalkApplication" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="application.talk.usecases.group.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="application.talk.usecases.group" />
-      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.group.JoiningPrivateGroupTest" />
-      <option name="METHOD_NAME" value="testJoiningPrivateGroup" />
+      <option name="PACKAGE_NAME" value="application.talk.usecases.user" />
+      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.RequestJoiningPrivateGroupTest" />
+      <option name="METHOD_NAME" value="testRequestJoiningPrivateGroup" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -211,13 +150,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserLoginTests.testLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TalkApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.talk.usecases.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="application.talk.usecases.user" />
+      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.UserLoginTests" />
+      <option name="METHOD_NAME" value="testLogin" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRegistrationTests.testRegistration" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TalkApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.talk.usecases.user.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="application.talk.usecases.user" />
+      <option name="MAIN_CLASS_NAME" value="application.talk.usecases.user.UserRegistrationTests" />
+      <option name="METHOD_NAME" value="testRegistration" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminExecuteRequestTest.testAdminExecuteRequest" />
-        <item itemvalue="JUnit.JoiningPrivateGroupTest.testJoiningPrivateGroup" />
-        <item itemvalue="JUnit.CreatingGroupTest.testCreatingPublicGroup" />
-        <item itemvalue="JUnit.CreatingGroupTest.testCreatingPrivateGroup" />
+        <item itemvalue="JUnit.UserRegistrationTests.testRegistration" />
+        <item itemvalue="JUnit.UserLoginTests.testLogin" />
         <item itemvalue="JUnit.SeeAllConversationOfUserTest.testSeeAllConversationOfUser" />
+        <item itemvalue="JUnit.RequestJoiningPrivateGroupTest.testRequestJoiningPrivateGroup" />
+        <item itemvalue="JUnit.RecordingMessageTest.testRecordingMessage" />
       </list>
     </recent_temporary>
   </component>
@@ -248,7 +219,7 @@
       <workItem from="1709341887705" duration="7933000" />
       <workItem from="1709797058760" duration="32982000" />
       <workItem from="1710077563160" duration="1227000" />
-      <workItem from="1710218907018" duration="12390000" />
+      <workItem from="1710218907018" duration="17894000" />
     </task>
     <servers />
   </component>

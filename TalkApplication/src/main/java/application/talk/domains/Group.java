@@ -12,8 +12,8 @@ public abstract class Group extends ChatEntity {
 	private GroupType _groupType;
 
 	public Group(String name, GroupType groupType) {
-		super();
-		_users = new ArrayList<>();
+        super();
+        _users = new ArrayList<>();
 		_files = new ArrayList<>();
 		_name = name;
 		_groupType = groupType;
