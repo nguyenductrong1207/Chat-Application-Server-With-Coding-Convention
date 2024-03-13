@@ -4,6 +4,7 @@ import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
+import application.talk.enums.RequestStatus;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -32,9 +33,9 @@ public class AdminExecuteRequest extends UseCase<AdminExecuteRequest.InputValues
         private PrivateGroup _privateGroup;
         private User _user;
         private Request _request;
-        private Request.RequestStatus _requestStatus;
+        private RequestStatus _requestStatus;
 
-        public InputValues(PrivateGroup privateGroup, User user, Request request, Request.RequestStatus requestStatus) {
+        public InputValues(PrivateGroup privateGroup, User user, Request request, RequestStatus requestStatus) {
             this._privateGroup = privateGroup;
             this._user = user;
             this._request = request;

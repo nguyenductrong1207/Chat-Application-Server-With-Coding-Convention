@@ -4,6 +4,7 @@ import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
+import application.talk.enums.RequestStatus;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -19,7 +20,7 @@ public class RequestJoiningPrivateGroup extends UseCase<RequestJoiningPrivateGro
 
     @Override
     public OutputValues execute(InputValues input) {
-        Request request = new Request(input._requester, input._privateGroup, LocalDateTime.now(), Request.RequestStatus.WAITING);
+        Request request = new Request(input._requester, input._privateGroup, LocalDateTime.now(), RequestStatus.WAITING);
 
         _dataStorage.getRequests().add(request);
 

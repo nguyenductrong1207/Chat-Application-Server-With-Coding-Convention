@@ -16,6 +16,4 @@ public interface DataStorage {
     Repository<RecordedMessage> getRecordMessages();
     
     void cleanAll();
-
-	boolean remove(Message message);
 }

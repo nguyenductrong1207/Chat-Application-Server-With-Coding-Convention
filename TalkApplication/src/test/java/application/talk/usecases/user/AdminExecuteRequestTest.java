@@ -4,6 +4,7 @@ import application.talk.domains.PrivateGroup;
 import application.talk.domains.Request;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
+import application.talk.enums.RequestStatus;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import org.junit.After;
@@ -34,9 +35,9 @@ public class AdminExecuteRequestTest {
         User admin = new User("Trong", "123456");
         PrivateGroup privateGroup = new PrivateGroup("Nhuc Dau", admin);
         User requester = new User("Requester", "1234");
-        Request request = new Request(requester, privateGroup, LocalDateTime.now(), Request.RequestStatus.WAITING);
+        Request request = new Request(requester, privateGroup, LocalDateTime.now(), RequestStatus.WAITING);
 
-        AdminExecuteRequest.InputValues input = new AdminExecuteRequest.InputValues(privateGroup, admin, request, Request.RequestStatus.APPROVE);
+        AdminExecuteRequest.InputValues input = new AdminExecuteRequest.InputValues(privateGroup, admin, request, RequestStatus.APPROVE);
         AdminExecuteRequest.OutputValues output = _useCase.execute(input);
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());

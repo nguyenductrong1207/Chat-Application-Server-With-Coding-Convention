@@ -1,5 +1,7 @@
 package application.talk.domains;
 
+import application.talk.enums.GroupType;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,12 +9,14 @@ public abstract class Group extends ChatEntity {
 	private List<User> _users;
 	private List<File> _files;
 	private String _name;
+	private GroupType _groupType;
 
-	public Group(String name) {
+	public Group(String name, GroupType groupType) {
 		super();
 		_users = new ArrayList<>();
-		_files = new ArrayList<File>();
+		_files = new ArrayList<>();
 		_name = name;
+		_groupType = groupType;
 	}
 
 	public void addUser(User user) {
@@ -49,8 +53,15 @@ public abstract class Group extends ChatEntity {
 		return _files;
 	}
 
-
 	public String getName() {
 		return _name;
+	}
+
+	public GroupType getGroupType() {
+		return _groupType;
+	}
+
+	public void setGroupType(GroupType groupType) {
+		_groupType = groupType;
 	}
 }
