@@ -1,10 +1,13 @@
 package application.talk.usecases.group;
 
+import application.talk.domains.Group;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
+
+import java.util.List;
 
 public class JoiningPublicGroup extends UseCase<JoiningPublicGroup.InputValues, JoiningPublicGroup.OutputValues> {
     private DataStorage _dataStorage;
@@ -16,33 +19,27 @@ public class JoiningPublicGroup extends UseCase<JoiningPublicGroup.InputValues, 
 
     @Override
     public OutputValues execute(InputValues input) {
-        PublicGroup publicGroup = new PublicGroup(null, input._joinCode);
+        List<Group> groups = _dataStorage.getGroups().getAll();
 
-        if (publicGroup != null && publicGroup.getJoinCode().equals(input._joinCode)) {
-            publicGroup.addUser(input._user);
+        for (Group group : groups) {
+            if (group instanceof PublicGroup && ((PublicGroup) group).getJoinCode().equals(input._joinCode)) {
+                User joinedUser = _dataStorage.getUsers().getById(input._receiverId);
+                group.addUser(joinedUser);
+            }
+
+            return new OutputValues(FinalResult.SUCCESSFUL, "");
         }
-        _dataStorage.getGroups().add(publicGroup);
-
-        return new OutputValues(FinalResult.SUCCESSFUL, "");
+        return new OutputValues(FinalResult.FAILED, "");
     }
 
     public static class InputValues {
-        private User _inviter;
-        private User _receiver;
+        private String _receiverId;
         private String _joinCode;
-        private User _user;
 
-
-        public InputValues(User inviter, User receiver) {
+        public InputValues(String userId, String joinedCode) {
             super();
-            _inviter = inviter;
-            _receiver = receiver;
-        }
-
-        public InputValues(User user, String joinCode) {
-            super();
-            _user = user;
-            _joinCode = joinCode;
+            _receiverId = userId;
+            _joinCode = joinedCode;
         }
     }
 

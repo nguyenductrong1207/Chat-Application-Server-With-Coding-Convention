@@ -23,10 +23,10 @@ public class CreatingGroup extends UseCase<CreatingGroup.InputValues, CreatingGr
     public OutputValues execute(InputValues input) {
         Group group = null;
 
-        if (input._groupType.equals("PUBLICGROUP")) {
+        if (input._groupType.equals(GroupType.PUBLICGROUP)) {
             group = new PublicGroup(input._name, input._joinCode);
 
-        } else if (input._groupType.equals("PRIVATEGROUP")) {
+        } else if (input._groupType.equals(GroupType.PRIVATEGROUP)) {
             group = new PrivateGroup(input._name, input._admin);
         }
 

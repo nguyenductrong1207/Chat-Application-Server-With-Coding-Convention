@@ -29,7 +29,7 @@ public class JoiningPublicGroupTest {
     public void testJoiningPublicGroup() {
         User user = new User("trong", "1207");
 
-        JoiningPublicGroup.InputValues input = new JoiningPublicGroup.InputValues(user, "1910");
+        JoiningPublicGroup.InputValues input = new JoiningPublicGroup.InputValues(user.getId(), "1910");
         JoiningPublicGroup.OutputValues output = _useCase.execute(input);
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());

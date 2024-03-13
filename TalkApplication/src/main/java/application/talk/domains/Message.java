@@ -16,14 +16,12 @@ public class Message extends BaseEntity {
         _timestamp = timestamp;
         _receiver = receiver;
         _content = content;
-
-        this.formatDateTime();
     }
 
-	public void formatDateTime(){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-        _timestamp.format(formatter);
-	}
+//	public void formatDateTime(){
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
+//        _timestamp.format(formatter);
+//	}
 
     public String getContent() {
         return _content;

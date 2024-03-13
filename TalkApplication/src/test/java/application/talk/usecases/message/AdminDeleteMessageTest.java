@@ -22,12 +22,25 @@ import application.talk.usecases.adapters.DataStorage;
 public class AdminDeleteMessageTest {
 	private DataStorage _storage;
 	private AdminDeleteMessage _useCase;
+	private User _sender;
+	private Conversation _conversation;
 
 	@Before
 	public void setUp() throws Exception {
 		_storage = InMemoryDataStorage.getInstance();
 		DeleteMessage deleteMessage = new DeleteMessage(_storage);
 		_useCase = new AdminDeleteMessage(_storage, deleteMessage);
+
+		_sender = new User("kiet", "0710");
+		PrivateGroup privateGroup = new PrivateGroup("group1", _sender);
+		_conversation = new Conversation(_sender, privateGroup);
+
+		for (int i = 0; i < 3; i++) {
+			_conversation.addMessage(new Message(_sender, LocalDateTime.now(), privateGroup, "hello!"));
+		}
+
+		_storage.getConversations().add(_conversation);
+		_storage.getGroups().add(privateGroup);
 	}
 
 	@After
@@ -38,24 +51,10 @@ public class AdminDeleteMessageTest {
 
 	@Test
 	public void testRemovingMessgage() {
-		User sender = new User("kiet", "0710");
-        ChatEntity receiver = new User("trong", "1207");
-        Conversation conversation = new Conversation(sender, receiver);
-        Message message = new Message(sender, LocalDateTime.now(), receiver, "hello");
-        PrivateGroup privateGroup = new PrivateGroup("group1", sender);
-		
-        List<Message> messages = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            messages.add(new Message(sender, LocalDateTime.now(), receiver, "hello!"));
-        }
-        conversation.setMessages(messages);
+		Message removingMessage = _conversation.getMessages().get(0);
         
-        _storage.getConversations().add(conversation);
-        _storage.getMessages().add(message);
-		_storage.getGroups().add(privateGroup);
-        
-        AdminDeleteMessage.InputValues input = new AdminDeleteMessage.InputValues(sender.getId(), 
-        		conversation.getId(), privateGroup.getId(), message.getId());
+        AdminDeleteMessage.InputValues input = new AdminDeleteMessage.InputValues(_sender.getId(),
+        		_conversation.getId(), removingMessage.getId());
         AdminDeleteMessage.OutputValues output = _useCase.execute(input);
         
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());

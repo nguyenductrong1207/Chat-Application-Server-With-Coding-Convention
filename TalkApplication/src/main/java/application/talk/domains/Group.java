@@ -60,8 +60,4 @@ public abstract class Group extends ChatEntity {
 	public GroupType getGroupType() {
 		return _groupType;
 	}
-
-	public void setGroupType(GroupType groupType) {
-		_groupType = groupType;
-	}
 }

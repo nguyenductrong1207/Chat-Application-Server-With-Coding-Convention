@@ -1,5 +1,6 @@
 package application.talk.usecases.message;
 
+import application.talk.domains.Conversation;
 import application.talk.domains.Message;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
@@ -10,68 +11,65 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetMessagesByTime extends UseCase<GetMessagesByTime.InputValues, GetMessagesByTime.OutputValues> {
-	private DataStorage _dataStorage;
+    private DataStorage _dataStorage;
 
-	public GetMessagesByTime(DataStorage dataStorage) {
-		super();
-		_dataStorage = dataStorage;
-	}
+    public GetMessagesByTime(DataStorage dataStorage) {
+        super();
+        _dataStorage = dataStorage;
+    }
 
-	@Override
-	public OutputValues execute(InputValues input) {
-		List<Message> messages =  _dataStorage.getMessages().getAll();
-		List<Message> foundMessages = new ArrayList<>();
+    @Override
+    public OutputValues execute(InputValues input) {
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
 
-		for(Message message :messages){
-			if(input._time.isAfter(message.getTimestamp())){
-				break;
-			}
+        if (conversation == null) {
+            return new OutputValues(FinalResult.FAILED, "", null);
+        }
 
-			foundMessages.add(message);
-		}
+        List<Message> messages = conversation.getMessages();
+        List<Message> foundMessages = new ArrayList<>();
 
-		if(foundMessages.isEmpty()){
-			return new OutputValues(FinalResult.FAILED, "");
-		}
+        for (Message message : messages) {
+            if (input._time.isBefore(message.getTimestamp())) {
+                break;
+            }
 
-		OutputValues output =  new OutputValues(FinalResult.SUCCESSFUL, "");
-		output.setFoundMessages(foundMessages);
+            foundMessages.add(message);
+        }
+        return new OutputValues(FinalResult.SUCCESSFUL, "", foundMessages);
+    }
 
-		return output;
-	}
+    public static class InputValues {
+        private LocalDateTime _time;
+        private String _conversationId;
 
-	public static class InputValues {
-		private LocalDateTime _time;
+        public InputValues(LocalDateTime time, String conversationId) {
+            _time = time;
+            _conversationId = conversationId;
+        }
+    }
 
-		public InputValues(LocalDateTime time) {
-			_time = time;
-		}
-	}
+    public static class OutputValues {
+        private final FinalResult RESULT;
+        private final String MESSAGE;
+        private List<Message> _foundMessages;
 
-	public static class OutputValues {
-		private final FinalResult RESULT;
-		private final String MESSAGE;
-		private List<Message> _foundMessages;
+        public OutputValues(FinalResult result, String message, List<Message> foundMessages) {
+            MESSAGE = message;
+            RESULT = result;
+            _foundMessages = foundMessages;
+        }
 
-		public OutputValues(FinalResult result, String message) {
-			MESSAGE = message;
-			RESULT = result;
-		}
+        public FinalResult getResult() {
+            return RESULT;
+        }
 
-		public FinalResult getResult() {
-			return RESULT;
-		}
+        public List<Message> getFoundMessages() {
+            return _foundMessages;
+        }
 
-		public List<Message> getFoundMessages() {
-			return _foundMessages;
-		}
-
-		public void setFoundMessages(List<Message> foundMessages) {
-			_foundMessages = foundMessages;
-		}
-
-		public String getMessage() {
-			return MESSAGE;
-		}
-	}
+        public String getMessage() {
+            return MESSAGE;
+        }
+    }
 }

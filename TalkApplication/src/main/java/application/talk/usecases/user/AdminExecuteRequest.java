@@ -21,7 +21,7 @@ public class AdminExecuteRequest extends UseCase<AdminExecuteRequest.InputValues
         if (input._privateGroup.getAdmins().contains(input._user)) {
             input._request.setRequestStatus(input._requestStatus);
 
-            if (input._requestStatus.equals("APPROVE")) {
+            if (input._requestStatus.equals(RequestStatus.APPROVE)) {
                 _dataStorage.getGroups().getById(input._privateGroup.getId()).addUser(input._request.getRequester());
             }
 

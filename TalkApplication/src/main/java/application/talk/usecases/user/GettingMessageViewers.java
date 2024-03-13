@@ -35,7 +35,7 @@ public class GettingMessageViewers extends UseCase<GettingMessageViewers.InputVa
         }
 
         if (foundConversation != null && checkedMessage != null) {
-            ChatEntity chatEntity = (Group) foundConversation.getReceiver();
+            ChatEntity chatEntity = foundConversation.getReceiver();
 
             for (User user : ((Group) chatEntity).getUsers()) {
                 RecordLastMessage.InputValues inputValue = new RecordLastMessage.InputValues(user.getId(), input._messageID);

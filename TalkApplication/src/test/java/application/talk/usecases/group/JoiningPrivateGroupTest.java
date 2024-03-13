@@ -1,5 +1,7 @@
 package application.talk.usecases.group;
 
+import application.talk.domains.Group;
+import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
@@ -11,13 +13,19 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class JoiningPrivateGroupTest {
-    DataStorage _storage;
-    JoiningPrivateGroup _useCase;
+   private DataStorage _storage;
+  private   JoiningPrivateGroup _useCase;
+   private Group _newGroup;
+   private User _admin;
 
     @Before
     public void setUp() throws Exception {
         _storage = InMemoryDataStorage.getInstance();
         _useCase = new JoiningPrivateGroup(_storage);
+
+        _admin = new User("kietluong","hehe");
+        _newGroup = new PrivateGroup("groupkin123",_admin);
+        _storage.getGroups().add(_newGroup);
     }
 
     @After
@@ -26,11 +34,20 @@ public class JoiningPrivateGroupTest {
     }
 
     @Test
-    public void testJoiningPrivateGroup() {
+    public void testWrongAdminJoiningPrivateGroup() {
         User inviter = new User("trong", "1207");
         User receiver = new User("trong2", "1910");
 
-        JoiningPrivateGroup.InputValues input = new JoiningPrivateGroup.InputValues(inviter, receiver);
+        JoiningPrivateGroup.InputValues input = new JoiningPrivateGroup.InputValues(inviter.getId(), receiver.getId(),_newGroup.getId());
+        JoiningPrivateGroup.OutputValues output = _useCase.execute(input);
+
+        assertEquals(FinalResult.FAILED, output.getResult());
+    }
+@Test
+    public void testJoiningPrivateGroup() {
+        User receiver = new User("trong2", "1910");
+
+        JoiningPrivateGroup.InputValues input = new JoiningPrivateGroup.InputValues(_admin.getId(), receiver.getId(),_newGroup.getId());
         JoiningPrivateGroup.OutputValues output = _useCase.execute(input);
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
