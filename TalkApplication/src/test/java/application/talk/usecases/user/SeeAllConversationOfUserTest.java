@@ -14,7 +14,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SeeAllConversationOfUserTest {
-
     DataStorage _storage;
     SeeAllConversationOfUser _useCase;
 
@@ -37,7 +36,7 @@ public class SeeAllConversationOfUserTest {
 
         PrivateGroup privateGroup = new PrivateGroup("group 1", user2);
         privateGroup.addUser(user);
-        
+
         PublicGroup publicGroup = new PublicGroup("group 2", "123456");
         publicGroup.addUser(user);
         publicGroup.addUser(receiver);
@@ -50,6 +49,4 @@ public class SeeAllConversationOfUserTest {
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
-
-
 }

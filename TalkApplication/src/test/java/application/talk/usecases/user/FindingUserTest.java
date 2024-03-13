@@ -12,7 +12,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class FindingUserTest {
-
 	private DataStorage _storage;
 	private FindingUser _useCase;
 
@@ -39,11 +38,9 @@ public class FindingUserTest {
 		_storage.getUsers().add(user1);
 		_storage.getUsers().add(user2);
 
-		
 		FindingUser.InputValues input = new FindingUser.InputValues("kiet");
 		FindingUser.OutputValues output = _useCase.execute(input);
 
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
-
 }

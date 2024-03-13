@@ -11,7 +11,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class GetGroupsOfUserTest {
-
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
@@ -44,5 +43,4 @@ public class GetGroupsOfUserTest {
 		GetGroupsOfUser.OutputValues output = useCase.execute(input);
 		assertEquals(FinalResult.FAILED, output.getResult());
 	}
-
 }

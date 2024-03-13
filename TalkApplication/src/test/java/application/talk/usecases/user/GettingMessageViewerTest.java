@@ -4,6 +4,7 @@ import application.talk.domains.*;
 import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -30,7 +31,6 @@ public class GettingMessageViewerTest {
 
         ((Group)_receiver).addAllUser(Arrays.asList(userA, userB, userC));
         _storage.getGroups().add(_receiver.getGroup());
-
 
         _message = new Message(_sender, LocalDateTime.now(), _receiver, "helo");
 
@@ -60,5 +60,4 @@ public class GettingMessageViewerTest {
         Assertions.assertEquals(FinalResult.SUCCESSFUL, output.getResult());
         Assertions.assertNotNull(output.getViewers());
     }
-
 }

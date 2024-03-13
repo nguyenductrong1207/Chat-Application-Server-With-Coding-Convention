@@ -25,7 +25,7 @@ public class AdminExecuteRequest extends UseCase<AdminExecuteRequest.InputValues
             }
 
         }
-        return new OutputValues(AdminExecuteRequestResult.SUCCESSFUL, "");
+        return new OutputValues(FinalResult.SUCCESSFUL, "");
     }
 
     public static class InputValues {

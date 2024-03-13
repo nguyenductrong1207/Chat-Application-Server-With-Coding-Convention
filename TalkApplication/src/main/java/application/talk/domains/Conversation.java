@@ -77,6 +77,4 @@ public class Conversation extends BaseEntity {
     public void setAttachments(List<File> attachments) {
         _attachments = attachments;
     }
-
-
 }

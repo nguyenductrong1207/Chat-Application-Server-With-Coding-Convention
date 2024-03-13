@@ -25,5 +25,4 @@ public abstract class BaseEntity {
     protected BaseEntity() {
         _id = UUID.randomUUID().toString();
     }
-    
 }

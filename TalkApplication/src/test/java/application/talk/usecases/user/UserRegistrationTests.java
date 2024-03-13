@@ -12,7 +12,6 @@ import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
 
 public class UserRegistrationTests {
-
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
@@ -31,7 +30,6 @@ public class UserRegistrationTests {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 
 		UserRegistration registration = new UserRegistration(storage, new Hasher() {
-
 			@Override
 			public String hash(String orginal) {
 				return null;
@@ -42,5 +40,4 @@ public class UserRegistrationTests {
 
 		assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
 	}
-
 }

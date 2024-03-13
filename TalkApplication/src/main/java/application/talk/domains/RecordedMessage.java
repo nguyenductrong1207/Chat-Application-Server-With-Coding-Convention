@@ -16,6 +16,4 @@ public class RecordedMessage extends BaseEntity{
     public Message getRecordedMessages() {
         return _lastSeenMessage;
     }
-
-
 }

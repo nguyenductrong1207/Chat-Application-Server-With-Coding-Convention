@@ -1,8 +1,5 @@
 package application.talk.domains;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class ChatEntity extends BaseEntity {
     private User _user;
     private Group _group;

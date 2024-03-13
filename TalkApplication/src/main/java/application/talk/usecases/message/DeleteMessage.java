@@ -55,14 +55,12 @@ public class DeleteMessage extends UseCase<DeleteMessage.InputValues, DeleteMess
                         e.printStackTrace();
                     }
                 }
-
                 return;
             }
         }
     }
 
     public static class InputValues {
-
         private String _conversationId;
         private String _messageId;
         private String _senderId;

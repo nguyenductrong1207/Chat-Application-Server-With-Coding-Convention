@@ -21,7 +21,6 @@ public class JoiningPublicGroup extends UseCase<JoiningPublicGroup.InputValues, 
         if (publicGroup != null && publicGroup.getJoinCode().equals(input._joinCode)) {
             publicGroup.addUser(input._user);
         }
-
         _dataStorage.getGroups().add(publicGroup);
 
         return new OutputValues(FinalResult.SUCCESSFUL, "");

@@ -13,7 +13,6 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class EditMessageTest {
-
 	@Before
 	public void setUp() throws Exception {
 		DataStorage storage = InMemoryDataStorage.getInstance();
@@ -37,5 +36,4 @@ public class EditMessageTest {
 		assertNotNull(output.getMessage());
 		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
 	}
-
 }

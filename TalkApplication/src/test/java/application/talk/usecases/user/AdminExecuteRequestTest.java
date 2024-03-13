@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 import static org.junit.Assert.assertEquals;
 
 public class AdminExecuteRequestTest {
-
     DataStorage _storage;
     AdminExecuteRequest _useCase;
 
@@ -42,5 +41,4 @@ public class AdminExecuteRequestTest {
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
     }
-
 }
