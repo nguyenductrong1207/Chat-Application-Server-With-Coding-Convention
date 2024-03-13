@@ -3,6 +3,7 @@ package application.talk.usecases.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.PublicGroup;
 import application.talk.domains.User;
@@ -12,7 +13,6 @@ import application.talk.usecases.adapters.DataStorage;
 
 public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGroupsOfUser.OutputValues> {
 	private DataStorage _dataStorage;
-	private List<String> listingGroups;
 
 	public GetGroupsOfUser(DataStorage dataStorage) {
 		_dataStorage = dataStorage;
@@ -20,43 +20,33 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		listingGroups = new ArrayList<String>();
-		PrivateGroup privateGroup = new PrivateGroup(null, null);
-		PublicGroup publicGroup = new PublicGroup(null, null);
-		
-		if (input._name == null) {
-			return new OutputValues(FinalResult.FAILED, "");
-		}
-		for (User i : privateGroup.getUsers()) {
-			if (input._name.equals(i.getName())) {
-				listingGroups.add(privateGroup.getName());
+		List<Group> joinedGroup = new ArrayList<>();
+
+		for(Group group : _dataStorage.getGroups().getAll()){
+			if(group.findUserByID(input._userId) != null){
+				joinedGroup.add(group);
 			}
 		}
 
-		for (User i : publicGroup.getUsers()) {
-			if (input._name.equals(i.getName())) {
-				listingGroups.add(publicGroup.getName());
-			}
-		}
-
-		return new OutputValues(FinalResult.SUCCESSFUL, "");
+		return new OutputValues(FinalResult.SUCCESSFUL, "", joinedGroup);
 	}
 
 	public static class InputValues {
-		private String _name;
+		private String _userId;
 
-		public InputValues(String name) {
-			_name = name;
+		public InputValues(String id) {
+			_userId = id;
 		}
 	}
 
 	public static class OutputValues {
 		private final FinalResult RESULT;
 		private final String MESSAGE;
-
-		public OutputValues(FinalResult result, String message) {
+		private List<Group> _foundGroups;
+		public OutputValues(FinalResult result, String message, List<Group> groups) {
 			MESSAGE = message;
 			RESULT = result;
+			_foundGroups = groups;
 		}
 
 		public FinalResult getResult() {
@@ -65,6 +55,10 @@ public class GetGroupsOfUser extends UseCase<GetGroupsOfUser.InputValues, GetGro
 
 		public String getMessage() {
 			return MESSAGE;
+		}
+
+		public List<Group> getFoundGroups() {
+			return _foundGroups;
 		}
 	}
 }

@@ -19,20 +19,19 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
 	@Override
     public OutputValues execute(InputValues input) {
         List<Message> foundMessage = _getTopMessages.execute(
-        		new GetTopLastestMessages.InputValues(input._nRetrievedMessages, 0)
+        		new GetTopLastestMessages.InputValues(input._nRetrievedMessages, 0, input._conversationId)
         		).getfoundMessages();
 
-        OutputValues output = new OutputValues(FinalResult.SUCCESSFUL, "");
-        output.setFoundMessages(foundMessage);
-        
-        return output;
+        return new OutputValues(FinalResult.SUCCESSFUL, "", foundMessage);
     }
 
 	public static class InputValues {
 		private int _nRetrievedMessages;
+		private String _conversationId;
 
-		public InputValues(int nRetrievedMessages) {
+		public InputValues(int nRetrievedMessages, String conversationId) {
 			_nRetrievedMessages = nRetrievedMessages;
+			_conversationId = conversationId;
 		}
 	}
 
@@ -41,9 +40,10 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
 		private final String MESSAGE;
 		private List<Message> _foundMessages;
 
-		public OutputValues(FinalResult result, String message) {
+		public OutputValues(FinalResult result, String message, List<Message> messages) {
 			MESSAGE = message;
 			RESULT = result;
+			_foundMessages = messages;
 		}
 
 		public FinalResult getResult() {
@@ -52,10 +52,6 @@ public class RetrievingMessages extends UseCase<RetrievingMessages.InputValues, 
 
 		public List<Message> getfoundMessages() {
 			return _foundMessages;
-		}
-
-		public void setFoundMessages(List<Message> foundMessages) {
-			_foundMessages = foundMessages;
 		}
 
 		public String getMessage() {

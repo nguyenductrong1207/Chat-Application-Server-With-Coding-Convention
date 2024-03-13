@@ -19,7 +19,6 @@ public class SeeAllConversationOfUser extends UseCase<SeeAllConversationOfUser.I
 
     @Override
     public OutputValues execute(InputValues input) {
-
         List<String> userConversations = new ArrayList<>();
         List<Conversation> conversations = _dataStorage.getConversations().getAll();
         List<Group> groups = _dataStorage.getGroups().getAll();

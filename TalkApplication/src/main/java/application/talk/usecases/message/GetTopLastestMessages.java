@@ -18,7 +18,8 @@ public class GetTopLastestMessages extends UseCase<GetTopLastestMessages.InputVa
 
     @Override
     public OutputValues execute(InputValues input) {
-        List<Message> messages = _dataStorage.getMessages().getAll();
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
+        List<Message> messages = conversation.getMessages();
         List<Message> foundMessages = new ArrayList<>();
         int count = 0;
 
@@ -27,19 +28,18 @@ public class GetTopLastestMessages extends UseCase<GetTopLastestMessages.InputVa
             count++;
         }
 
-        OutputValues output = new OutputValues(FinalResult.SUCCESSFUL, "");
-        output.setFoundMessages(foundMessages);
-
-        return output;
+        return new OutputValues(FinalResult.SUCCESSFUL, "", foundMessages);
     }
 
     public static class InputValues {
         private int _nRetrievedMessages;
         private int _nSkippedMessages;
+        private String _conversationId;
 
-        public InputValues(int nRetrievedMessages, int nSkippedMessages) {
+        public InputValues(int nRetrievedMessages, int nSkippedMessages, String conversationId) {
             _nRetrievedMessages = nRetrievedMessages;
             _nSkippedMessages = nSkippedMessages;
+            _conversationId = conversationId;
         }
     }
 
@@ -48,9 +48,10 @@ public class GetTopLastestMessages extends UseCase<GetTopLastestMessages.InputVa
         private final String MESSAGE;
         private List<Message> _foundMessages;
 
-        public OutputValues(FinalResult result, String message) {
+        public OutputValues(FinalResult result, String message, List<Message> messages) {
             MESSAGE = message;
             RESULT = result;
+            _foundMessages =messages;
         }
 
         public FinalResult getResult() {
@@ -59,10 +60,6 @@ public class GetTopLastestMessages extends UseCase<GetTopLastestMessages.InputVa
 
         public List<Message> getfoundMessages() {
             return _foundMessages;
-        }
-
-        public void setFoundMessages(List<Message> foundMessages) {
-            _foundMessages = foundMessages;
         }
 
         public String getMessage() {

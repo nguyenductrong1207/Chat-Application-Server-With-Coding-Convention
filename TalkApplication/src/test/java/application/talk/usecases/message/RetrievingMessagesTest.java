@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.talk.domains.Conversation;
 import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
@@ -38,15 +39,17 @@ public class RetrievingMessagesTest {
 	public void testRetrievingMessages() {
 		User sender = new User("abc", "abc");
         ChatEntity receiverUser = new User("def", "456");
-        
 		List<Message> messages = new ArrayList<>();
+		Conversation newConversation = new Conversation(sender,receiverUser);
+
 		for (int i = 0; i < 10;i ++) {
 			messages.add(new Message(sender, LocalDateTime.now(), receiverUser, "hello"));
 		}
+
+		newConversation.setMessages(messages);
+		_storage.getConversations().add(newConversation);
 		
-		_storage.getMessages().getAll().addAll(messages);
-		
-	    RetrievingMessages.InputValues input = new RetrievingMessages.InputValues(5); 
+	    RetrievingMessages.InputValues input = new RetrievingMessages.InputValues(5, newConversation.getId());
 	    RetrievingMessages.OutputValues output = _useCase.execute(input);
 	    
 	    assertEquals(FinalResult.SUCCESSFUL, output.getResult());

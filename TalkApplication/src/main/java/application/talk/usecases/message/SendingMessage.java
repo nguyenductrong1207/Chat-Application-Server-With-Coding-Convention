@@ -2,65 +2,75 @@ package application.talk.usecases.message;
 
 import java.time.LocalDateTime;
 
-import application.talk.domains.ChatEntity;
-import application.talk.domains.File;
+import application.talk.domains.*;
 import application.talk.domains.File.Type;
-import application.talk.domains.Message;
-import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
 public class SendingMessage extends UseCase<SendingMessage.InputValues, SendingMessage.OutputValues> {
-	private DataStorage _dataStorage;
-	public SendingMessage(DataStorage dataStorage) {
-		_dataStorage = dataStorage;
-	}
+    private DataStorage _dataStorage;
 
-	@Override
-	public OutputValues execute(InputValues input) {
-		Message message = new Message(input._sender, LocalDateTime.now(), input._receiver, input._content);
+    public SendingMessage(DataStorage dataStorage) {
+        _dataStorage = dataStorage;
+    }
 
-		if (input._attachment != null) {
-			File attachment = new File(input._attachment.length, input._type);
-			message.setAttachment(attachment);
-		}
-		_dataStorage.getMessages().add(message);
+    @Override
+    public OutputValues execute(InputValues input) {
+        Message message = new Message(input._sender, LocalDateTime.now(), input._receiver, input._content);
+        byte[] attachmentByte = input._attachment;
 
-		return new OutputValues(FinalResult.SUCCESSFUL, "");
-	}
+        if (attachmentByte != null) {
+            if (attachmentByte.length > 0) {
+                File attachment = new File(input._attachment.length, input._type);
+                attachment.writeFileFromByte(input._attachment);
+                message.setAttachment(attachment);
+            }
+        }
+        Conversation conversation =_dataStorage.getConversations().getById(input._conversationId);
 
-	public static class InputValues {
-		private ChatEntity _receiver;
-		private User _sender;
-		private String _content;
-		private byte[] _attachment;
-		private Type _type;
+        if(conversation !=null){
+            conversation.addMessage(message);
+        }else{
+            return new OutputValues(FinalResult.FAILED, "");
+        }
 
-		public InputValues(ChatEntity receiver, User sender, String content, byte[] attachment, Type type) {
-			_receiver = receiver;
-			_sender = sender;
-			_content = content;
-			_attachment = attachment;
-			_type = type;
-		}
-	}
+        return new OutputValues(FinalResult.SUCCESSFUL, "");
+    }
 
-	public static class OutputValues {
-		private final FinalResult RESULT;
-		private final String MESSAGE;
+    public static class InputValues {
+        private ChatEntity _receiver;
+        private User _sender;
+        private String _content;
+        private byte[] _attachment;
+        private Type _type;
+        private String _conversationId;
 
-		public OutputValues(FinalResult result, String message) {
-			MESSAGE = message;
-			RESULT = result;
-		}
+        public InputValues(User sender,ChatEntity receiver, String content, byte[] attachment, Type type, String conversationId) {
+            _receiver = receiver;
+            _sender = sender;
+            _content = content;
+            _attachment = attachment;
+            _type = type;
+            _conversationId = conversationId;
+        }
+    }
 
-		public FinalResult getResult() {
-			return RESULT;
-		}
+    public static class OutputValues {
+        private final FinalResult RESULT;
+        private final String MESSAGE;
 
-		public String getMessage() {
-			return MESSAGE;
-		}
-	}
+        public OutputValues(FinalResult result, String message) {
+            MESSAGE = message;
+            RESULT = result;
+        }
+
+        public FinalResult getResult() {
+            return RESULT;
+        }
+
+        public String getMessage() {
+            return MESSAGE;
+        }
+    }
 }

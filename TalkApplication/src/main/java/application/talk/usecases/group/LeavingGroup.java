@@ -15,25 +15,24 @@ public class LeavingGroup extends UseCase<LeavingGroup.InputValues, LeavingGroup
 
 	@Override
 	public OutputValues execute(InputValues input) {
-		String userId = input._user.getId();
-		String groupId = input._group.getId();
-		Group group = _dataStorage.getGroups().getById(groupId);
+		Group group = _dataStorage.getGroups().getById(input._groupId);
 
 		if (group == null) {
 			return new OutputValues(FinalResult.FAILED, "");
 		}
-		group.removeUserById(userId);
+
+		group.removeUserById(input._userId);
 
 		return new OutputValues(FinalResult.SUCCESSFUL, "");
 	}
 
 	public static class InputValues {
-		private Group _group;
-		private User _user;
+		private String _groupId;
+		private String _userId;
 
-		public InputValues(Group group, User user) {
-			_user = user;
-			_group = group;
+		public InputValues(String groupId, String userId) {
+			_userId = userId;
+			_groupId = groupId;
 		}
 	}
 

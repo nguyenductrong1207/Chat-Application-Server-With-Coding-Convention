@@ -36,7 +36,7 @@ public class LeavingGroupTest {
         User user = new User("trong", "1207");
         storage.getGroups().add((Group) group);
 
-        LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
+        LeavingGroup.InputValues input = new LeavingGroup.InputValues(group.getId(), user.getId());
 
         LeavingGroup.OutputValues output = useCase.execute(input);
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());
@@ -51,7 +51,7 @@ public class LeavingGroupTest {
         ChatEntity group = new PublicGroup("group123", "123456");
         User user = new User("kiet", "0710");
 
-        LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
+        LeavingGroup.InputValues input = new LeavingGroup.InputValues(group.getId(), user.getId());
 
         LeavingGroup.OutputValues output = useCase.execute(input);
         assertEquals(FinalResult.FAILED, output.getResult());

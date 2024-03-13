@@ -1,8 +1,10 @@
 package application.talk.usecases.group;
 
+import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
+import application.talk.enums.GroupType;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 
@@ -16,24 +18,27 @@ public class JoiningPrivateGroup extends UseCase<JoiningPrivateGroup.InputValues
 
     @Override
     public OutputValues execute(InputValues input) {
-        PrivateGroup privateGroup = new PrivateGroup(null, null);
+        Group group = _dataStorage.getGroups().getById(input._groupId);
 
-        if (privateGroup != null && privateGroup.getAdmins().contains(input._inviter)) {
-            privateGroup.addUser(input._receiver);
+        if (group != null && ((PrivateGroup) group).checkAdminById(input._inviterId)) {
+            User receiver = _dataStorage.getUsers().getById(input._receiverId);
+            group.addUser(receiver);
+
+            return new OutputValues(FinalResult.SUCCESSFUL, "");
         }
-        _dataStorage.getGroups().add(privateGroup);
-
-        return new OutputValues(FinalResult.SUCCESSFUL, "");
+        return new OutputValues(FinalResult.FAILED, "");
     }
 
     public static class InputValues {
-        private User _inviter;
-        private User _receiver;
+        private String _groupId;
+        private String _inviterId;
+        private String _receiverId;
 
-        public InputValues(User inviter, User receiver) {
+        public InputValues(String inviterId, String receiverId, String groupId) {
             super();
-            _inviter = inviter;
-            _receiver = receiver;
+            _inviterId = inviterId;
+            _receiverId = receiverId;
+            _groupId = groupId;
         }
     }
 
