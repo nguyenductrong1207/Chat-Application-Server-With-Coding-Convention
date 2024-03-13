@@ -69,10 +69,4 @@ public class InMemoryDataStorage implements DataStorage {
         _conversation.deleteAll();
         _request.deleteAll();
     }
-
-    @Override
-    public boolean remove(Message message) {
-        // TODO Auto-generated method stub
-        return false;
-    }
 }

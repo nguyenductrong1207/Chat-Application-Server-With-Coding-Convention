@@ -1,5 +1,7 @@
 package application.talk.domains;
 
+import application.talk.enums.RequestStatus;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -8,10 +10,6 @@ public class Request extends BaseEntity {
     private PrivateGroup _privateGroup;
     private LocalDateTime _requestTimestamp;
     private RequestStatus _requestStatus;
-
-    public enum RequestStatus {
-        APPROVE, REJECT, WAITING
-    }
 
     public Request(User _requester, PrivateGroup _privateGroup, LocalDateTime requestTimestamp, RequestStatus requestStatus) {
         this._requester = _requester;

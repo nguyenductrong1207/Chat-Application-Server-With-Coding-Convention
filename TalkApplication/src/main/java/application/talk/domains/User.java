@@ -1,20 +1,20 @@
 package application.talk.domains;
 
+import application.talk.enums.Gender;
+
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User extends ChatEntity{
 	private String _firstName;
 	private String _lastName;
 	private String _username;
-	private final String _hashedPassword;
-	private Date _dateOfBirth;
+	private String _hashedPassword;
+	private LocalDate _dateOfBirth;
 	private Gender _gender;
 	private String _address;
 	private String _email;
 
-	public enum Gender {
-		MALE, FEMALE, OTHER
-	}
 
 	public User(String username, String hashedPassword) {
 		super();
@@ -34,7 +34,7 @@ public class User extends ChatEntity{
 		return _lastName + " " + _firstName;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return _dateOfBirth;
 	}
 
@@ -58,7 +58,7 @@ public class User extends ChatEntity{
 		_lastName = lastName;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		_dateOfBirth = dateOfBirth;
 	}
 
@@ -80,7 +80,7 @@ public class User extends ChatEntity{
         private String _email;
         private String _firstName;
         private String _lastName;
-        private Date _dateOfBirth;
+        private LocalDate _dateOfBirth;
         private String _address;
         private Gender _gender;
 
@@ -104,7 +104,7 @@ public class User extends ChatEntity{
             return this;
         }
 
-        public UserBuilder dateOfBirth(Date dateOfBirth) {
+        public UserBuilder dateOfBirth(LocalDate dateOfBirth) {
             _dateOfBirth = dateOfBirth;
             return this;
         }

@@ -3,6 +3,8 @@ package application.talk.usecases.group;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import application.talk.domains.ChatEntity;
+import application.talk.domains.PublicGroup;
 import application.talk.enums.FinalResult;
 import org.junit.After;
 import org.junit.Before;
@@ -42,10 +44,10 @@ public class LeavingGroupTest {
 	public void testLeavingGroupWithNullGroup() {
 		DataStorage storage = InMemoryDataStorage.getInstance();
 		LeavingGroup useCase = new LeavingGroup(storage);
-		Group group = new Group(null) {};
+		ChatEntity group = new PublicGroup("group123","ndkadas");
 		User user = new User("kiet", "0710");
 
-		LeavingGroup.InputValues input = new LeavingGroup.InputValues(group, user);
+		LeavingGroup.InputValues input = new LeavingGroup.InputValues((Group) group, user);
 
 		LeavingGroup.OutputValues output = useCase.execute(input);
 		assertEquals(FinalResult.FAILED, output.getResult());

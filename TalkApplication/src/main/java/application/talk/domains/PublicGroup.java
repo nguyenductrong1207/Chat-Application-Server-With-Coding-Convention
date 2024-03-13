@@ -1,16 +1,15 @@
 package application.talk.domains;
 
+import application.talk.enums.GroupType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PublicGroup extends Group {
-	private List<User> _users = new ArrayList<>();
-	private String _name;
 	private String _joinCode;
 	
-	public PublicGroup( String name, String joinCode) {
-		super(name);
-		_name = name;
+	public PublicGroup(String name, String joinCode) {
+		super(name, GroupType.PUBLICGROUP);
 		_joinCode = joinCode;
 	}
 

@@ -30,11 +30,13 @@ public class FindingUserTest {
 	@Test
 	public void testFindingUser() {
 		User user1 = new User("kiet", "123");
-		user1.setName("anh kiet");
+		user1.setFirstName("anh");
+		user1.setLastName("kiet");
 
 		User user2 = new User("kiet123", "456");
-		user2.setName("kietluong");
-		
+		user2.setFirstName("kiet");
+		user2.setLastName("luong");
+
 		_storage.getUsers().add(user1);
 		_storage.getUsers().add(user2);
 
