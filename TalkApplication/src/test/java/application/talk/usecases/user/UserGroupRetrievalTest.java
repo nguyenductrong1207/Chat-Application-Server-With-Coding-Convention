@@ -15,43 +15,44 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class UserGroupRetrievalTest {
-	private DataStorage _storage;
-	private User testedUser;
-	@Before
-	public void setUp() throws Exception {
-		 _storage = InMemoryDataStorage.getInstance();
+    private DataStorage _storage;
+    private User testedUser;
 
-		  testedUser = new User("trong","123");
-		 _storage.getUsers().add(testedUser);
+    @Before
+    public void setUp() throws Exception {
+        _storage = InMemoryDataStorage.getInstance();
 
-		Group testGroup = new PublicGroup("group hoc tap", "123");
-		testGroup.addUser(testedUser);
-		_storage.getGroups().add(testGroup);
-	}
+        testedUser = new User("trong", "123");
+        _storage.getUsers().add(testedUser);
 
-	@After
-	public void tearDown() throws Exception {
-		_storage.cleanAll();
-	}
+        Group testGroup = new PublicGroup("group hoc tap", "123");
+        testGroup.addUser(testedUser);
+        _storage.getGroups().add(testGroup);
+    }
 
-	@Test
-	public void testGetGroupsOfUser() {
-		UserGroupRetrieval useCase = new UserGroupRetrieval(_storage);
+    @After
+    public void tearDown() throws Exception {
+        _storage.cleanAll();
+    }
 
-		UserGroupRetrieval.InputValues input = new UserGroupRetrieval.InputValues(testedUser.getId());
+    @Test
+    public void testGetGroupsOfUser() {
+        UserGroupRetrieval useCase = new UserGroupRetrieval(_storage);
 
-		UserGroupRetrieval.OutputValues output = useCase.execute(input);
-		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
-	}
+        UserGroupRetrieval.InputValues input = new UserGroupRetrieval.InputValues(testedUser.getId());
 
-	@Test
-	public void testGetGroupsOfUserWithoutName() {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		UserGroupRetrieval useCase = new UserGroupRetrieval(storage);
+        UserGroupRetrieval.OutputValues output = useCase.execute(input);
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
+    }
 
-		UserGroupRetrieval.InputValues input = new UserGroupRetrieval.InputValues(null);
+    @Test
+    public void testGetGroupsOfUserWithoutName() {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        UserGroupRetrieval useCase = new UserGroupRetrieval(storage);
 
-		UserGroupRetrieval.OutputValues output = useCase.execute(input);
-		assertTrue(output.getFoundGroups().isEmpty());
-	}
+        UserGroupRetrieval.InputValues input = new UserGroupRetrieval.InputValues(null);
+
+        UserGroupRetrieval.OutputValues output = useCase.execute(input);
+        assertTrue(output.getFoundGroups().isEmpty());
+    }
 }

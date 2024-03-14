@@ -4,7 +4,6 @@ import application.talk.domains.Group;
 import application.talk.domains.PrivateGroup;
 import application.talk.domains.User;
 import application.talk.enums.FinalResult;
-import application.talk.enums.GroupType;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
 

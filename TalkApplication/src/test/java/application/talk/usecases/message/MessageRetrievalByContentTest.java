@@ -25,10 +25,10 @@ public class MessageRetrievalByContentTest {
         _storage = InMemoryDataStorage.getInstance();
         _useCase = new MessageRetrievalByContent(_storage);
 
-        User sender = new User("kiet","123");
-        User receiver  = new User("trong","123");
+        User sender = new User("kiet", "123");
+        User receiver = new User("trong", "123");
         Message newMessage = new Message(sender, LocalDateTime.now(), receiver, "hello");
-        _conversation = new Conversation(sender,receiver);
+        _conversation = new Conversation(sender, receiver);
         _conversation.addMessage(newMessage);
 
         _storage.getConversations().add(_conversation);
@@ -41,7 +41,7 @@ public class MessageRetrievalByContentTest {
 
     @Test
     public void testGetMessagesEmptyResult() {
-        MessageRetrievalByContent.InputValues input = new MessageRetrievalByContent.InputValues("not",_conversation.getId());
+        MessageRetrievalByContent.InputValues input = new MessageRetrievalByContent.InputValues("not", _conversation.getId());
         MessageRetrievalByContent.OutputValues output = _useCase.execute(input);
 
         assertTrue(output.getFoundMessages().isEmpty());

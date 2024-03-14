@@ -13,38 +13,38 @@ import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 
 public class GroupCreationTest {
-	private DataStorage _storage;
-	private GroupCreation _useCase;
-	
-	@Before
-	public void setUp() throws Exception {
-		 _storage = InMemoryDataStorage.getInstance();
-		_useCase = new GroupCreation(_storage);
-	}
+    private DataStorage _storage;
+    private GroupCreation _useCase;
 
-	@After
-	public void tearDown() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.cleanAll();
-	}
+    @Before
+    public void setUp() throws Exception {
+        _storage = InMemoryDataStorage.getInstance();
+        _useCase = new GroupCreation(_storage);
+    }
 
-	@Test
-	public void testCreatingPublicGroup() {
-		User user1 = new User("kiet", "0710");
+    @After
+    public void tearDown() throws Exception {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        storage.cleanAll();
+    }
 
-		GroupCreation.InputValues input = new GroupCreation.InputValues(GroupType.PUBLICGROUP, user1, "Public group");
+    @Test
+    public void testCreatingPublicGroup() {
+        User user1 = new User("kiet", "0710");
 
-		GroupCreation.OutputValues output = _useCase.execute(input);
-		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
-	}
+        GroupCreation.InputValues input = new GroupCreation.InputValues(GroupType.PUBLICGROUP, user1, "Public group");
 
-	@Test
-	public void testCreatingPrivateGroup() {
-		User user1 = new User("kiet", "0710");
+        GroupCreation.OutputValues output = _useCase.execute(input);
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
+    }
 
-		GroupCreation.InputValues input = new GroupCreation.InputValues(GroupType.PRIVATEGROUP, user1, "Private group");
+    @Test
+    public void testCreatingPrivateGroup() {
+        User user1 = new User("kiet", "0710");
 
-		GroupCreation.OutputValues output = _useCase.execute(input);
-		assertEquals(FinalResult.SUCCESSFUL, output.getResult());
-	}
+        GroupCreation.InputValues input = new GroupCreation.InputValues(GroupType.PRIVATEGROUP, user1, "Private group");
+
+        GroupCreation.OutputValues output = _useCase.execute(input);
+        assertEquals(FinalResult.SUCCESSFUL, output.getResult());
+    }
 }

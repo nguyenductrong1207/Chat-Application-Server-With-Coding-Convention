@@ -19,6 +19,7 @@ public class MessageEditing extends UseCase<MessageEditing.InputValues, MessageE
 
         if (message != null && message.getSender().equals(input._sender)) {
             message.setContent(input._newContent);
+
             return new OutputValues(FinalResult.SUCCESSFUL, "");
         } else {
             return new OutputValues(FinalResult.FAILED, "");

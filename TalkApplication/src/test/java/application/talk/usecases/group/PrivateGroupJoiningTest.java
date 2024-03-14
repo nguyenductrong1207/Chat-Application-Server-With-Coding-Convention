@@ -13,18 +13,18 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class PrivateGroupJoiningTest {
-   private DataStorage _storage;
-  private   PrivateGroupJoining _useCase;
-   private Group _newGroup;
-   private User _admin;
+    private DataStorage _storage;
+    private PrivateGroupJoining _useCase;
+    private Group _newGroup;
+    private User _admin;
 
     @Before
     public void setUp() throws Exception {
         _storage = InMemoryDataStorage.getInstance();
         _useCase = new PrivateGroupJoining(_storage);
 
-        _admin = new User("kietluong","hehe");
-        _newGroup = new PrivateGroup("groupkin123",_admin);
+        _admin = new User("kietluong", "hehe");
+        _newGroup = new PrivateGroup("groupkin123", _admin);
         _storage.getGroups().add(_newGroup);
     }
 
@@ -38,16 +38,17 @@ public class PrivateGroupJoiningTest {
         User inviter = new User("trong", "1207");
         User receiver = new User("trong2", "1910");
 
-        PrivateGroupJoining.InputValues input = new PrivateGroupJoining.InputValues(inviter.getId(), receiver.getId(),_newGroup.getId());
+        PrivateGroupJoining.InputValues input = new PrivateGroupJoining.InputValues(inviter.getId(), receiver.getId(), _newGroup.getId());
         PrivateGroupJoining.OutputValues output = _useCase.execute(input);
 
         assertEquals(FinalResult.FAILED, output.getResult());
     }
-@Test
+
+    @Test
     public void testJoiningPrivateGroup() {
         User receiver = new User("trong2", "1910");
 
-        PrivateGroupJoining.InputValues input = new PrivateGroupJoining.InputValues(_admin.getId(), receiver.getId(),_newGroup.getId());
+        PrivateGroupJoining.InputValues input = new PrivateGroupJoining.InputValues(_admin.getId(), receiver.getId(), _newGroup.getId());
         PrivateGroupJoining.OutputValues output = _useCase.execute(input);
 
         assertEquals(FinalResult.SUCCESSFUL, output.getResult());

@@ -12,31 +12,31 @@ import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
 
 public class UserRegistrationTests {
-	@Before
-	public void setUp() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.getUsers().add(new User("kiet", "0710"));
-	}
+    @Before
+    public void setUp() throws Exception {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        storage.getUsers().add(new User("kiet", "0710"));
+    }
 
-	@After
-	public void tearDown() throws Exception {
-		DataStorage storage = InMemoryDataStorage.getInstance();
-		storage.cleanAll();
-	}
+    @After
+    public void tearDown() throws Exception {
+        DataStorage storage = InMemoryDataStorage.getInstance();
+        storage.cleanAll();
+    }
 
-	@Test
-	public void testRegistration() {
-		UserRegistration.InputValues input = new UserRegistration.InputValues("kiet", "0710");
-		DataStorage storage = InMemoryDataStorage.getInstance();
+    @Test
+    public void testRegistration() {
+        UserRegistration.InputValues input = new UserRegistration.InputValues("kiet", "0710");
+        DataStorage storage = InMemoryDataStorage.getInstance();
 
-		UserRegistration registration = new UserRegistration(storage, new Hasher() {
-			@Override
-			public String hash(String orginal) {
-				return null;
-			}
-		});
+        UserRegistration registration = new UserRegistration(storage, new Hasher() {
+            @Override
+            public String hash(String orginal) {
+                return null;
+            }
+        });
 
-		UserRegistration.OutputValues output = registration.execute(input);
-		assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
-	}
+        UserRegistration.OutputValues output = registration.execute(input);
+        assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
+    }
 }

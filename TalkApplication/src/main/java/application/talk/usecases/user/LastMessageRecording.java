@@ -1,6 +1,8 @@
 package application.talk.usecases.user;
 
-import application.talk.domains.*;
+import application.talk.domains.Conversation;
+import application.talk.domains.Message;
+import application.talk.domains.RecordedMessage;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
@@ -22,13 +24,13 @@ public class LastMessageRecording extends UseCase<LastMessageRecording.InputValu
         for (Conversation conversation : conversations) {
             Message foundMessage = conversation.getMessageByID(input._messageID);
 
-            if (foundMessage != null ) {
+            if (foundMessage != null) {
                 RecordedMessage recordedMessage = null;
                 String senderID = foundMessage.getSender().getId();
 
-                if(senderID.equals(input._userID)){
+                if (senderID.equals(input._userID)) {
                     recordedMessage = new RecordedMessage(foundMessage.getSender(), foundMessage);
-                }else{
+                } else {
                     recordedMessage = new RecordedMessage(foundMessage.getReceiver(), foundMessage);
                 }
 

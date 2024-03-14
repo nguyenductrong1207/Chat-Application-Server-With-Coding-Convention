@@ -1,6 +1,7 @@
 package application.talk.usecases.message;
 
-import application.talk.domains.*;
+import application.talk.domains.Conversation;
+import application.talk.domains.Message;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
@@ -51,7 +52,7 @@ public class TopLatestMessageRetrieval extends UseCase<TopLatestMessageRetrieval
         public OutputValues(FinalResult result, String message, List<Message> messages) {
             MESSAGE = message;
             RESULT = result;
-            _foundMessages =messages;
+            _foundMessages = messages;
         }
 
         public FinalResult getResult() {

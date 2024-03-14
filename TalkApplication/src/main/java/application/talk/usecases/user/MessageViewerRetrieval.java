@@ -1,6 +1,10 @@
 package application.talk.usecases.user;
 
-import application.talk.domains.*;
+import application.talk.domains.ChatEntity;
+import application.talk.domains.Conversation;
+import application.talk.domains.Group;
+import application.talk.domains.Message;
+import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
@@ -41,7 +45,7 @@ public class MessageViewerRetrieval extends UseCase<MessageViewerRetrieval.Input
                 LastMessageRecording.InputValues inputValue = new LastMessageRecording.InputValues(user.getId(), input._messageID);
                 List<Message> checkedMessages = _recordLastMessage.execute(inputValue).getFoundMessage();
 
-                if(checkedMessages.contains(checkedMessage)){
+                if (checkedMessages.contains(checkedMessage)) {
                     viewers.add(user);
                 }
             }
