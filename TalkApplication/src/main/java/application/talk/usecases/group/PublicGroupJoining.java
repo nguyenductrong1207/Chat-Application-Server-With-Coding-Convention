@@ -25,10 +25,11 @@ public class PublicGroupJoining extends UseCase<PublicGroupJoining.InputValues, 
             if (group instanceof PublicGroup && ((PublicGroup) group).getJoinCode().equals(input._joinCode)) {
                 User joinedUser = _dataStorage.getUsers().getById(input._receiverId);
                 group.addUser(joinedUser);
-            }
 
-            return new OutputValues(FinalResult.SUCCESSFUL, "");
+                return new OutputValues(FinalResult.SUCCESSFUL, "");
+            }
         }
+
         return new OutputValues(FinalResult.FAILED, "");
     }
 

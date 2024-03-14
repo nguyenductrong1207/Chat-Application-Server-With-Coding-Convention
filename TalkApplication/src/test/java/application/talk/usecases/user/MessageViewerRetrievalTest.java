@@ -1,6 +1,12 @@
 package application.talk.usecases.user;
 
-import application.talk.domains.*;
+import application.talk.domains.ChatEntity;
+import application.talk.domains.Message;
+import application.talk.domains.PublicGroup;
+import application.talk.domains.User;
+import application.talk.domains.Conversation;
+import application.talk.domains.Group;
+import application.talk.domains.RecordedMessage;
 import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
@@ -23,13 +29,13 @@ public class MessageViewerRetrievalTest {
     public void setUp() throws Exception {
         _storage = InMemoryDataStorage.getInstance();
         _sender = new User("trong", "1207");
+
         User userA = new User("kiet", "071002");
         User userB = new User("duyen", "123");
         User userC = new User("hao", "456");
 
         _receiver = new PublicGroup("group hoc tap", "abc");
-
-        ((Group)_receiver).addAllUser(Arrays.asList(userA, userB, userC));
+        ((Group) _receiver).addAllUser(Arrays.asList(userA, userB, userC));
         _storage.getGroups().add((Group) _receiver);
 
         _message = new Message(_sender, LocalDateTime.now(), _receiver, "helo");

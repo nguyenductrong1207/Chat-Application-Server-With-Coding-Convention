@@ -3,10 +3,7 @@ package application.talk.usecases.message;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import application.talk.domains.ChatEntity;
 import application.talk.domains.Conversation;
 import application.talk.domains.Message;
 import application.talk.domains.User;

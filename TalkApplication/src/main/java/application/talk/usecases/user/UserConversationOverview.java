@@ -50,7 +50,7 @@ public class UserConversationOverview extends UseCase<UserConversationOverview.I
     public static class OutputValues {
         private final FinalResult RESULT;
         private final String MESSAGE;
-        private  List<String> _userConversations;
+        private List<String> _userConversations;
 
         public OutputValues(FinalResult result, String message, List<String> userConversations) {
             MESSAGE = message;

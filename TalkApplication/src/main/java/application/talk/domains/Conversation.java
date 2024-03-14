@@ -26,16 +26,15 @@ public class Conversation extends BaseEntity {
         _messages.add(message);
     }
 
-    public List<Message> getARangeOfMessage(String destionationID){
+    public List<Message> getARangeOfMessage(String destionationID) {
         List<Message> foundMessages = new ArrayList<>();
 
-        for(Message message : _messages){
+        for (Message message : _messages) {
             foundMessages.add(message);
 
-            if(message.getId().equals(destionationID)){
+            if (message.getId().equals(destionationID)) {
                 break;
             }
-
         }
         return foundMessages;
     }

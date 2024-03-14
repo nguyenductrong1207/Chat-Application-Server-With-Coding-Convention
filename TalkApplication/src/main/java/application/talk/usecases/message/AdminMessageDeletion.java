@@ -1,6 +1,8 @@
 package application.talk.usecases.message;
 
-import application.talk.domains.*;
+import application.talk.domains.Conversation;
+import application.talk.domains.Group;
+import application.talk.domains.PrivateGroup;
 import application.talk.enums.FinalResult;
 import application.talk.enums.GroupType;
 import application.talk.usecases.UseCase;

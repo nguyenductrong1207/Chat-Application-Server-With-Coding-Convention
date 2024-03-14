@@ -5,7 +5,7 @@ import java.util.UUID;
 public abstract class BaseEntity {
     private String _id;
 
-    public void setId(String id){
+    public void setId(String id) {
         _id = id;
     }
 

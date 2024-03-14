@@ -1,6 +1,9 @@
 package application.talk.usecases.user;
 
-import application.talk.domains.*;
+import application.talk.domains.ChatEntity;
+import application.talk.domains.Conversation;
+import application.talk.domains.Message;
+import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
@@ -23,7 +26,8 @@ public class LastMessageRecordingTest {
         _sender = new User("trong", "1207");
         _receiver = new User("kiet", "071002");
         _message = new Message(_sender, LocalDateTime.now(), _receiver, "helo");
-        Conversation newConversation = new Conversation(_sender,_receiver);
+
+        Conversation newConversation = new Conversation(_sender, _receiver);
         newConversation.addMessage(_message);
 
         _storage.getConversations().add(newConversation);
@@ -38,13 +42,13 @@ public class LastMessageRecordingTest {
     @Test
     public void testRecordingMessage() {
         String userID = _sender.getId();
-		String messageID = _message.getId();
+        String messageID = _message.getId();
         LastMessageRecording.InputValues input = new LastMessageRecording.InputValues(userID, messageID);
 
-		LastMessageRecording recordTest = new LastMessageRecording(_storage);
-		LastMessageRecording.OutputValues outputValues = recordTest.execute(input);
+        LastMessageRecording recordTest = new LastMessageRecording(_storage);
+        LastMessageRecording.OutputValues outputValues = recordTest.execute(input);
 
-		Assertions.assertEquals(FinalResult.SUCCESSFUL, outputValues.getResult());
-		Assertions.assertNotNull(outputValues.getFoundMessage());
+        Assertions.assertEquals(FinalResult.SUCCESSFUL, outputValues.getResult());
+        Assertions.assertNotNull(outputValues.getFoundMessage());
     }
 }

@@ -36,13 +36,17 @@ public class UserConversationOverviewTest {
 
         PrivateGroup privateGroup = new PrivateGroup("group 1", user2);
         privateGroup.addUser(user);
+        _storage.getGroups().add(privateGroup);
 
         PublicGroup publicGroup = new PublicGroup("group 2", "123456");
         publicGroup.addUser(user);
         publicGroup.addUser(receiver);
+        _storage.getGroups().add(publicGroup);
 
         Conversation conversation1 = new Conversation(user, receiver);
         Conversation conversation2 = new Conversation(user, user2);
+        _storage.getConversations().add(conversation1);
+        _storage.getConversations().add(conversation2);
 
         UserConversationOverview.InputValues input = new UserConversationOverview.InputValues(user.getId());
         UserConversationOverview.OutputValues output = _useCase.execute(input);

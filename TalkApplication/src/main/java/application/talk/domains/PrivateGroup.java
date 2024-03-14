@@ -23,8 +23,8 @@ public class PrivateGroup extends Group {
         return _admins;
     }
 
-    public boolean checkAdminById(String id){
-        Optional<User> foundAdmin = _admins.stream().filter(e->e.getId().equals(id)).findFirst();
+    public boolean checkAdminById(String id) {
+        Optional<User> foundAdmin = _admins.stream().filter(e -> e.getId().equals(id)).findFirst();
 
         return foundAdmin.isPresent();
     }

@@ -2,6 +2,7 @@ package application.talk.usecases.adapters;
 
 import java.util.List;
 import java.util.function.Predicate;
+
 import application.talk.domains.BaseEntity;
 
 public interface Repository<T extends BaseEntity> {

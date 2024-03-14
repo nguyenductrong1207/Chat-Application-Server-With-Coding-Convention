@@ -1,7 +1,6 @@
 package application.talk.domains;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Message extends BaseEntity {
     private User _sender;
@@ -17,11 +16,6 @@ public class Message extends BaseEntity {
         _receiver = receiver;
         _content = content;
     }
-
-//	public void formatDateTime(){
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy");
-//        _timestamp.format(formatter);
-//	}
 
     public String getContent() {
         return _content;

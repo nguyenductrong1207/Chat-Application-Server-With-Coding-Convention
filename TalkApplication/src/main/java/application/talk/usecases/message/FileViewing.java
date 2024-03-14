@@ -23,7 +23,7 @@ public class FileViewing extends UseCase<FileViewing.InputValues, FileViewing.Ou
         Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
         Group group = (Group) conversation.getReceiver();
         User foundUser = group.findUserByID(input._userId);
-        
+
         if (foundUser == null || group == null) {
             return new OutputValues(FinalResult.FAILED, "", null);
         }
@@ -44,7 +44,7 @@ public class FileViewing extends UseCase<FileViewing.InputValues, FileViewing.Ou
     public static class OutputValues {
         private final FinalResult RESULT;
         private final String MESSAGE;
-        private  List<File> _files;
+        private List<File> _files;
 
         public OutputValues(FinalResult result, String message, List<File> files) {
             MESSAGE = message;

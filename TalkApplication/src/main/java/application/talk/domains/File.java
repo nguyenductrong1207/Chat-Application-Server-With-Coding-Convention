@@ -43,7 +43,6 @@ public class File extends BaseEntity {
                 throw new IllegalArgumentException("Incorrect File Type!");
             }
         }
-
         return baseDirectory + typeFolder + "/" + _name;
     }
 

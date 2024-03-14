@@ -2,8 +2,12 @@ package application.talk.usecases.message;
 
 import java.time.LocalDateTime;
 
-import application.talk.domains.*;
+import application.talk.domains.ChatEntity;
+import application.talk.domains.Conversation;
+import application.talk.domains.File;
 import application.talk.domains.File.Type;
+import application.talk.domains.Message;
+import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;
@@ -23,15 +27,17 @@ public class MessageSending extends UseCase<MessageSending.InputValues, MessageS
         if (attachmentByte != null) {
             if (attachmentByte.length > 0) {
                 File attachment = new File(input._attachment.length, input._type);
+
                 attachment.writeFileFromByte(input._attachment);
                 message.setAttachment(attachment);
             }
         }
-        Conversation conversation =_dataStorage.getConversations().getById(input._conversationId);
 
-        if(conversation !=null){
+        Conversation conversation = _dataStorage.getConversations().getById(input._conversationId);
+
+        if (conversation != null) {
             conversation.addMessage(message);
-        }else{
+        } else {
             return new OutputValues(FinalResult.FAILED, "");
         }
 
@@ -46,7 +52,7 @@ public class MessageSending extends UseCase<MessageSending.InputValues, MessageS
         private Type _type;
         private String _conversationId;
 
-        public InputValues(User sender,ChatEntity receiver, String content, byte[] attachment, Type type, String conversationId) {
+        public InputValues(User sender, ChatEntity receiver, String content, byte[] attachment, Type type, String conversationId) {
             _receiver = receiver;
             _sender = sender;
             _content = content;

@@ -1,9 +1,6 @@
 package application.talk.usecases.group;
 
-import java.util.List;
-
 import application.talk.domains.PrivateGroup;
-import application.talk.domains.User;
 import application.talk.enums.FinalResult;
 import application.talk.usecases.UseCase;
 import application.talk.usecases.adapters.DataStorage;

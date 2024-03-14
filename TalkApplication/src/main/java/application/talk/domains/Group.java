@@ -6,58 +6,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Group extends ChatEntity {
-	private List<User> _users;
-	private List<File> _files;
-	private String _name;
-	private GroupType _groupType;
+    private List<User> _users;
+    private List<File> _files;
+    private String _name;
+    private GroupType _groupType;
 
-	public Group(String name, GroupType groupType) {
+    public Group(String name, GroupType groupType) {
         super();
         _users = new ArrayList<>();
-		_files = new ArrayList<>();
-		_name = name;
-		_groupType = groupType;
-	}
+        _files = new ArrayList<>();
+        _name = name;
+        _groupType = groupType;
+    }
 
-	public void addUser(User user) {
-		_users.add(user);
-	}
+    public void addUser(User user) {
+        _users.add(user);
+    }
 
-	public void addAllUser(List<User> users){
-		_users.addAll(users);
-	}
-	public void removeUserById(String id) {
-		for (User user : _users) {
-			if (user.getId().equals(id)) {
-				_users.remove(user);
+    public void addAllUser(List<User> users) {
+        _users.addAll(users);
+    }
 
-				return;
-			}
-		}
-	}
+    public void removeUserById(String id) {
+        for (User user : _users) {
+            if (user.getId().equals(id)) {
+                _users.remove(user);
 
-	public User findUserByID(String id) {
-		for (User user : _users) {
-			if (user.getId().equals(id)) {
-				return user;
-			}
-		}
-		return null;
-	}
+                return;
+            }
+        }
+    }
 
-	public List<User> getUsers() {
-		return _users;
-	}
+    public User findUserByID(String id) {
+        for (User user : _users) {
+            if (user.getId().equals(id)) {
+                return user;
+            }
+        }
+        return null;
+    }
 
-	public List<File> getFiles() {
-		return _files;
-	}
+    public List<User> getUsers() {
+        return _users;
+    }
 
-	public String getName() {
-		return _name;
-	}
+    public List<File> getFiles() {
+        return _files;
+    }
 
-	public GroupType getGroupType() {
-		return _groupType;
-	}
+    public String getName() {
+        return _name;
+    }
+
+    public GroupType getGroupType() {
+        return _groupType;
+    }
 }
