@@ -11,7 +11,7 @@ import application.talk.domains.User;
 import application.talk.infrastructure.data.InMemoryDataStorage;
 import application.talk.usecases.adapters.DataStorage;
 import application.talk.usecases.adapters.Hasher;
-import application.talk.usecases.user.LoginUseCase.InputValues;
+import application.talk.usecases.user.UserLogin.InputValues;
 
 public class UserLoginTests {
     @Before
@@ -28,17 +28,17 @@ public class UserLoginTests {
 
     @Test
     public void testLogin() {
-        LoginUseCase.InputValues input = new InputValues("kiet", "0710");
+        UserLogin.InputValues input = new InputValues("kiet", "0710");
         DataStorage storage = InMemoryDataStorage.getInstance();
 
-        LoginUseCase login = new LoginUseCase(storage, new Hasher() {
+        UserLogin login = new UserLogin(storage, new Hasher() {
             @Override
             public String hash(String orginal) {
                 return null;
             }
         });
 
-        LoginUseCase.OutputValues output = login.execute(input);
+        UserLogin.OutputValues output = login.execute(input);
         assertEquals(output.getResult(), FinalResult.SUCCESSFUL);
     }
 }
