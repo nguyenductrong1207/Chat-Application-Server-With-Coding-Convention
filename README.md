@@ -1,1 +1,1 @@
-# CSE422ChatApplication
+# Chat-Application-Server-With-Coding-Convention
