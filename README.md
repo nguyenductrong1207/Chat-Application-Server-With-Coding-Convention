@@ -1,1 +1,1 @@
-# Chat-Application-Server-With-Coding-Convention
+# Java-Chat-Application-Server-With-Coding-Convention
